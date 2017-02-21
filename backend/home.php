@@ -9,9 +9,7 @@
                 $content = $row['text'];
         }
 
-
-
-    session_start();
+session_start();
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
                 }else{?>

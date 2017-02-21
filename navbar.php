@@ -1,12 +1,11 @@
 <?php
 	session_start();
 ?>
-
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container">
 					<div class="container-fluid">
 						<div class="logo">
-							<img class="navbar-brand" src="logo/store.png" />
+							<img class="navbar-brand" src="logo/apples.png" />
 							<a  class="navbar-brand" href="index.php"> Fruit Market</a>
 						</div>
 						<ul class="nav navbar-nav">

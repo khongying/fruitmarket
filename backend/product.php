@@ -1,20 +1,21 @@
-<?php 
+<?php
     session_start();
-            if (!isset($_SESSION['admin'])){  //check session 
+            if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
                 }else{?>
 <html>
 <head>
-    <title>Backend</title>
+    <title>Backend | เพิ่มสินค้า</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
-    <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
-    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
-    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
+        body{
+            font-family: 'Itim', cursive;
+        }
         #wrapper{
             padding-top:50px;
         }
@@ -46,10 +47,6 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product2.php">เพิ่มผลไม้แปลรูป</a>
-                                </li>
-
-                                <li class="nav-item">
                                     <a class="nav-link" href="#">เพิ่มผลไม้(สำหรับประมูล)</a>
                                 </li>
                             </ul>
@@ -65,12 +62,12 @@
                                     <h4 align="center"> เพิ่มผลไม้ </h4>
                                 <hr />
 
-                                <form action="add_product_db.php" name="product" method="POST" class="form-horizontal" onSubmit="return chkfrom();">
+                                <form action="add_product_db.php" name="product" method="POST" class="form-horizontal" enctype="multipart/form-data" onSubmit="return chkfrom();">
                                     <div class="form-group">
                                         <div class="col-sm-6">
                                             <p> รหัสสินค้า</p>
                                             <input type="text"  name="p_code" class="form-control" placeholder="รหัสสินค้า" />
-                                        </div>  
+                                        </div>
                                         <div class="col-sm-6">
                                             <p> ชื่อสินค้า</p>
                                             <input type="text"  name="p_name" class="form-control" placeholder="ชื่อสินค้า" />
@@ -87,14 +84,18 @@
                                             <p> ราคา (บาท) </p>
                                             <input type="number"  name="p_price" class="form-control" placeholder="ราคา" />
                                         </div>
-                                        <div class="col-sm-8 info">
+                                        <div class="col-sm-3">
+                                            <p> จำนวน (ชิ้น) </p>
+                                            <input type="number"  name="p_num" class="form-control" placeholder="ราคา" />
+                                        </div>
+                                        <div class="col-sm-6 info">
                                             <p> ภาพสินค้า </p>
                                             <input type="file" name="p_img" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus fa-lg"></i> เพิ่มสินค้า </button>
+                                            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus fa-lg"></i> เพิ่มสินค้า </button>
                                         </div>
                                     </div>
                                 </form>
@@ -150,7 +151,7 @@
             swal("กรุณาระบุราคาสินค้า", " ", "warning");
             document.product.p_price.focus();
             return false;
-        }  
+        }
 
         if(document.product.p_img.value=="")
         {
@@ -162,6 +163,6 @@
 
     }
 </script>
-</body> 
-</html>   
+</body>
+</html>
 <?php } ?>

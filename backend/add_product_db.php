@@ -3,37 +3,76 @@
 <?php
 		require 'condatabase/conDB.php';
 
-		//Set ว/ด/ป เวลา ให้เป็นของประเทศไทย
-		date_default_timezone_set('Asia/Bangkok');
-		//สร้างตัวแปรวันที่เพื่อเอาไปตั้งชื่อไฟล์ที่อัพโหลด
-		$date1 = date("Ymd_His");
-		//สร้างตัวแปรสุ่มตัวเลขเพื่อเอาไปตั้งชื่อไฟล์ที่อัพโหลดไม่ให้ชื่อไฟล์ซ้ำกัน
-		$numrand = (mt_rand());
-
-		//รับชื่อไฟล์จากฟอร์ม 
 		$p_code = $_POST['p_code'];
 		$p_name = $_POST['p_name'];
 		$p_detail = $_POST['p_detail'];
 		$p_price = $_POST['p_price'];
-		$p_img = (isset($_POST['p_img']) ? $_POST['p_img'] : '');
+		$p_num = $_POST['p_num'];
+		$image = "";
 
-		
 
-		$sql="INSERT INTO `product`(`code`, `name`, `detail`, `price`, `img`) VALUES ('$p_code','$p_name','$p_detail','$p_price','$p_img')";
-		//var_dump($sql);
+		if (isset($_FILES['p_img'])) {
+    $SRC = $_FILES['p_img']['tmp_name'];
+    $DEST = "product/".md5(microtime())."."
+            .pathinfo($_FILES['p_img']['name'], PATHINFO_EXTENSION);
+    $image = basename($DEST);
+
+    if (!move_uploaded_file($SRC,$DEST)) {
+			echo '<script>window.onload = function () {';
+			echo 'swal({
+						title: "ย้ายรูปสินค้าไม่สำเร็จ",
+						text: " ",
+						type: "warning",
+						showCancelButton: false,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "OK",
+						},
+						function(isConfirm){
+						if (isConfirm) {
+						window.location.href = "product.php";
+						}
+						});}';
+			echo '</script>';
+    }
+  }
+
+		$sql="INSERT INTO `product`(`code`, `name`, `detail`, `price`, `img`)";
+		$sql .="VALUES ('$p_code','$p_name','$p_detail','$p_price','$image','$p_num')";
 		try{
 		$data = getpdo($con,$sql);
 			if($data != 0){
-				echo "<script type='text/javascript'>";
-				echo  "alert('เพิ่มสินค้าเรียบร้อย');";
-				echo "window.location='product.php';";
-				echo "</script>";
+				echo '<script>window.onload = function () {';
+				echo 'swal({
+							title: "เพิ่มสินค้าเรียบร้อย",
+							text: "",
+							type: "success",
+							showCancelButton: false,
+							confirmButtonColor: "#5cb85c",
+							confirmButtonText: "OK",
+							},
+							function(isConfirm){
+							if (isConfirm) {
+							window.location.href = "home.php";
+							}
+							});}';
+				echo '</script>';
 			}
 			else{
-				echo "<script type='text/javascript'>";
-				echo  "alert('Error!!!');";
-				echo "window.location='product.php';";
-				echo "</script>";
+				echo '<script>window.onload = function () {';
+				echo 'swal({
+							title: "เพิ่มสินค้าไม่สำเร็จ",
+							text: " ",
+							type: "warning",
+							showCancelButton: false,
+							confirmButtonColor: "#DD6B55",
+							confirmButtonText: "OK",
+							},
+							function(isConfirm){
+							if (isConfirm) {
+							window.location.href = "product.php";
+							}
+							});}';
+				echo '</script>';
 			}
 		}
 		catch (PDOException $e) {

@@ -4,19 +4,20 @@
 	require'condatabase/conDB.php';
 
 
-	$mail			= 		$_POST['email'];
-	$pass 		= 		md5($_POST['password']);
-	$date 		= 		$_POST['date'];
-	$address 	= 		$_POST['address'];
-	$name 		= 		$_POST['fullname'];
-	$phone 		= 		$_POST['phone'];
-	$sex    	=			$_POST['sex'];
+	$mail			= 		addslashes($_POST['email']);
+	$pass 		= 		addslashes(md5($_POST['password']));
+	$date 		= 		addslashes($_POST['date']);
+	$address 	= 		addslashes($_POST['address']);
+	$name 		= 		addslashes($_POST['fullname']);
+	$phone 		= 		addslashes($_POST['phone']);
+	$sex    	=			addslashes($_POST['sex']);
 	$news 		= 		(isset($_POST['news']) ? $_POST['news'] : 'F');
 
 
 	$chkmail = "SELECT * FROM `users` WHERE `email`='$mail'";
 
 	$chkm = getpdo($con,$chkmail,2);
+	
 	if($chkm != 0){
 
 		echo '<script>window.onload = function () {';
