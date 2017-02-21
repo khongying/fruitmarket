@@ -8,7 +8,7 @@ session_start();
                 }else{?>
 <html>
 <head>
-    <title>Backend</title>
+    <title>Backend | คลังสินค้า</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
@@ -62,7 +62,6 @@ session_start();
                       $i=0;
                       foreach ($result as $row) {
                       ?>
-
                         <tr>
                           <th><?php echo ++$i; ?></th>
                           <th><img src="product/<?= $row['img']; ?>" width="60" height="60"></th>

@@ -3,12 +3,12 @@
 <?php
 		require 'condatabase/conDB.php';
 
-		$p_code = $_POST['p_code'];
-		$p_name = $_POST['p_name'];
-		$p_detail = $_POST['p_detail'];
-		$p_price = $_POST['p_price'];
-		$p_num = $_POST['p_num'];
-		$image = "";
+		$p_code 	= addslashes($_POST['p_code']);
+		$p_name 	= addslashes($_POST['p_name']);
+		$p_detail = addslashes($_POST['p_detail']);
+		$p_price 	= addslashes($_POST['p_price']);
+		$p_num 		= addslashes($_POST['p_num']);
+		$image 		= "";
 
 
 		if (isset($_FILES['p_img'])) {

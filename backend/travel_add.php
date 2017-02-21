@@ -1,18 +1,15 @@
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
-<?php 
+<?php
             require 'condatabase/conDB.php';
 
-            $name		=	$_POST['name'];
-            $img_pro	=	$_POST['t_img'];
-            $detail		=	$_POST['detail'];
-            $img_1		=	$_POST['t_img_1'];
-            $img_2		=	$_POST['t_img_2'];
-            $img_3		=	$_POST['t_img_3'];
-            $img_4		=	$_POST['t_img_4'];
-
-
-
+            $name		  =	 addslashes($_POST['name']);
+            $img_pro	=	 addslashes($_POST['t_img']);
+            $detail		=	 addslashes($_POST['detail']);
+            $img_1		=	 addslashes($_POST['t_img_1']);
+            $img_2		=	 addslashes($_POST['t_img_2']);
+            $img_3		=	 addslashes($_POST['t_img_3']);
+            $img_4		=	 addslashes($_POST['t_img_4']);
 
 
             $sql = "INSERT INTO `travel`(`name`, `img_pro`, `detail`, `img_1`, `img_2`, `img_3`, `img_4`) VALUES ('$name','$img_pro','$detail','$img_1','$img_2','$img_3','$img_4')";

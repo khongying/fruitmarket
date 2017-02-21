@@ -1,8 +1,8 @@
-<?php 
+<?php
 	session_start();
     require 'condatabase/conDB.php';
-   	$user = $_POST['user'];
-    $pass = md5($_POST['pass']);
+   	$user = addslashes($_POST['user']);
+    $pass = addslashes(md5($_POST['pass']));
 
     $sql="SELECT * FROM `backend` WHERE `username`= '".$user."' AND `password`= '".$pass."'";
     try{

@@ -59,7 +59,7 @@
                             <div class="row">
                             <div class="col-md-3"></div>
                                 <div class="col-md-6"> <br />
-                                    <h4 align="center"> เพิ่มผลไม้ </h4>
+                                    <h4 align="center"> เพิ่มสินค้า </h4>
                                 <hr />
 
                                 <form action="add_product_db.php" name="product" method="POST" class="form-horizontal" enctype="multipart/form-data" onSubmit="return chkfrom();">

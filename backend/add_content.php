@@ -1,10 +1,10 @@
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 <?php
-	
+
 	require 'condatabase/conDB.php';
-	
-	$text = $_POST['text'];
+
+	$text = addslashes($_POST['text']);
 	$sql = "UPDATE `content` SET `text`='$text' WHERE `id`= '1'";
 
 	try{
