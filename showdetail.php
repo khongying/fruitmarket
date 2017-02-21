@@ -8,8 +8,9 @@ $result=getpdo($con,$sql,1);
     foreach ($result as $row) {
     	$code   = $row['code'];
     	$name   = $row['name'];
-		$img 	= $row['img'];
-		$price 	= $row['price'];
+		  $img  	= $row['img'];
+		  $num 	= $row['num'];
+		  $price 	= $row['price'];
     	$detail = $row['detail'];
     }
 ?>
@@ -17,7 +18,8 @@ $result=getpdo($con,$sql,1);
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Fruit Market</title>
+    <title>Fruit Market | <?=$name;?> </title>
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
@@ -25,12 +27,15 @@ $result=getpdo($con,$sql,1);
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css">
-	#page{
-		padding-top:100px;
-	}
-	#line{
-		line-height : 1.5;
-	}
+        body{
+          font-family: 'Itim', cursive;
+            }
+      	#page{
+      		padding-top:100px;
+      	}
+      	#line{
+      		line-height : 1.5;
+      	}
 	</style>
 </head>
 <body>
@@ -53,11 +58,19 @@ $result=getpdo($con,$sql,1);
 			<hr/>
 			<h2>
 			<font color="#0000FF">฿<?php echo number_format($price,2); ?></font>
-			<font color="#00FF00">มีสินค้า</font>
+        <?php if ($num != 0 ){ ?>
+          <font color="#00FF00">มีสินค้า</font>
+          <hr/>
+    			<a class="btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i> ใส่ตะกร้าสินค้า</a>
+    			<a href="index.php" class="btn btn-success"><i class="glyphicon glyphicon-arrow-left"></i> กลับไปหน้าหลัก</a>
+        <?php } else { ?>
+          <font color="#f60707">ไม่มีสินค้า</font>
+          <hr/>
+    			<a class="btn btn-primary" disabled><i class="fa fa-shopping-basket"></i> ใส่ตะกร้าสินค้า</a>
+    			<a href="index.php" class="btn btn-success"><i class="fa fa-arrow-left"></i> กลับไปหน้าหลัก</a>
+      <?php  } ?>
+
 			</h2>
-			<hr/>
-			<a class="btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i> ใส่ตะกร้าสินค้า</a>
-			<a href="index.php" class="btn btn-success"><i class="glyphicon glyphicon-arrow-left"></i> กลับไปหน้าหลัก</a>
 
 
 

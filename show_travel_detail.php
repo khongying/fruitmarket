@@ -1,7 +1,7 @@
-<?php 
+<?php
 require'condatabase/conDB.php';
 
-$t_id = $_GET['t_id']; 
+$t_id = $_GET['t_id'];
 
 $sql="SELECT * FROM `travel` WHERE `id`='$t_id' AND `status`='A'";
 $result=getpdo($con,$sql,1);
@@ -13,32 +13,38 @@ $result=getpdo($con,$sql,1);
     	$img3  = $row['img_2'];
     	$img4  = $row['img_3'];
     	$img5 = $row['img_4'];
-    	
-    }
 
-    echo $detail;
+    }
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Fruit Market</title>
+    <title>Fruit Market | <?=$name?></title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/travel.css" rel="stylesheet">
-    <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
     <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css">
-	#page{
-		padding-top:100px;
-	}
-	#line{
-		line-height : 1.5;
-		text-indent:50px;
-	}
+      body{
+        font-family: 'Itim', cursive;
+        }
+    	#page{
+    		padding-top:100px;
+    	}
+    	#line{
+    		line-height : 1.5;
+    		text-indent:50px;
+    	}
+      #map {
+        height: 250px;
+        width: 900px;
+       }
 	</style>
 </head>
 
@@ -87,14 +93,36 @@ $result=getpdo($con,$sql,1);
 						</ol>
 					</div>
 				</div>
-
-
 				<div class="col-md-5">
 				<h2 align="center"><font color="#228B22"><?php echo $name;?></font></h2><hr/>
 				<h4><p id="line"><font color="330066"><?php echo $detail;?></font></p></h4>
 				</div>
 				</div>
 			</div>
-	</div>
+	</div> <br/><br/><br/>
 
+  <center>
+    <div id="map"></div>
+  </center>
+    <script>
+      function initMap() {
+        var uluru = {lat: <?=$row['lat']?> , lng: <?=$row['lng']?>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+          var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk8hXfb10orcATx1g2cvRT3V0s5mIc01o&callback=initMap">
+    </script>
+    <?php
+    require'footer.php';
+    ?>
+</body>
 </html>
