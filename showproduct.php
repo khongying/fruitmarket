@@ -11,11 +11,11 @@
                     </a>
                     <div class="caption">
                       <label><?=$row['name']?></label>
-                      <p style="color:#00FF00;">฿<?=$row['price']?></p>
+                      <p style="color:#00FF00;">฿<?=number_format($row['price'],2)?></p>
                       <p>
-                      <a href="#" class="btn btn-success btn-block">
+                      <div class="product-card_cert btn btn-success btn-block">
                         <i class="fa fa-shopping-basket fa-lg"></i> หยิบใส่ตะกร้า
-                      </a>
+                      </div>
                       </p>
                     </div>
                   </div>

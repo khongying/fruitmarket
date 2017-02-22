@@ -1,6 +1,59 @@
+<link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
 <?php
 	session_start();
 ?>
+<style type="text/css">
+	body{
+      font-family: 'Itim', cursive;
+    }
+	#cart{
+		padding-top: 5px
+	}
+	div#count_cart {
+    background-color: #ff0700;
+    padding: 0px 5px;
+    color: #fff;
+    position: absolute;
+    top: 25px;
+    margin-left: 20px;
+    border-radius: 5px;
+  }
+</style>
+<script>
+$( document ).ready(function() {
+      $(".product-card_cert").click(function(){
+        let count = $("#count_cart").attr("count");
+        let display = "0";
+        count = +count + 1;
+        if (count > 99) {
+          display ="99+"
+        }else {
+          display = count;
+        }
+          $("#count_cart").attr("count",count);
+          $("#count_cart").html(display);
+				});
+});
+</script>
+	<body>
+
+
+		<!-- Large modal -->
+    <div class="modal fade" id="shoppingModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Fruit Market | ตะกร้าสินค้า</h4>
+          </div>
+          <div class="modal-body">
+            <p>-- Data not found --</p>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container">
 					<div class="container-fluid">
@@ -26,12 +79,17 @@
 												<li>
 												<a href="logout.php"><font color="red"><i class="fa fa-power-off fa-lg"></i> ออกจากระบบ</font></a>
 												</li>
-
 											</ul>
 									</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-									<li><a href="#"><i class="glyphicon glyphicon-shopping-cart"> ตะกร้าสินค้า</i></a></li>
+									<li>
+										<div id="btn-cart" data-toggle="modal" data-target="#shoppingModal">
+												<div id="cart"><img src="logo/cart.png"></div>
+												<div id="count_cart" count="0">0</div>
+												<div id="in-cart"><form id="form-cart"></form></div>
+										</div>
+									</li>
 							</ul>
 						<?php }else{ ?>
 						<ul class="nav navbar-nav navbar-right">
@@ -43,3 +101,5 @@
 					</div>
 				</div>				<?php } ?>
 			</nav>
+
+</body>
