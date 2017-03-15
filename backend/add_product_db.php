@@ -36,7 +36,7 @@
     }
   }
 
-		$sql="INSERT INTO `product`(`code`, `name`, `detail`, `price`, `img`)";
+		$sql="INSERT INTO `product`(`code`, `name`, `detail`, `price`, `img`, `num`)";
 		$sql .="VALUES ('$p_code','$p_name','$p_detail','$p_price','$image','$p_num')";
 		try{
 		$data = getpdo($con,$sql);

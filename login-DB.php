@@ -3,6 +3,7 @@
 <?php
 	session_start();
     require 'condatabase/conDB.php';
+		
    	$mail = $_POST['email'];
     $pass = md5($_POST['pass']);
 
@@ -20,7 +21,8 @@
 		$_SESSION['name'] = $fullname;
 		$_SESSION['email'] = $mail;
 		$_SESSION['id'] = $id;
-		$_SESSION['user'] 	= "user";
+		$_SESSION['login'] 	= "user";
+		$_SESSION['product_card'] = array();
 		header('location:index.php');
 	}
 	else{

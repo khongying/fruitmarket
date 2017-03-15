@@ -94,8 +94,12 @@ $result=getpdo($con,$sql,1);
 					</div>
 				</div>
 				<div class="col-md-5">
-				<h2 align="center"><font color="#228B22"><?php echo $name;?></font></h2><hr/>
+				<h2 align="center"><font color="#228B22"><?php echo $name; ?></font></h2><hr/>
 				<h4><p id="line"><font color="330066"><?php echo $detail;?></font></p></h4>
+        <form action="travel_ticket.php" method="post">
+          <input type="hidden" name="name" value="<?=$name?>">
+          <button type="submit" class="btn btn-primary"><i class="fa fa-ticket"></i>  พิมพ์ตัวเยี่ยมชม</button>
+        </form>
 				</div>
 				</div>
 			</div>

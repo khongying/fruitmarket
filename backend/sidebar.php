@@ -13,7 +13,7 @@
                     <a href="list_product.php"><i class="fa fa-archive fa-lg"></i> คลังสินค้า</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-users fa-lg"></i> จัดการคนงาน</a>
+                    <a href="worker.php"><i class="fa fa-users fa-lg"></i> จัดการคนงาน</a>
                 </li>
             </ul>
         </div>

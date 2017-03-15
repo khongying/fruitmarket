@@ -21,6 +21,7 @@
 </style>
 <script>
 $( document ).ready(function() {
+
       $(".product-card_cert").click(function(){
         let count = $("#count_cart").attr("count");
         let display = "0";
@@ -33,11 +34,52 @@ $( document ).ready(function() {
           $("#count_cart").attr("count",count);
           $("#count_cart").html(display);
 				});
+
+ 			$.post('auto_show_list_product.php', function(data, textStatus, xhr) {
+
+ }).done(function(data){
+  $("#products-lists").append(data);
+	 // delete-product ลบสินค้า
+		$("div.delete-product").click(function(){
+
+				$.ajax({
+					url:'delete-product.php',
+					type :'post',
+					data :{id : $(this).attr('id')}
+				})
+					.done(function(data) {
+								swal({
+									title: "ลบสินค้าเรียบร้อยแล้ว",
+									text: " ",
+									type: "success",
+									showCancelButton: false,
+									confirmButtonColor: "#DD6B55",
+									confirmButtonText: "OK",
+									},
+									function(){
+									window.location.href = "index.php";
+
+								});
+				});
+
+	  });
+
+			$("div.add-product").click(function(){
+
+				$.ajax({
+					url:'add-product-db.php'
+				})
+					.done(function(data) {
+					alert(data)	;
+				});
+
+			});
+
+ });
+
 });
 </script>
 	<body>
-
-
 		<!-- Large modal -->
     <div class="modal fade" id="shoppingModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -46,9 +88,11 @@ $( document ).ready(function() {
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">Fruit Market | ตะกร้าสินค้า</h4>
           </div>
-          <div class="modal-body">
-            <p>-- Data not found --</p>
+          <div class="modal-body" id="products-lists">
           </div>
+					<div class="modal-footer">
+							<div class="add-product btn btn-primary">ยืนยันการสั่งซื้อ</div>
+					</div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
@@ -62,11 +106,10 @@ $( document ).ready(function() {
 							<a  class="navbar-brand" href="index.php"> Fruit Market</a>
 						</div>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#">Home</a></li>
+							<li><a href="webboard.php"><i class="fa fa-comments-o fa-lg"></i> กระทู้ถาม-ตอบ</a></li>
 						</ul>
 						<?php
-							if(isset($_SESSION['user'])){?>
-
+							if(isset($_SESSION['login']) && $_SESSION['login'] != 'false'){?>
 							<ul class="nav navbar-nav navbar-right">
 									<li></li>
 							</ul>
@@ -75,7 +118,7 @@ $( document ).ready(function() {
 										<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?> <i class="glyphicon glyphicon-chevron-down"></i>
 										</a>
 											<ul class="dropdown-menu">
-												<li><a href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+												<li><a href="human/profile.php"><i class="fa fa-user fa-lg"></i> Profile</a></li>
 												<li>
 												<a href="logout.php"><font color="red"><i class="fa fa-power-off fa-lg"></i> ออกจากระบบ</font></a>
 												</li>
@@ -86,7 +129,7 @@ $( document ).ready(function() {
 									<li>
 										<div id="btn-cart" data-toggle="modal" data-target="#shoppingModal">
 												<div id="cart"><img src="logo/cart.png"></div>
-												<div id="count_cart" count="0">0</div>
+												<div id="count_cart" count="<?=array_sum($_SESSION['product_card']);?>"><?=array_sum($_SESSION['product_card']);?></div>
 												<div id="in-cart"><form id="form-cart"></form></div>
 										</div>
 									</li>

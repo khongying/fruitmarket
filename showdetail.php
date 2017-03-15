@@ -61,7 +61,9 @@ $result=getpdo($con,$sql,1);
         <?php if ($num != 0 ){ ?>
           <font color="#00FF00">มีสินค้า</font>
           <hr/>
-    			<a class="btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i> ใส่ตะกร้าสินค้า</a>
+            จำนวน <input type="number" id="num" value="0" min="1" max="10" /> ชิ้น
+          <hr/>
+    			<a class="btn btn-primary" id="submit"><i class="glyphicon glyphicon-shopping-cart"></i> ใส่ตะกร้าสินค้า</a>
     			<a href="index.php" class="btn btn-success"><i class="glyphicon glyphicon-arrow-left"></i> กลับไปหน้าหลัก</a>
         <?php } else { ?>
           <font color="#f60707">ไม่มีสินค้า</font>
@@ -71,15 +73,51 @@ $result=getpdo($con,$sql,1);
       <?php  } ?>
 
 			</h2>
-
-
-
 			</div>
-
 
 			</div>
 			</div>
 			<!-- end show product detail -->
+
 	</div>
 </body>
 </html>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+      var login = "<?= $_SESSION['login'] ?>";
+          $("#num").blur(function(){
+            $("#submit").click(function(){
+              if (login === 'user') {
+              var id = "<?=$code?>";
+              var num = $("#num").val();
+                  // var num = $("#num").attr( "value" );
+                  $.ajax({
+                    url:'add_shop_detail.php',
+                    type :'post',
+                    data :{id : id, num : num}
+                  })
+                    .done(function(data) {
+                          swal({
+                            title: "เพิ่มสินค้าลงตะกร้าเรียบร้อยแล้ว",
+                            text: " ",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "OK",
+                            },
+                            function(){
+                            window.location.href = "index.php";
+
+                          });
+                  });
+                } else {
+                    window.location = "formlogin.php";
+                }
+          });
+      });
+
+  });
+
+</script>
