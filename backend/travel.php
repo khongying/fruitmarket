@@ -1,6 +1,6 @@
-<?php 
+<?php
     session_start();
-            if (!isset($_SESSION['admin'])){  //check session 
+            if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
                 }else{?>
 <html>
@@ -8,10 +8,14 @@
     <title>Backend</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
-    <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
+        body{
+            font-family: 'Itim', cursive;
+          }
         #wrapper{
             padding-top:50px;
         }
@@ -70,7 +74,7 @@
                                             <p> รูปปก </p>
                                             <input type="file" name="t_img" class="form-control" />
                                         </div>
-                                    </div> 
+                                    </div>
 
                                     <div class="form-group">
                                         <div class="col-sm-12">
@@ -89,7 +93,7 @@
                                             <p> ภาพตัวอย่าง 2 </p>
                                             <input type="file" name="t_img_2" class="form-control" />
                                         </div>
-                                    </div> 
+                                    </div>
 
                                     <div class="form-group">
                                         <div class="col-sm-6 info">
@@ -128,7 +132,11 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    $("#travel").attr({
+        "class" : "active"
+    });
     </script>
 </body>
-</html>   
+</html>
 <?php } ?>

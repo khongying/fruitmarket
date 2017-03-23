@@ -1,11 +1,15 @@
+<?php
+		session_start();
+?>
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>กระทู้ถาม-ตอบ | Fruit Market</title>
+		<link rel="shortcut icon" type="image/png" href="logo/groceries.png">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +83,7 @@ th.reply_detail{
 
 tr {
   border-top: 1px solid #C1C3D1;
-  border-bottom-: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
   color:#666B85;
   font-size:16px;
   font-weight:normal;
@@ -117,11 +121,17 @@ $ask = $_GET['ask_id'];
 $sql="SELECT * FROM `ask` WHERE id_ask = '{$ask}'";
 $result=getpdo($con,$sql,1);
     foreach ($result as $row) {
-     $sqlask = "SELECT ask.q_ask,ask.detail,ask.create_date,users.fullname FROM ask LEFT JOIN users ON ask.user_id = users.id WHERE ask.user_id = ( SELECT id FROM users WHERE users.id = '{$row['user_id']}')";
-    }
+     $sqlask = "SELECT ask.q_ask,ask.detail,ask.create_date,users.fullname FROM ask LEFT JOIN users ON ask.user_id = users.id WHERE ask.user_id = ( SELECT id FROM users WHERE users.id = '{$row['user_id']}'AND ask.id_ask ='{$ask}')";
+		 echo $row['user_id'];
+		}
 
 $data = getpdo($con,$sqlask,1);
+$thaimonth=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
     foreach ($data as $rows) {
+		$naw_date  =  substr($rows['create_date'],8,2)." ";
+		$naw_date .=  $thaimonth[(substr($rows['create_date'],5,2)-1)]." ";
+		$naw_date .=  (substr($rows['create_date'],0,4)+543)." ";
+		$naw_date .=  "เวลา ".substr($rows['create_date'],-8);
 ?>
 <body>
   <div id="page">
@@ -141,7 +151,7 @@ $data = getpdo($con,$sqlask,1);
                   </tr>
                   <tr>
                     <td colspan="2">
-                      Create Date : <?= $rows['create_date']?>
+                      Create Date : <?=$naw_date?>
                     </td>
                   </tr>
               </table>
@@ -153,9 +163,15 @@ $data = getpdo($con,$sqlask,1);
 
 <!-- reply -->
 <?php
-		$sql_reply="SELECT * FROM `reply` WHERE id_ask = '{$ask}'";
+		$sql_reply="SELECT reply.detail,reply.create_date,users.fullname FROM reply LEFT JOIN users ON reply.user_id = users.id WHERE reply.id_ask = (SELECT id_ask FROM ask WHERE ask.id_ask = '{$ask}')";
 		$reply_data = getpdo($con,$sql_reply,1);
+		$thaimonth=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
 		    foreach ($reply_data as $reply) {
+
+				$create_naw_date  =  substr($reply['create_date'],8,2)." ";
+				$create_naw_date .=  $thaimonth[(substr($reply['create_date'],5,2)-1)]." ";
+				$create_naw_date .=  (substr($reply['create_date'],0,4)+543)." ";
+				$create_naw_date .=  "เวลา ".substr($reply['create_date'],-8);
 
 ?>
 			<div class="container">
@@ -167,12 +183,12 @@ $data = getpdo($con,$sqlask,1);
 									<th class="reply_detail">ข้อความ</th>
 								</tr>
 								<tr>
-									<td class="reply"><?= $reply['user_name']?></td>
-									<td class="reply"><?= $reply['detail']?></td>
+									<td class="reply"><?= $reply['fullname']?></td>
+									<td class="reply"><?= htmlspecialchars($reply['detail'])?></td>
 								</tr>
 								<tr>
 									<td colspan="2" class="reply">
-										Create Date : <?= $reply['create_date']?>
+										Create Date : <?=$create_naw_date?>
 									</td>
 								</tr>
 						</table>
@@ -198,7 +214,17 @@ $data = getpdo($con,$sqlask,1);
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <div  id="submit" class="btn btn-primary"><i class="fa fa-paper-plane-o fa-lg"></i> ส่งข้อความ </div>
+													<?php
+															if (isset($_SESSION['login']) && $_SESSION['login'] != 'false') {
+													?>
+																<div  id="submit" class="btn btn-primary"><img src="logo/send.png" /> ส่งข้อความ </div>
+													<?php
+															}else {
+													?>
+															<div class="btn btn-primary" disabled><img src="logo/send.png" /> ส่งข้อความ </div>
+													<?php
+															}
+													?>
                         </div>
                     </div>
                 </form>

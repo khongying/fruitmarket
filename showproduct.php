@@ -50,7 +50,7 @@ $( document ).ready(function() {
                       <p>
                       <div class="product-card_cert btn btn-success btn-block"
                       id='<?= $row['code'];?>'>
-                        <i class="fa fa-shopping-basket fa-lg"></i> หยิบใส่ตะกร้า
+                        <img src="logo/shopping-basket.png" /> หยิบใส่ตะกร้า
                       </div>
                       </p>
                     </div>

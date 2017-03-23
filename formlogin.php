@@ -5,6 +5,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Home | Fruit Market</title>
+        <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
         <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -30,7 +31,7 @@
                                 <div class="col-md-offset-4 col-md-4">
                                   <h2>Welcome to Fruit Market</h2>
                                     <center>
-                                      <h2><i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i></h2>
+                                      <h2><img src="logo/user-avatar.png" /></h2>
                                     </center><br/>
                                     <div class="form-login">
                                         E-mail <input type="text" name="email" class="form-control input-sm chat-input" placeholder="E-mail" />
@@ -39,7 +40,7 @@
                                         </br>
                                         <div class="wrapper">
                                         <span class="group-btn">
-                                        <button type="submit" class="btn btn-success btn-block">เข้าสู่ระบบ <i class="fa fa-sign-in"></i></button>
+                                        <button type="submit" class="btn btn-info btn-block"><img src="logo/login-user.png" />  เข้าสู่ระบบ</button>
                                         <br/> <a class="btn btn-warning btn-block">ลืมรหัสผ่าน</a>
                                         </span>
                                         </div>

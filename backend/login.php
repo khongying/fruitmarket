@@ -1,3 +1,5 @@
+<script src="sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 <?php
 	session_start();
     require 'condatabase/conDB.php';
@@ -13,7 +15,21 @@
 		header('location:home.php');
 	}
 	else{
-		header('location:index.php');
+		echo '<script>window.onload = function () {';
+		echo 'swal({
+					title: "Invalid Username and Passord.",
+					text: " ",
+					type: "error",
+					showCancelButton: false,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "OK",
+					},
+					function(isConfirm){
+					if (isConfirm) {
+					window.location.href = "index.php";
+					}
+					});}';
+		echo '</script>';
 	}
 	}
 	catch (PDOException $e) {

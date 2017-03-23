@@ -14,7 +14,9 @@ session_start();
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-select.css">
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/dist/js/bootstrap-select.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
         body{
@@ -44,21 +46,11 @@ session_start();
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                            <h2><i class="fa fa-users"></i>  จัดการคนงาน</h2><hr/>
+                            <h2><img src="logo/team.png" />  ระบบจัดการคนงาน</h2><hr/>
                             <div>
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="worker.php">เพิ่ม</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">ค้นหา</a>
-                                    </li>
-
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="up_worker.php">แก้ไขค่าแรง</a>
-                                    </li>
-                                </ul>
+                              <?php
+                                  include 'meun_worker.php';
+                              ?>
                             </div><br>
 
                             <div class="col-md-offset-4 col-md-5">
@@ -102,7 +94,7 @@ session_start();
                                       $result=getpdo($con,$sql,1);
                                       ?>
 
-                                      <select name="worker" class="form-control">
+                                      <select name="worker" class="selectpicker show-tick form-control">
                                       <?php foreach ($result as $row) {
                                       ?>
                                       <option value="<?= $row['id'] ?>">
@@ -141,6 +133,14 @@ session_start();
     <!-- /#wrapper -->
      <!-- Menu Toggle Script -->
     <script>
+    $("#worker").attr({
+        "class" : "active"
+    });
+
+    $("#worker_up").attr({
+        "class" : "active"
+    });
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

@@ -1,9 +1,9 @@
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 <?php
-	session_start();
+	session_start(); 
     require 'condatabase/conDB.php';
-		
+
    	$mail = $_POST['email'];
     $pass = md5($_POST['pass']);
 

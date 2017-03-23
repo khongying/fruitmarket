@@ -1,14 +1,17 @@
 <?php
         require'condatabase/conDB.php';
+        session_start();
+
 ?>
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | Fruit Market</title>
+    <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,8 +25,8 @@
       font-family: 'Itim', cursive;
     }
     #page{
-		padding-top:100px;
-	}
+		    padding-top:55px;
+	 }
     #show{
         padding-top:50px;
     }
@@ -35,36 +38,30 @@
 
     <?php include'navbar.php'; ?>
 
+    <?php
+        include'carousel.php';
+    ?>
         <div class="container">
         	 <div class="row">
-                    <div class="col-md-8">
-                    <!-- Carousel-->
-                    <?php
-                        include'carousel.php';
-                    ?>
-                    <!-- /.carousel -->
+                    <!-- <div class="col-md-8">
+
 
                     </div>
                     <div class="col-md-4">
                         <?php
-                            include'content.php';
+                          //  include'content.php';
                         ?>
-                    </div>
+                    </div> -->
 
                 </div>
         </div>
 
         <div class="container" id="show">
                <div class="row">
-                   <div class="col-md-2">
-                        <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="#"><i class="fa fa-shopping-cart fa-lg"></i> สินค้า</a></li>
-                        <li><a href="#">ประมูลผลไม้</a></li>
-                        <li><a href="travel.php"><i class="glyphicon glyphicon-grain"></i> เยี่มชมสวนผลไม้</a></li>
-                        <li><a href="#">เช่าสวนปลไม้</a></li>
-                        <li><a href="#">Menu 3</a></li>
-                        </ul>
-                    </div>
+                 <?php
+                      include 'sidebar.php';
+                  ?>
+
 
                     <div class="col-md-10">
                        <?php
@@ -79,6 +76,10 @@
   include 'footer.php';
   ?>
 
-
+<script>
+$("#index").attr({
+        "class" : "active"
+    });
+</script>
 </body>
 </html>

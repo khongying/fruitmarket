@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
+        <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
         <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -101,7 +102,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" class="btn btn-info">สมัครสมาชิก</button>
+                                <button type="submit" class="btn btn-info"><img src="logo/clipboard.png" />  สมัครสมาชิก</button>
                             </div>
                         </div>
 

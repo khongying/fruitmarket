@@ -90,6 +90,7 @@ session_start();
                                   </div>
                                   <div class="form-group">
                                       <div class="col-sm-12">
+                                          <input type="hidden" name="p_id" value="<?=$product_id?>" />
                                           <button type="submit" class="btn btn-success btn-block"><i class="fa fa-pencil-square-o fa-lg"></i> แก้ไขสินค้า </button>
                                       </div>
                                   </div>
@@ -112,6 +113,9 @@ session_start();
     <!-- /#wrapper -->
      <!-- Menu Toggle Script -->
     <script>
+    $("#list_product").attr({
+        "class" : "active"
+    });
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

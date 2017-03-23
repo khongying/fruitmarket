@@ -13,7 +13,7 @@ $date = date("Y-m-d",$t);
 $time = date("H:i:s",$t);
 
 
-$sql = "INSERT INTO `reply`(`id_reply`, `id_ask`, `create_date`, `user_name`, `detail`) VALUES (NULL,'{$id_ask}','{$date} {$time}','{$_SESSION['name']}','{$reply_detail}')";
+$sql = "INSERT INTO `reply`(`id_reply`, `id_ask`, `create_date`, `user_id`, `detail`) VALUES (NULL,'{$id_ask}','{$date} {$time}','{$_SESSION['id']}','{$reply_detail}')";
 
   try{
       $data = getpdo($con,$sql);

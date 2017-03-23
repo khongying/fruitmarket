@@ -121,6 +121,9 @@
         $("#wrapper").toggleClass("toggled");
     });
 
+    $("#product").attr({
+        "class" : "active"
+    });
     </script>
 <script type="text/javascript">
     function chkfrom()

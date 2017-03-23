@@ -1,4 +1,5 @@
 <?php
+session_start();
 require'condatabase/conDB.php';
 
 $p_id = $_GET['p_id'];
@@ -19,6 +20,7 @@ $result=getpdo($con,$sql,1);
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fruit Market | <?=$name;?> </title>
+    <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -63,13 +65,13 @@ $result=getpdo($con,$sql,1);
           <hr/>
             จำนวน <input type="number" id="num" value="0" min="1" max="10" /> ชิ้น
           <hr/>
-    			<a class="btn btn-primary" id="submit"><i class="glyphicon glyphicon-shopping-cart"></i> ใส่ตะกร้าสินค้า</a>
-    			<a href="index.php" class="btn btn-success"><i class="glyphicon glyphicon-arrow-left"></i> กลับไปหน้าหลัก</a>
+    			<a class="btn btn-primary" id="submit"><img src="logo/shopping-cart.png" />  ใส่ตะกร้าสินค้า</a>
+    			<a href="index.php" class="btn btn-success"><img src="logo/left-arrow.png" /> กลับไปหน้าหลัก</a>
         <?php } else { ?>
           <font color="#f60707">ไม่มีสินค้า</font>
           <hr/>
-    			<a class="btn btn-primary" disabled><i class="fa fa-shopping-basket"></i> ใส่ตะกร้าสินค้า</a>
-    			<a href="index.php" class="btn btn-success"><i class="fa fa-arrow-left"></i> กลับไปหน้าหลัก</a>
+    			<a class="btn btn-primary" disabled><img src="logo/shopping-cart.png" /> ใส่ตะกร้าสินค้า</a>
+    			<a href="index.php" class="btn btn-success"><img src="logo/left-arrow.png" />  กลับไปหน้าหลัก</a>
       <?php  } ?>
 
 			</h2>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require'condatabase/conDB.php';
 
 $t_id = $_GET['t_id'];
@@ -24,6 +25,7 @@ $result=getpdo($con,$sql,1);
     <title>Fruit Market | <?=$name?></title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/travel.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
@@ -98,7 +100,7 @@ $result=getpdo($con,$sql,1);
 				<h4><p id="line"><font color="330066"><?php echo $detail;?></font></p></h4>
         <form action="travel_ticket.php" method="post">
           <input type="hidden" name="name" value="<?=$name?>">
-          <button type="submit" class="btn btn-primary"><i class="fa fa-ticket"></i>  พิมพ์ตัวเยี่ยมชม</button>
+          <button type="submit" class="btn btn-primary"><img src="logo/ticket.png"/>  พิมพ์ตัวเยี่ยมชม</button>
         </form>
 				</div>
 				</div>

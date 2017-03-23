@@ -14,7 +14,9 @@ session_start();
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-select.css">
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/dist/js/bootstrap-select.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
         body{
@@ -44,59 +46,57 @@ session_start();
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                            <h2><i class="fa fa-users"></i>  จัดการคนงาน</h2><hr/>
+                            <h2><img src="logo/team.png" />  ระบบจัดการคนงาน</h2><hr/>
                             <div>
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="worker.php">เพิ่ม</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">ค้นหา</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="up_worker.php">แก้ไขค่าแรง</a>
-                                    </li>
-                                </ul>
+                              <?php
+                                  include 'meun_worker.php';
+                              ?>
                             </div><br>
 
+                            <div id="page" class="container">
+                                <div class="row">
+                                    <div class="col-md-offset-2 col-md-6">
+                                        <div class="form-register">
+                                            <center>
+                                                <h1><img src="logo/farmer.png" />  เพิ่มคนงาน</h1><br/>
+                                            </center>
+                                            <form class="form-horizontal" action="add_person.php" method="POST">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">ชื่อ-นามสกุล</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" name="name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">ที่อยู่</label>
+                                                <div class="col-sm-8">
+                                                    <textarea class="form-control" name="address"></textarea>
+                                                </div>
+                                            </div>
 
-                            <div class="col-md-offset-2 col-md-8">
-                                  <div class="form-group">
-                                      <div class="col-md-4">
-                                          <p> ชือลูกจ้าง</p>
-                                          <input type="text"  name="p_code" class="form-control" placeholder="ชื่อลูกจ้าง" />
-                                      </div>
-                                      <div class="col-md-4">
-                                          <p> เก็บอะไร</p>
-                                          <?php
-                                          $sql = "SELECT * FROM worker";
-                                          $result=getpdo($con,$sql,1);
-                                          ?>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4">เบอร์โทรศัพท์</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="phone" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-4 col-sm-8">
+                                                    <button type="submit" class="btn btn-warning"><img src="logo/user.png" />  เพิ่ม</button>
+                                                </div>
+                                            </div>
 
-                                          <select name="worker" class="form-control">
-                                          <?php foreach ($result as $row) {
-                                          ?>
-                                          <option value=" <?php $row['id']; ?> ">
-                                            <?php echo $row['product']; ?>
-                                          </option>
-                                          <?php
-                                          }
+                                            </form>
 
-                                          ?>
-                                          </select>
-                                      </div>
-
-                                      <div class="col-md-4">
-                                          <p> กิโลกรัม</p>
-                                          <input type="text"  name="p_code" class="form-control" placeholder="กิโลกรัม" />
-                                      </div>
-
-                                  </div>
+                                        </div>
+                                        <hr/>
+                                        <footer class="footer">
+                                            <p>&copy; BSRU 2017</p>
+                                        </footer>
+                                     </div>
 
 
-                          </div>
+
                     </div>
                 </div>
             </div>
@@ -110,6 +110,13 @@ session_start();
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+    });
+    $("#worker").attr({
+        "class" : "active"
+    });
+
+    $("#worker_person").attr({
+        "class" : "active"
     });
     </script>
 </body>

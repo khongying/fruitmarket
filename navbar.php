@@ -1,7 +1,5 @@
 <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
-<?php
-	session_start();
-?>
+
 <style type="text/css">
 	body{
       font-family: 'Itim', cursive;
@@ -102,11 +100,12 @@ $( document ).ready(function() {
 				<div class="container">
 					<div class="container-fluid">
 						<div class="logo">
-							<img class="navbar-brand" src="logo/apples.png" />
-							<a  class="navbar-brand" href="index.php"> Fruit Market</a>
+							<ul class="nav navbar-nav">
+									<li><a  href="index.php"><img src="logo/online-shop.png" /> Fruit Market</a></li>
+							</ul>
 						</div>
 						<ul class="nav navbar-nav">
-							<li><a href="webboard.php"><i class="fa fa-comments-o fa-lg"></i> กระทู้ถาม-ตอบ</a></li>
+							<li><a href="webboard.php"><img src="logo/chat.png" /> กระทู้ถาม-ตอบ</a></li>
 						</ul>
 						<?php
 							if(isset($_SESSION['login']) && $_SESSION['login'] != 'false'){?>
@@ -118,9 +117,9 @@ $( document ).ready(function() {
 										<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?> <i class="glyphicon glyphicon-chevron-down"></i>
 										</a>
 											<ul class="dropdown-menu">
-												<li><a href="human/profile.php"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+												<li><a href="profile.php?user=<?=$_SESSION['id']?>"><img src="logo/curriculum.png" /> Profile</a></li>
 												<li>
-												<a href="logout.php"><font color="red"><i class="fa fa-power-off fa-lg"></i> ออกจากระบบ</font></a>
+												<a href="logout.php"><font color="red"><img src="logo/off-button.png" /> ออกจากระบบ</font></a>
 												</li>
 											</ul>
 									</li>
@@ -136,10 +135,10 @@ $( document ).ready(function() {
 							</ul>
 						<?php }else{ ?>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="formlogin.php" style="cursor: pointer;"><i class="glyphicon glyphicon-log-in"></i> เข้าสู่ระบบ</a></li>
+							<li><a href="formlogin.php" style="cursor: pointer;"><img src="logo/login.png" /> เข้าสู่ระบบ</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="register.php" style="cursor: pointer;"><i class="fa fa-user fa-lg"></i> สมัครสมาชิก</a></li>
+							<li><a href="register.php" style="cursor: pointer;"><img src="logo/user.png" /> สมัครสมาชิก</a></li>
 						</ul>
 					</div>
 				</div>				<?php } ?>

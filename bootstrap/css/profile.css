@@ -27,7 +27,9 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-
+h1#profile_name {
+  color: #FA8383;
+}
 .profile-usertitle-name {
   color: #5a7391;
   font-size: 16px;

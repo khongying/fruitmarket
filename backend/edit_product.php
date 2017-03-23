@@ -41,6 +41,7 @@
 		$sql .= ",img='{$image}'";
     $sql .= ",num='{$num}'";
     $sql .= ",date_save='{$date} {$time}'";
+    $sql .= " WHERE id = '{$_POST['p_id']}'";
 
     try{
 			if(getpdo($con,$sql)){

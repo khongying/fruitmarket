@@ -95,6 +95,9 @@ session_start();
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    $("#list_product").attr({
+        "class" : "active"
+    });
     </script>
 </body>
 </html>

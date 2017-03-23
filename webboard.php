@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -5,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>กระทู้ถามขตอบ | Fruit Market</title>
+    <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,9 +24,7 @@
     #page{
           padding-top:100px;
     }
-    #show{
-          padding-top:50px;
-    }
+
     table,th {
           text-align: center;
     }
@@ -35,7 +37,18 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                    <a href="new_ask.php" class="btn btn-primary">ตั้งกระทู้ใหม่</a>
+                    <?php
+                        if (isset($_SESSION['login']) && $_SESSION['login'] != 'false') {
+                    ?>
+                          <a href="new_ask.php" class="btn btn-primary"><img src="logo/file.png" /> ตั้งกระทู้ใหม่</a>
+                    <?php
+                        }else {
+                    ?>
+                        <a class="btn btn-primary" disabled><img src="logo/file.png" /> ตั้งกระทู้ใหม่</a>
+                    <?php
+                        }
+                    ?>
+
                     <hr/>
                   </div>
                 </div>
@@ -61,13 +74,18 @@
 
                     $result=getpdo($con,$sql,1);
                     $i=0;
+                    $thaimonth=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
                     foreach ($result as $row) {
+                      $naw_date  =  substr($row['create_date'],8,2)." ";
+                  		$naw_date .=  $thaimonth[(substr($row['create_date'],5,2)-1)]." ";
+                  		$naw_date .=  (substr($row['create_date'],0,4)+543)." ";
+                  		$naw_date .=  "เวลา ".substr($row['create_date'],-8);
                     ?>
                     <tbody>
                       <tr>
                         <td><?php echo ++$i; ?></td>
                         <td><a href="view_webboard.php?ask_id=<?=$row['id_ask']?>"><?=$row['q_ask']?></a></td>
-                        <td><?=$row['create_date']?></td>
+                        <td><?=$naw_date?></td>
                       </tr>
                     </tbody>
                   <?php } ?>
