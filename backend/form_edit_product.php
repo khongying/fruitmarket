@@ -16,6 +16,8 @@ session_start();
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
@@ -85,7 +87,7 @@ session_start();
                                       </div>
                                       <div class="col-sm-6 info">
                                           <p> ภาพสินค้า </p>
-                                          <input type="file" name="p_img" class="form-control" />
+                                          <input type="file" name="p_img" accept="image/*" class="form-control" />
                                       </div>
                                   </div>
                                   <div class="form-group">
@@ -120,6 +122,38 @@ session_start();
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    function chkfrom()
+    {
+        if(document.product.p_code.value=="")
+        {
+            swal("กรุณากรองรหัสสินค้า", " ", "warning");
+            document.product.p_code.focus();
+            return false;
+        }
+
+        if(document.product.p_name.value=="")
+        {
+            swal("กรุณากรองชื่อสินค้า", " ", "warning");
+            document.product.p_name.focus();
+            return false;
+        }
+
+        if(document.product.p_detail.value=="")
+        {
+            swal("กรุณาระบุรายละเอียดสินค้า", " ", "warning");
+            document.product.p_detail.focus();
+            return false;
+        }
+
+        if(document.product.p_price.value=="")
+        {
+            swal("กรุณาระบุราคาสินค้า", " ", "warning");
+            document.product.p_price.focus();
+            return false;
+        }
+
+    }
     </script>
 </body>
 </html>

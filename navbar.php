@@ -68,7 +68,18 @@ $( document ).ready(function() {
 					url:'add-product-db.php'
 				})
 					.done(function(data) {
-					alert(data)	;
+						swal({
+							title: "เรียบร้อยแล้ว",
+							text: " ",
+							type: "success",
+							showCancelButton: false,
+							confirmButtonColor: "#DD6B55",
+							confirmButtonText: "OK",
+							},
+							function(){
+							window.location.href = "confirm-card.php?id=<?=$_SESSION['id']?>";
+
+						});
 				});
 
 			});

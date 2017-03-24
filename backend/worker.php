@@ -15,7 +15,11 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-select.css">
-    <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
+    <!-- <script type="text/javascript" src="bootstrap/js/jquery.js"></script> -->
     <script src="bootstrap/dist/js/bootstrap-select.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
@@ -60,7 +64,7 @@ session_start();
                                             <center>
                                                 <h1><img src="logo/farmer.png" />  เพิ่มคนงาน</h1><br/>
                                             </center>
-                                            <form class="form-horizontal" action="add_person.php" method="POST">
+                                            <form class="form-horizontal" action="add_person.php" name="worker" method="POST" onSubmit="return chkfrom();">
                                             <div class="form-group">
                                                 <label class="control-label col-sm-4">ชื่อ-นามสกุล</label>
                                                 <div class="col-sm-8">
@@ -77,7 +81,7 @@ session_start();
                                             <div class="form-group">
                                                 <label class="control-label col-sm-4">เบอร์โทรศัพท์</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="phone" class="form-control">
+                                                    <input type="text" name="phone" id="phone" class="form-control" max="13">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -107,6 +111,34 @@ session_start();
     <!-- /#wrapper -->
      <!-- Menu Toggle Script -->
     <script>
+
+    $('#phone').mask('000-000-0000');
+
+    function chkfrom()
+    {
+        if(document.worker.name.value=="")
+        {
+            swal("กรุณากรองชื่อ-นามสกุล", " ", "warning");
+            document.worker.name.focus();
+            return false;
+        }
+
+        if(document.worker.address.value=="")
+        {
+            swal("กรุณากรองที่อยู่", " ", "warning");
+            document.worker.address.focus();
+            return false;
+        }
+
+        if(document.worker.phone.value=="")
+        {
+            swal("กรุณากรองเบอร์โทรศัพท์", " ", "warning");
+            document.worker.phone.focus();
+            return false;
+        }
+
+    }
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

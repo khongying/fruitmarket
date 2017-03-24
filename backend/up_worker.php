@@ -15,6 +15,8 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/dist/js/bootstrap-select.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -85,7 +87,7 @@ session_start();
                           </div>
 
                               <div class="col-md-offset-2 col-md-8">
-                                <form action="updata_worker.php" method="post">
+                                <form action="updata_worker.php" name="product" method="post" onSubmit="return chkfrom();">
                                 <div class="form-group">
                                   <div class="col-md-6">
                                       <p> ประเภท</p>
@@ -114,7 +116,7 @@ session_start();
 
                               <div class="form-group">
                                   <div class="col-md-12"><br />
-                                      <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-up fa-lg"></i> อัพเดท </button>
+                                      <button type="submit" class="btn btn-warning"><img src="logo/cloud-computing.png" /> อัพเดท </button>
                                   </div>
                               </div>
 
@@ -145,6 +147,18 @@ session_start();
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    function chkfrom()
+    {
+        if(document.product.kg.value=="")
+        {
+            swal("กรุณาใส่ให้ครบ", " ", "warning");
+            document.product.kg.focus();
+            return false;
+        }
+
+    }
+
     </script>
 </body>
 </html>

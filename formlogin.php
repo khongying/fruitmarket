@@ -41,7 +41,6 @@
                                         <div class="wrapper">
                                         <span class="group-btn">
                                         <button type="submit" class="btn btn-info btn-block"><img src="logo/login-user.png" />  เข้าสู่ระบบ</button>
-                                        <br/> <a class="btn btn-warning btn-block">ลืมรหัสผ่าน</a>
                                         </span>
                                         </div>
                                     </div>

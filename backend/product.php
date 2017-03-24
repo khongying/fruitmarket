@@ -10,6 +10,8 @@
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
@@ -90,7 +92,7 @@
                                         </div>
                                         <div class="col-sm-6 info">
                                             <p> ภาพสินค้า </p>
-                                            <input type="file" name="p_img" class="form-control" />
+                                            <input type="file" name="p_img" accept="image/*" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -124,8 +126,7 @@
     $("#product").attr({
         "class" : "active"
     });
-    </script>
-<script type="text/javascript">
+
     function chkfrom()
     {
         if(document.product.p_code.value=="")

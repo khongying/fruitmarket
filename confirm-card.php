@@ -1,10 +1,6 @@
 <?php
-$host="localhost";
-$username="root";
-$password="";
-$DBname="fruitmarket";
-$con=mysqli_connect($host,$username,$password,$DBname);
-mysqli_set_charset($con,"utf8");
+        require'condatabase/conDB.php';
+        session_start();
 
 ?>
 
@@ -30,6 +26,35 @@ mysqli_set_charset($con,"utf8");
     #page{
     		padding-top:100px;
     	}
+    table{
+       width: 900px;
+       padding-left: 20px;
+       padding-right: 20px;
+    }
+    th {
+          background-color: rgb(112, 196, 105);
+          color: white;
+          font-weight: normal;
+          padding: 20px 30px;
+          text-align: center;
+          font-size: 20pt;
+          font-weight: bold;
+        }
+    td {
+       font-size: 16pt;
+       text-align: center;
+       background-color: rgb(238, 238, 238);
+       color:#000000;
+       padding: 20px 30px;
+      }
+    td#total{
+      text-align: right;
+      font-size: 20pt;
+      color:#FF0000;
+    }
+    div#button{
+       text-align: right;
+    }
   </style>
   <body>
       <div id="page">
@@ -54,7 +79,7 @@ mysqli_set_charset($con,"utf8");
                                 </a>
                             </li>
                             <li class="disabled">
-                                <a href="#step-2">
+                                <a href="#step-3">
                                   <h4 class="list-group-item-heading">Step 3</h4>
                                   <p class="list-group-item-text">แจ้งชำระสินค้า</p>
                                 </a>
@@ -65,14 +90,64 @@ mysqli_set_charset($con,"utf8");
 
             <div class="row setup-content" id="step-1">
                 <div class="col-md-12 ">
-                  <div class="col-md-offset-2 col-md-8 well">
-                      <h1>รายการสินค้า</h1>
-                      
+                  <div class="col-md-12 well">
+                      <h1><img src="logo/board.png" /> รายการสินค้า</h1>
+
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>รายการ</th>
+                            <th>ราคาต่อชิ้น</th>
+                            <th>จำนวนชิ้น</th>
+                            <th>ราคารวม</th>
+                          </tr>
+                       </thead>
+                       <tbody>
+                         <?php
+                         $sql_qt = "SELECT `id_qt` FROM `qt_order` WHERE user_id = '{$_GET['id']}'";
+                         $qt = getpdo($con,$sql_qt,'id_qt');
+                         $total = 0 ;
+                         $sql_list_product = "SELECT list_order.product_id,list_order.sum,product.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$qt}'";
+                         $data = getpdo($con,$sql_list_product,1);
+                         foreach ($data as $row) {
+                            $sum = $row['sum'];
+                            $price = $row['price'];
+                            $id_pd = $row['product_id'];
+                            $total = $total + $sum*$price;
+
+                            $sql = "SELECT * FROM `product` WHERE code = '{$id_pd}'";
+                            $product = getpdo($con,$sql,1);
+                            foreach ($product as $rows) {
+                              $name = $rows['name'];
+                              $img = $rows['img'];
+                              ?>
+                              <tr>
+                                <td><img src="backend/product/<?=$img?>" style="height: 50px;width: 50px;"/></td>
+                                <td><?=$name?></td>
+                                <td><?=number_format($price,2)?></td>
+                                <td><?=$sum?></td>
+                                <td><?=number_format($sum*$price,2)?></td>
+                              </tr>
+
+                        <?php
+                            }
+
+                         }
+
+                         ?>
+                          <tr>
+                            <td id="total" colspan="5">ยอดรวมสุทธิ <?=number_format($total,2)?> บาท</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <div id="button" class="col-md-12">
+                        <button class="btn btn-success">ขั้นตอนไป <img src="logo/right-arrow.png" /></button>
+                      </div>
                   </div>
                   </div>
-                  <div class="col-md-12 ">
-                    <button class="btn btn-success">ขั้นตอนไป</button>
-                  </div>
+
             </div>
 
 

@@ -10,8 +10,10 @@
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
+        <!-- <script type="text/javascript" src="jquery.js"></script> -->
         <script src="sweetalert-master/dist/sweetalert.min.js"></script>
-        <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     </header>
 <style type="text/css">
@@ -88,7 +90,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-4">เบอร์โทรศัพท์</label>
                             <div class="col-sm-8">
-                                <input type="text" name="phone" class="form-control">
+                                <input type="text" name="phone" id="phone" class="form-control" max="13">
                             </div>
                         </div>
 
@@ -121,6 +123,8 @@
 
 </html>
 <script type="text/javascript">
+
+$('#phone').mask('000-000-0000');
 
 $('#password, #confirm_password').on('keyup', function () {
     if ($('#password').val() == $('#confirm_password').val()) {

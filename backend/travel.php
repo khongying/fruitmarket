@@ -10,6 +10,8 @@
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
@@ -67,12 +69,12 @@
                                     <div class="form-group">
                                         <div class="col-sm-6">
                                             <p> ชื่อสวนผลไม้ </p>
-                                            <input type="text"  name="name" class="form-control" placeholder="ชื่อสวนผลไม้" />
+                                            <input type="text" name="name" class="form-control" placeholder="ชื่อสวนผลไม้" />
                                         </div>
 
                                         <div class="col-sm-6 info">
                                             <p> รูปปก </p>
-                                            <input type="file" name="t_img" class="form-control" />
+                                            <input type="file" name="t_img" accept="image/*" class="form-control" />
                                         </div>
                                     </div>
 
@@ -86,24 +88,24 @@
                                     <div class="form-group">
                                         <div class="col-sm-6 info">
                                             <p> ภาพตัวอย่าง 1 </p>
-                                            <input type="file" name="t_img_1" class="form-control" />
+                                            <input type="file" name="t_img_1" accept="image/*" class="form-control" />
                                         </div>
 
                                         <div class="col-sm-6 info">
                                             <p> ภาพตัวอย่าง 2 </p>
-                                            <input type="file" name="t_img_2" class="form-control" />
+                                            <input type="file" name="t_img_2" accept="image/*" class="form-control" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-sm-6 info">
                                             <p> ภาพตัวอย่าง 3 </p>
-                                            <input type="file" name="t_img_3" class="form-control" />
+                                            <input type="file" name="t_img_3" accept="image/*" class="form-control" />
                                         </div>
 
                                         <div class="col-sm-6 info">
                                             <p> ภาพตัวอย่าง 4 </p>
-                                            <input type="file" name="t_img_4" class="form-control" />
+                                            <input type="file" name="t_img_4" accept="image/*" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -136,6 +138,61 @@
     $("#travel").attr({
         "class" : "active"
     });
+
+    function chkfrom()
+    {
+        if(document.product.name.value=="")
+        {
+            swal("กรุณากรองชื่อสวนผลไม้", " ", "warning");
+            document.product.name.focus();
+            return false;
+        }
+
+        if(document.product.t_img.value=="")
+        {
+            swal("กรุณาใส่รูปปก", " ", "warning");
+            document.product.t_img.focus();
+            return false;
+        }
+
+        if(document.product.detail.value=="")
+        {
+            swal("กรุณาระบุรายละเอียดสวนผลไม้", " ", "warning");
+            document.product.detail.focus();
+            return false;
+        }
+
+        if(document.product.t_img_1.value=="")
+        {
+            swal("กรุณาใส่รูปตัวอย่างที่ 1", " ", "warning");
+            document.product.t_img_1.focus();
+            return false;
+        }
+
+        if(document.product.t_img_2.value=="")
+        {
+            swal("กรุณาใส่รูปตัวอย่างที่ 2", " ", "warning");
+            document.product.t_img_2.focus();
+            return false;
+        }
+
+        if(document.product.t_img_3.value=="")
+        {
+            swal("กรุณาใส่รูปตัวอย่างที่ 3", " ", "warning");
+            document.product.t_img_3.focus();
+            return false;
+        }
+
+        if(document.product.t_img_4.value=="")
+        {
+            swal("กรุณาใส่รูปตัวอย่างที่ 4", " ", "warning");
+            document.product.t_img_4.focus();
+            return false;
+        }
+
+
+    }
+
     </script>
 </body>
 </html>

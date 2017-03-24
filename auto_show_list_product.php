@@ -57,7 +57,7 @@ foreach ($_SESSION["product_card"] as $key => $value) {
       <td><img src="backend/product/<?=$data_product['data']['img']?>" style="height: 70px;width: 70px;"/></td>
       <td class="price"><?=number_format($data_product['data']['price']*$value,2)?></td>
       <td><?=$value?></td>
-      <td> 
+      <td>
         <div class="delete-product btn btn-success" id="<?=$data_product['data']['code']?>">
         <i class="fa fa-trash fa-lg"></i> ลบ
         </div>
@@ -69,7 +69,7 @@ echo '<tr id="total">';
   echo '<td></td>';
   echo '<td>ราคารวม</td>';
   echo '<td>'.number_format($sum,2).'</td>';
-  echo '<td>บาท</td>';
+  echo '<td>บาท</td>'; 
 echo '</tr>';
 
 echo "</table>";

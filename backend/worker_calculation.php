@@ -15,6 +15,8 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/dist/js/bootstrap-select.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -60,7 +62,7 @@ session_start();
                                             <center>
                                                 <h1><img src="logo/calculation.png" /> คำนวณค่าจ้าง (รายวัน)</h1><br/>
                                             </center>
-                                            <form class="form-horizontal" action="add_worker.php" method="POST">
+                                            <form class="form-horizontal" action="add_worker.php" name="worker" method="POST" onSubmit="return chkfrom();">
                                             <div class="form-group">
                                                 <label class="control-label col-sm-4">ชื่อคนงาน</label>
                                                 <div class="col-sm-8">
@@ -148,6 +150,18 @@ session_start();
     $("#worker_calculation").attr({
         "class" : "active"
     });
+
+    function chkfrom()
+    {
+        if(document.worker.kg.value=="")
+        {
+            swal("กรุณาใส่ให้ครบ", " ", "warning");
+            document.worker.kg.focus();
+            return false;
+        }
+
+    }
+
     </script>
 </body>
 </html>
