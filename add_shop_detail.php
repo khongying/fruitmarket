@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 // print_r($_POST);
 $arr = $_SESSION["product_card"];
 print_r($arr);

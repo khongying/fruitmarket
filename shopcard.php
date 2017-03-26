@@ -57,10 +57,11 @@ foreach ($_SESSION["product_card"] as $key => $value) {
    $data_product = get_product_by_id($con,$key);
    $sum = $sum + $data_product['data']['price']*$value;
 ?>
+
   <tr>
       <td><img src="backend/product/<?=$data_product['data']['img']?>" style="height: 70px;width: 70px;"/></td>
       <td class="price"><?=number_format($data_product['data']['price']*$value,2)?></td>
-      <td><?=$value?></td>
+      <td><input class="number-product" type="number" id="<?=$data_product['data']['code']?>"  min="0" max="99" value="<?=$value?>" size="5px" /></td>
       <td>
         <div class="delete-products btn btn-success" id="<?=$data_product['data']['code']?>">
         <i class="fa fa-trash fa-lg"></i> ลบ

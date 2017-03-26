@@ -7,7 +7,7 @@
 $( document ).ready(function() {
 
     $("div.product-card_cert").click(function(){
-
+ 
       var login = "<?= $_SESSION['login'] ?>";
 
       if (login === 'user') {

@@ -62,27 +62,53 @@ $( document ).ready(function() {
 
 	  });
 
-			$("div.add-product").click(function(){
+		$(".number-product").blur(function() {
+			var id = $(this).attr("id");
+			var num = $(this).val();
+			$.ajax({
+				url:'update_product.php',
+				type :'post',
+				data :{id : id, num : num}
+			})
+				.done(function(data) {
+							swal({
+								title: "อัพเดทเรียบร้อยแล้ว",
+								text: " ",
+								type: "success",
+								showCancelButton: false,
+								confirmButtonColor: "#DD6B55",
+								confirmButtonText: "OK",
+								},
+								function(){
+								window.location.href = "index.php";
 
-				$.ajax({
-					url:'add-product-db.php'
-				})
-					.done(function(data) {
-						swal({
-							title: "เรียบร้อยแล้ว",
-							text: " ",
-							type: "success",
-							showCancelButton: false,
-							confirmButtonColor: "#DD6B55",
-							confirmButtonText: "OK",
-							},
-							function(){
-							window.location.href = "confirm-card.php?id=<?=$_SESSION['id']?>";
-
-						});
-				});
-
+							});
 			});
+
+		});
+
+
+			// $("div.add-product").click(function(){
+			//
+			// 	$.ajax({
+			// 		url:'add-product-db.php'
+			// 	})
+			// 		.done(function(data) {
+			// 			swal({
+			// 				title: "เรียบร้อยแล้ว",
+			// 				text: " ",
+			// 				type: "success",
+			// 				showCancelButton: false,
+			// 				confirmButtonColor: "#DD6B55",
+			// 				confirmButtonText: "OK",
+			// 				},
+			// 				function(){
+			// 				window.location.href = "confirm-card.php?id=<?=$_SESSION['id']?>";
+			//
+			// 			});
+			// 	});
+			//
+			// });
 
  });
 
@@ -100,7 +126,7 @@ $( document ).ready(function() {
           <div class="modal-body" id="products-lists">
           </div>
 					<div class="modal-footer">
-							<div class="add-product btn btn-primary">ยืนยันการสั่งซื้อ</div>
+							<a class="add-product btn btn-primary" href="confirm-card.php">ยืนยันการสั่งซื้อ</a>
 					</div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

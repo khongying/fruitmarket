@@ -27,6 +27,16 @@
     #page{
 		padding-top:50px;
 	}
+  tr{
+    text-align: center;
+  }
+  th{
+    text-align: center;
+    font-size: 20pt;
+  }
+  td#name{
+    color: #FF0000;
+  }
 </style>
 <body>
 
@@ -59,17 +69,17 @@
             					</div>
             				</div>
             				<!-- END SIDEBAR USER TITLE -->
-
+            <?php } ?>
 
             				<!-- SIDEBAR MENU -->
             				<div class="profile-usermenu">
             					<ul class="nav">
-            						<li class="active">
-            							<a href="profile.php?<?=$_SESSION['id']?>">
+            						<li>
+            							<a href="profile.php?user=<?=$_SESSION['id']?>">
             							<img src="logo/id-card.png" />
             							ข้อมูลส่วนตัว </a>
             						</li>
-            						<li>
+            						<li class="active">
             							<a href="history_qt.php?user=<?=$_SESSION['id']?>">
             							<img src="logo/list.png" />
             							ประวัติการสั่งซื้อ </a>
@@ -83,62 +93,36 @@
                     <div class="profile-content">
 													<div class="row">
 														<div>
-															<h1 id="profile_name"><i class="fa fa-user-circle-o fa-lg"></i>  โปรไฟล์</h1><hr/>
+															<h1 id="profile_name"><img src="logo/board.png" />  ประวัติการสั่งซื้อ</h1><hr/>
 														</div>
-															<div class="col-md-offset-2 col-md-7">
-																	<div class="form-register">
-																			<form class="form-horizontal" name="register" action="update_profile.php" method="POST" onSubmit="return chkfrom();">
-																					<div class="form-group">
-																							<label class="control-label col-sm-4">อีเมลล์</label>
-																							<div class="col-sm-8">
-																									<input type="email" class="form-control" name="email" value="<?=$row['email']?>">
-																							</div>
-																					</div>
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">วันเกิด</label>
-																					<div class="col-sm-8">
-																							<input type="date" class="form-control" name="date" value="<?=$row['birthday']?>">
-																					</div>
-																			</div>
+															<div class="col-md-offset-2 col-md-6">
+                                <table class="table table-hover">
+                                  <tr>
+                                    <th>ใบสั่งซื้อ</th>
+                                    <th>สถานะ</th>
+                                  </tr>
+                                  <?php
+                                    $sql_qt = "SELECT qt_order.id_qt,qt_order.create_date,qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id WHERE qt_order.user_id = '{$_SESSION['id']}'";
+                                    $qt_order = getpdo($con,$sql_qt,1);
+                                    foreach ($qt_order as $qt) {
+                                    ?>
+                                    <tr>
+                                      <td><a href="pay_qt.php?qt=<?= $qt['id_qt']?>&user=<?=$_SESSION['id']?>"><?= $qt['id_qt'] ?></a></td>
+                                      <td id="name"><?= $qt['name'] ?></td>
+                                    </tr>
+                                  <?php
+                                    }
+                                  ?>
 
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">ชื่อ และ นามสกุล</label>
-																					<div class="col-sm-8">
-																							<input type="text" class="form-control" name="fullname" value="<?=$row['fullname']?>">
-																					</div>
-																			</div>
-
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">ที่อยู่</label>
-																					<div class="col-sm-8">
-																							<textarea class="form-control" name="address"><?=$row['address']?></textarea>
-																					</div>
-																			</div>
-
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">เบอร์โทรศัพท์</label>
-																					<div class="col-sm-8">
-																							<input type="text" name="phone" class="form-control" value="<?=$row['phone']?>">
-																					</div>
-																			</div>
-
-																			<div class="form-group">
-																					<div class="col-sm-offset-4 col-sm-8">
-																							<button type="submit" class="btn btn-warning"><img src="logo/writing.png" /> แก้ไข</button>
-																					</div>
-																			</div>
-
-																			</form>
-
-																	</div>
-															 </div>
+                                </table>
+															</div>
 
                         </div>
             		</div>
             	</div>
             </div>
 
-						<?php } ?>
+
 						<?php
 					  include 'footer.php';
 					  ?>
@@ -146,6 +130,11 @@
             <br>
     </div>
   </body>
+  <script>
+  $("#history_qt").attr({
+  		"class" : "active"
+  });
+  </script>
 
 </html>
 
