@@ -20,8 +20,6 @@ session_start();
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="tinymce/js/tinymce/tinymce.min.js"></script>
-    <script type="text/javascript" src="tinymce/js/tinymce/init-tinymce.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
@@ -53,9 +51,8 @@ session_start();
                 <div class="row">
                     <div class="col-lg-12">
                         <form action="add_content.php" method="post">
-                            <h2>หน้าหลัก</h2><hr/>
-                            <textarea class="tinymce" name="text"><?php echo $content;?></textarea>
-                            <br/><button type="submit" class="btn btn-warning"><i class="fa fa-pencil-square-o fa-lg"></i> อัพเดทข้อมูล</button>
+                            <h2>ใบสั่งซื้อ</h2><hr/>
+
                         </form>
                     </div>
                 </div>
@@ -67,6 +64,10 @@ session_start();
     <!-- /#wrapper -->
      <!-- Menu Toggle Script -->
     <script>
+    $("#cash").attr({
+        "class" : "active"
+    });
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

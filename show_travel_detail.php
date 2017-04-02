@@ -30,8 +30,10 @@ $result=getpdo($con,$sql,1);
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
     <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk8hXfb10orcATx1g2cvRT3V0s5mIc01o&libraries=places"></script> -->
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
     <style type="text/css">
       body{
         font-family: 'Itim', cursive;
@@ -44,7 +46,7 @@ $result=getpdo($con,$sql,1);
     		text-indent:50px;
     	}
       #map {
-        height: 250px;
+        height: 400px;
         width: 900px;
        }
 	</style>
@@ -110,6 +112,47 @@ $result=getpdo($con,$sql,1);
   <center>
     <div id="map"></div>
   </center>
+
+  <script>
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        function initMap() {
+
+          var uluru = {lat: <?=$row['lat']?> , lng: <?=$row['lng']?>};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+          });
+
+          var infowindow = new google.maps.InfoWindow();
+          var service = new google.maps.places.PlacesService(map);
+
+          service.getDetails({
+            placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+          }, function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              var image = 'logo/woods-marker.png';
+              var marker = new google.maps.Marker({
+              position: uluru,
+              map: map,
+              icon: image
+
+              });
+              google.maps.event.addListener(marker, 'click', function() {
+                var name = '<?=$name?>';
+                infowindow.setContent('<div><strong>'+ name +'</strong></div>');
+                infowindow.open(map, this);
+              });
+            }
+          });
+        }
+      </script>
+
+
+
+<!--
     <script>
       function initMap() {
         var uluru = {lat: <?=$row['lat']?> , lng: <?=$row['lng']?>};
@@ -117,15 +160,20 @@ $result=getpdo($con,$sql,1);
           zoom: 15,
           center: uluru
         });
+
+          var image = 'logo/woods-marker.png';
           var marker = new google.maps.Marker({
           position: uluru,
           map: map,
-
+          icon: image
         });
+
+
+
       }
-    </script>
+    </script> -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk8hXfb10orcATx1g2cvRT3V0s5mIc01o&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk8hXfb10orcATx1g2cvRT3V0s5mIc01o&libraries=places&callback=initMap">
     </script>
     <?php
     require'footer.php';

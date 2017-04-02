@@ -126,11 +126,18 @@ require'condatabase/conDB.php';
                     </div>
 
                     <div class="col-md-offset-3 col-md-6">
-                        <form class="form-horizontal" name="pay" enctype="multipart/form-data" onSubmit="return chkfrom();">
+                        <form class="form-horizontal" name="pay" action="payment.php" method="POST" enctype="multipart/form-data" onSubmit="return chkfrom();">
                             <div class="form-group">
                               <label class="control-label col-sm-3">ใบสลิป</label>
                               <div class="col-sm-8">
-                                <input type="file" name="silp" accept="image/*" class="form-control">
+                                <input type="file" name="slip" accept="image/*" class="form-control">
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="control-label col-sm-3">ชื่อผู้โอน</label>
+                              <div class="col-sm-8">
+                                <input type="text" name="name" class="form-control">
                               </div>
                             </div>
 
@@ -155,7 +162,7 @@ require'condatabase/conDB.php';
                             </div>
                         </form>
                     </div>
-                
+
 
 
                     </div>
@@ -173,6 +180,20 @@ require'condatabase/conDB.php';
 <script>
 function chkfrom()
 {
+    if(document.pay.slip.value=="")
+    {
+        swal("กรุณาใส่รูปหลักฐานการโอน", " ", "warning");
+        document.pay.slip.focus();
+        return false;
+    }
+
+    if(document.pay.name.value=="")
+    {
+        swal("กรุณาระบุชื่อผู้โอน", " ", "warning");
+        document.pay.name.focus();
+        return false;
+    }
+
     if(document.pay.date.value=="")
     {
         swal("กรุณากรองวันที่โอนชำระสินค้า", " ", "warning");

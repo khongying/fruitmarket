@@ -82,8 +82,23 @@ session_start();
                                           <input type="number"  name="p_price" class="form-control" value="<?=$row['price']?>" placeholder="ราคา" />
                                       </div>
                                       <div class="col-sm-3">
-                                          <p> จำนวน (ชิ้น) </p>
-                                          <input type="number"  name="p_num" value="<?=$row['num']?>" class="form-control" placeholder="ราคา" />
+                                          <p> รายการแนะนำ </p>
+                                          <?php
+                                              $sql_tag = "SELECT * FROM `tag`";
+                                              $tag=getpdo($con,$sql_tag,1);
+                                          ?>
+
+                                              <select name="p_tag" class="selectpicker form-control" data-live-search="true">
+                                        <?php foreach ($tag as $rows) {
+                                        ?>
+                                              <option value="<?= $rows['id'] ?>">
+                                                <?php echo $rows['tag']; ?>
+                                              </option>
+                                        <?php
+                                              }
+
+                                          ?>
+                                              </select>
                                       </div>
                                       <div class="col-sm-6 info">
                                           <p> ภาพสินค้า </p>

@@ -53,9 +53,33 @@ session_start();
                 <div class="row">
                     <div class="col-lg-12">
                         <form action="add_content.php" method="post">
-                            <h2>หน้าหลัก</h2><hr/>
-                            <textarea class="tinymce" name="text"><?php echo $content;?></textarea>
-                            <br/><button type="submit" class="btn btn-warning"><i class="fa fa-pencil-square-o fa-lg"></i> อัพเดทข้อมูล</button>
+                            <h2>ระบบจัดการผู้ใช้งาน</h2><hr/>
+                            <div class="col-lg-offset-1 col-lg-10">
+                              <table class="table table-hover">
+                                <tr>
+                                  <th>#</th>
+                                  <th>E-mail</th>
+                                  <th>ชื่อ-นามสกุล</th>
+                                  <th>ลบ</th>
+                                </tr>
+                                  <?php
+                                  $i = 0;
+                                  $sql = "SELECT `email`, `fullname` FROM `users`";
+                                  $data = getpdo($con,$sql);
+                                  foreach ($data as $row) {
+                                  ?>
+                                <tr>
+                                  <td><?php echo ++$i; ?></td>
+                                  <td><?=$row['email']?></td>
+                                  <td><?=$row['fullname']?></td>
+                                  <td><a class="btn btn-danger"> ลบ</a></td>
+                                </tr>
+                                    <?php
+                                    }
+                                ?>
+                              </table>
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -70,6 +94,10 @@ session_start();
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+    });
+
+    $("#users").attr({
+        "class" : "active"
     });
     </script>
 </body>

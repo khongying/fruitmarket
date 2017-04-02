@@ -6,7 +6,7 @@ $code   = addslashes($_POST['p_code']);
 $name   = addslashes($_POST['p_name']);
 $detail = addslashes($_POST['p_detail']);
 $price  = addslashes($_POST['p_price']);
-$num    = addslashes($_POST['p_num']);
+$tag    = addslashes($_POST['p_tag']);
 
 date_default_timezone_set("Asia/Bangkok");
 $t = time();
@@ -38,7 +38,7 @@ if ($_FILES['p_img']["size"] != 0) {
   	$sql = "UPDATE `product` SET `code`='{$code}', `name`='{$name}', `detail`='{$detail}', `price`='{$price}'";
     if ($IMAGE_UPLOADED === true) {
   		$sql .= ",img='{$image}'";
-      $sql .= ",num='{$num}'";
+      $sql .= ",id_tag='{$tag}'";
       $sql .= ",date_save='{$date} {$time}'";
       $sql .= " WHERE id = '{$_POST['p_id']}'";
 
@@ -85,7 +85,7 @@ if ($_FILES['p_img']["size"] != 0) {
 
 }else {
   $sql = "UPDATE `product` SET `code`='{$code}', `name`='{$name}', `detail`='{$detail}', `price`='{$price}'";
-  $sql .= ",num='{$num}'";
+  $sql .= ",id_tag='{$tag}'";
   $sql .= ",date_save='{$date} {$time}'";
   $sql .= " WHERE id = '{$_POST['p_id']}'";
   try{

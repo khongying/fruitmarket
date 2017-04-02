@@ -16,6 +16,9 @@
     margin-left: 20px;
     border-radius: 5px;
   }
+	a.name{
+	  font-size:16pt;
+	}
 </style>
 <script>
 $( document ).ready(function() {
@@ -138,7 +141,7 @@ $( document ).ready(function() {
 					<div class="container-fluid">
 						<div class="logo">
 							<ul class="nav navbar-nav">
-									<li><a  href="index.php"><img src="logo/online-shop.png" /> Fruit Market</a></li>
+									<li><a class="name" href="index.php" style="color: #FFFFFF;"><img src="logo/online-shop.png" /> ระบบบริหารการจัดการสวนผลไม้</a></li>
 							</ul>
 						</div>
 						<ul class="nav navbar-nav">

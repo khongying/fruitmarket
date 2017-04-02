@@ -1,7 +1,6 @@
 <?php
 		session_start();
 		require 'condatabase/conDB.php';
-		if ($_SESSION['id'] === $_GET['user']) {
 ?>
 <html>
 <head>
@@ -37,6 +36,13 @@
   td#total{
     text-align: right;
   }
+	label#name_status{
+		font-size: 20pt;
+		color: red;
+	}
+	label#status{
+		font-size: 20pt;
+	}
 </style>
 <body>
 
@@ -141,36 +147,68 @@
                                 </table>
 
 															</div>
-                              <div class="col-md-offset-3 col-md-6">
-                                  <form class="form-horizontal" name="pay" enctype="multipart/form-data" onSubmit="return chkfrom();">
-                                      <div class="form-group">
-                                        <label class="control-label col-sm-3">ใบสลิป</label>
-                                        <div class="col-sm-8">
-                                          <input type="file" name="silp" accept="image/*" class="form-control">
-                                        </div>
-                                      </div>
+															<?php
+																$sql_status = "SELECT `status_qt_id` FROM `qt_order` WHERE id_qt = '{$qt}'";
+																$status = getpdo($con,$sql_status,'status_qt_id');
+															if ($status != 1) {
 
-                                      <div class="form-group">
-                                        <label class="control-label col-sm-3">เวลาที่โอน</label>
-                                        <div class="col-sm-8">
-                                          <input type="datetime-local" name="date" class="form-control">
-                                        </div>
-                                      </div>
+																$sql_qt = "SELECT qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id WHERE id_qt = '{$qt}'";
+																$qt_order = getpdo($con,$sql_qt,1);
+																foreach ($qt_order as $qt) {
+															?>
+																<div class="col-md-6">
+																	<div class="form-group">
+																		<label class="control-label col-sm-4" id="status">สถานะ :</label>
+																		<div class="col-sm-8">
+																				<label id="name_status"><?= $qt['name'] ?></label>
+																		</div>
+																	</div>
+																</div>
+																</div>
+															<?php
+																	}
+															}else {
+															?>
+															<div class="col-md-offset-3 col-md-6">
+																<form class="form-horizontal" name="pay" action="payment.php" method="POST" enctype="multipart/form-data" onSubmit="return chkfrom();">
+																	<input type="hidden" name="qt" class="form-control" value="<?=$qt?>">
+																		<div class="form-group">
+																			<label class="control-label col-sm-3">ใบสลิป</label>
+																			<div class="col-sm-8">
+																				<input type="file" name="slip" accept="image/*" class="form-control">
+																			</div>
+																		</div>
 
-                                      <div class="form-group">
-                                        <label class="control-label col-sm-3">ยอดการโอน</label>
-                                        <div class="col-sm-8">
-                                          <input type="number" name="price" class="form-control">
-                                        </div>
-                                      </div>
+																		<div class="form-group">
+																			<label class="control-label col-sm-3">ชื่อผู้โอน</label>
+																			<div class="col-sm-8">
+																				<input type="text" name="name" class="form-control">
+																			</div>
+																		</div>
 
-                                      <div class="form-group">
-                                        <div class="col-sm-offset-4 col-sm-8">
-                                        <button type="submit" class="btn btn-success">ยืนยัน</button>
-                                        </div>
-                                      </div>
-                                  </form>
-                              </div>
+																		<div class="form-group">
+																			<label class="control-label col-sm-3">เวลาที่โอน</label>
+																			<div class="col-sm-8">
+																				<input type="datetime-local" name="date" class="form-control">
+																			</div>
+																		</div>
+
+																		<div class="form-group">
+																			<label class="control-label col-sm-3">ยอดการโอน</label>
+																			<div class="col-sm-8">
+																				<input type="number" name="price" class="form-control">
+																			</div>
+																		</div>
+
+																		<div class="form-group">
+																			<div class="col-sm-offset-4 col-sm-8">
+																			<button type="submit" class="btn btn-success">ยืนยัน</button>
+																			</div>
+																		</div>
+																</form>
+															</div>
+															<?php } ?>
+
 
                         </div>
             		</div>
@@ -185,9 +223,23 @@
             <br>
     </div>
   </body>
-  <script>
+  <script type="text/javascript">
+
   function chkfrom()
   {
+			if(document.pay.slip.value=="")
+			{
+					swal("กรุณาใส่รูปหลักฐานการโอน", " ", "warning");
+					document.pay.slip.focus();
+					return false;
+			}
+
+      if(document.pay.name.value=="")
+      {
+          swal("กรุณาระบุชื่อผู้โอน", " ", "warning");
+          document.pay.name.focus();
+          return false;
+      }
       if(document.pay.date.value=="")
       {
           swal("กรุณากรองวันที่โอนชำระสินค้า", " ", "warning");
@@ -205,9 +257,3 @@
   </script>
 
 </html>
-
-<?php
-		}else {
-			Header("Location: 404_error.php");
-		}
-?>

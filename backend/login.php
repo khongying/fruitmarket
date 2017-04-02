@@ -10,8 +10,15 @@
     try{
 	$data = getpdo($con,$sql,2);
 	if($data != 0){
+		$user	= getpdo($con,$sql,1);
+		foreach ($user as $row) {
+			$role = $row['role'];
+			$name = $row['full_name'];
+		}
 		$admin				= getpdo($con,$sql);
 		$_SESSION['admin'] 	= "admin";
+		$_SESSION['role'] 	= $role;
+		$_SESSION['name'] 	= $name;
 		header('location:home.php');
 	}
 	else{

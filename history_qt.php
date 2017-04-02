@@ -95,7 +95,7 @@
 														<div>
 															<h1 id="profile_name"><img src="logo/board.png" />  ประวัติการสั่งซื้อ</h1><hr/>
 														</div>
-															<div class="col-md-offset-2 col-md-6">
+															<div class="col-md-offset-3 col-md-6">
                                 <table class="table table-hover">
                                   <tr>
                                     <th>ใบสั่งซื้อ</th>

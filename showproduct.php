@@ -3,11 +3,27 @@
               $_SESSION['login'] = "false";
             }
 ?>
+<style>
+span.calidad2{
+    position: absolute;
+    top: 0;
+    left: 7%;
+    padding: 5px 10px;
+    color: rgba(255,255,255,1);
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: Helvetica;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    z-index: 1;
+}
+</style>
 <script>
 $( document ).ready(function() {
 
     $("div.product-card_cert").click(function(){
- 
+
       var login = "<?= $_SESSION['login'] ?>";
 
       if (login === 'user') {
@@ -41,6 +57,30 @@ $( document ).ready(function() {
              <div class="col-md-3 col-sm-6 hero-feature">
                <div class="product" id="product-<?=$row['id']?>">
                   <div class="thumbnail">
+                    <?php
+                    if (($row['id_tag'] == 1)) {
+                    ?>
+                      <span class="calidad2" style=" background-image: -webkit-linear-gradient(#FF0000,#CC0000); background-image: linear-gradient(#FF0000,#CC0000);">
+                        มาใหม่
+                      </span>
+                    <?php
+                    }elseif (($row['id_tag'] == 2)) {
+                    ?>
+                      <span class="calidad2" style=" background-image: -webkit-linear-gradient(#00FF00,#CC0000); background-image: linear-gradient(#00FF00,#32CD32);">
+                          ขายดี
+                      </span>
+                    <?php
+                    }elseif (($row['id_tag'] == 3)) {
+                    ?>
+                      <span class="calidad2" style=" background-image: -webkit-linear-gradient(#00FF00,#CC0000); background-image: linear-gradient(#0066FF,#1E90FF);">
+                          แนะนำ
+                      </span>
+                    <?php
+                    }
+                    ?>
+                    <!-- <span class="calidad2" style=" background-image: -webkit-linear-gradient(#FF0000,#CC0000); background-image: linear-gradient(#FF0000,#CC0000);">
+                      ใหม่
+                    </span> -->
                     <a href="showdetail.php?p_id=<?=$row['id']?>">
                       <img src="backend/product/<?=$row["img"]?>" style="height:150px;">
                     </a>

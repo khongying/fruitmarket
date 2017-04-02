@@ -104,7 +104,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" class="btn btn-info"><img src="logo/clipboard.png" />  สมัครสมาชิก</button>
+                                <button type="submit" class="btn btn-info"><img src="logo/user.png" />  สมัครสมาชิก</button>
                             </div>
                         </div>
 

@@ -17,7 +17,7 @@
 	$chkmail = "SELECT * FROM `users` WHERE `email`='$mail'";
 
 	$chkm = getpdo($con,$chkmail,2);
-	
+
 	if($chkm != 0){
 
 		echo '<script>window.onload = function () {';
@@ -31,7 +31,7 @@
 					},
 					function(isConfirm){
 					if (isConfirm) {
-					window.location.href = "register.php";
+					window.history.back();
 					}
 					});}';
 		echo '</script>';

@@ -1,7 +1,7 @@
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 <?php
-	session_start(); 
+	session_start();
     require 'condatabase/conDB.php';
 
    	$mail = $_POST['email'];
@@ -17,13 +17,33 @@
 			$fullname = $row['fullname'];
 			$mail = $row['email'];
 			$id = $row['id'];
+			$status = $row['status'];
 		}
-		$_SESSION['name'] = $fullname;
-		$_SESSION['email'] = $mail;
-		$_SESSION['id'] = $id;
-		$_SESSION['login'] 	= "user";
-		$_SESSION['product_card'] = array();
-		header('location:index.php');
+				if ($status == "U" ) {
+					$_SESSION['name'] = $fullname;
+					$_SESSION['email'] = $mail;
+					$_SESSION['id'] = $id;
+					$_SESSION['login'] 	= "user";
+					$_SESSION['product_card'] = array();
+					header('location:index.php');
+				}else {
+					echo '<script>window.onload = function () {';
+					echo 'swal({
+								title: "อีเมลล์หรือรหัสผ่านไม่ถูกต้อง",
+								text: " ",
+								type: "warning",
+								showCancelButton: false,
+								confirmButtonColor: "#DD6B55",
+								confirmButtonText: "OK",
+								},
+								function(isConfirm){
+								if (isConfirm) {
+								window.location.href = "formlogin.php";
+								}
+								});}';
+					echo '</script>';
+				}
+
 	}
 	else{
 		echo '<script>window.onload = function () {';
