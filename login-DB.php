@@ -7,43 +7,30 @@
    	$mail = $_POST['email'];
     $pass = md5($_POST['pass']);
 
+
     $sql="SELECT * FROM `users` WHERE `email`='$mail' AND `password`='$pass'";
 
     try{
 	$data = getpdo($con,$sql,2);
 	if($data != 0){
-		$user				= getpdo($con,$sql,1);
+		$user	= getpdo($con,$sql,1);
+		echo "<pre>";
+
+		var_dump($user);
+		echo "</pre>";
+		// exit;
 		foreach ($user as $row) {
 			$fullname = $row['fullname'];
 			$mail = $row['email'];
 			$id = $row['id'];
 			$status = $row['status'];
 		}
-				if ($status == "U" ) {
 					$_SESSION['name'] = $fullname;
 					$_SESSION['email'] = $mail;
 					$_SESSION['id'] = $id;
 					$_SESSION['login'] 	= "user";
 					$_SESSION['product_card'] = array();
 					header('location:index.php');
-				}else {
-					echo '<script>window.onload = function () {';
-					echo 'swal({
-								title: "อีเมลล์หรือรหัสผ่านไม่ถูกต้อง",
-								text: " ",
-								type: "warning",
-								showCancelButton: false,
-								confirmButtonColor: "#DD6B55",
-								confirmButtonText: "OK",
-								},
-								function(isConfirm){
-								if (isConfirm) {
-								window.location.href = "formlogin.php";
-								}
-								});}';
-					echo '</script>';
-				}
-
 	}
 	else{
 		echo '<script>window.onload = function () {';

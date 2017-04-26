@@ -21,7 +21,7 @@
     	}
     </style>
 </head>
-<body class="background" style="background-image:url(img/blur.jpg);">
+<body class="background" style="background-color:#BCE0DA;">
 
 	<div class="form">
 		<form action="login.php" method="post">

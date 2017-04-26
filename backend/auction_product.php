@@ -5,7 +5,7 @@
                 }else{?>
 <html>
 <head>
-    <title>Backend | เพิ่มสินค้า</title>
+    <title>Backend | เพิ่มสินค้าสำหรับประมูล</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
@@ -42,13 +42,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                        <h2><img src="logo/auction.png" />  เพิ่มสินค้าสำหรับประมูล</h2><hr/>
                         <div>
                             <ul class="nav nav-tabs">
-                                <li class="nav-item active">
+                                <li class="nav-item">
                                     <a class="nav-link" href="product.php">เพิ่มผลไม้</a>
                                 </li>
 
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link" href="auction_product.php">เพิ่มผลไม้(สำหรับประมูล)</a>
                                 </li>
                             </ul>
@@ -83,12 +84,12 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-3">
-                                            <p> ราคา (บาท) </p>
+                                            <p> ราคาเริ่มต้นประมูล </p>
                                             <input type="number"  name="p_price" class="form-control" placeholder="ราคา" />
                                         </div>
                                         <div class="col-sm-3">
-                                            <p> จำนวน (ชิ้น) </p>
-                                            <input type="number"  name="p_num" class="form-control" placeholder="ราคา" />
+                                            <p> เวลาในการประมูล </p>
+                                            <input type="time"  name="p_num" class="form-control" placeholder="ราคา" />
                                         </div>
                                         <div class="col-sm-6 info">
                                             <p> ภาพสินค้า </p>
