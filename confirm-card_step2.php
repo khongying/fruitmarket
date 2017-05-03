@@ -9,7 +9,6 @@ require'condatabase/conDB.php';
       <meta name="description" content="">
       <meta name="author" content="">
       <title>Home | Fruit Market</title>
-      <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
       <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
       <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
@@ -19,9 +18,6 @@ require'condatabase/conDB.php';
       <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
   </head>
   <style type="text/css">
-    	body{
-          font-family: 'Itim', cursive;
-        }
     #page{
     		padding-top:100px;
     	}

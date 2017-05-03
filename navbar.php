@@ -1,8 +1,8 @@
-<link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
 <style type="text/css">
 	body{
-      font-family: 'Itim', cursive;
+      font-family: 'Kanit', sans-serif;
     }
 	#cart{
 		padding-top: 5px
@@ -91,28 +91,6 @@ $( document ).ready(function() {
 		});
 
 
-			// $("div.add-product").click(function(){
-			//
-			// 	$.ajax({
-			// 		url:'add-product-db.php'
-			// 	})
-			// 		.done(function(data) {
-			// 			swal({
-			// 				title: "เรียบร้อยแล้ว",
-			// 				text: " ",
-			// 				type: "success",
-			// 				showCancelButton: false,
-			// 				confirmButtonColor: "#DD6B55",
-			// 				confirmButtonText: "OK",
-			// 				},
-			// 				function(){
-			// 				window.location.href = "confirm-card.php?id=<?=$_SESSION['id']?>";
-			//
-			// 			});
-			// 	});
-			//
-			// });
-
  });
 
 });
@@ -154,7 +132,7 @@ $( document ).ready(function() {
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?> <i class="glyphicon glyphicon-chevron-down"></i>
+										<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?> <img src="logo/chevron-sign-down.png" /></i>
 										</a>
 											<ul class="dropdown-menu">
 												<li><a href="profile.php?user=<?=$_SESSION['id']?>"><img src="logo/curriculum.png" /> Profile</a></li>

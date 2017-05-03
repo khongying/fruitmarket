@@ -11,7 +11,6 @@
     <meta name="author" content="">
     <title>Home | Fruit Market</title>
 		<link rel="shortcut icon" type="image/png" href="logo/groceries.png">
-    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/profile.css" rel="stylesheet">
@@ -21,10 +20,7 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
-	body{
-      font-family: 'Itim', cursive;
-    }
-    #page{
+  #page{
 		padding-top:50px;
 	}
   tr{
@@ -36,6 +32,10 @@
   }
   td#name{
     color: #FF0000;
+  }
+  td#no_data{
+    color: #FF0000;
+    font-size: 20pt;
   }
 </style>
 <body>
@@ -104,13 +104,21 @@
                                   <?php
                                     $sql_qt = "SELECT qt_order.id_qt,qt_order.create_date,qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id WHERE qt_order.user_id = '{$_SESSION['id']}'";
                                     $qt_order = getpdo($con,$sql_qt,1);
-                                    foreach ($qt_order as $qt) {
-                                    ?>
-                                    <tr>
-                                      <td><a href="pay_qt.php?qt=<?= $qt['id_qt']?>&user=<?=$_SESSION['id']?>"><?= $qt['id_qt'] ?></a></td>
-                                      <td id="name"><?= $qt['name'] ?></td>
-                                    </tr>
-                                  <?php
+                                    if($qt_order != NULL){
+                                        foreach ($qt_order as $qt) {
+                                      ?>
+                                        <tr>
+                                        <td><a href="pay_qt.php?qt=<?= $qt['id_qt']?>&user=<?=$_SESSION['id']?>"><?= $qt['id_qt'] ?></a></td>
+                                        <td id="name"><?= $qt['name'] ?></td>
+                                      </tr>
+                                      <?php
+                                      }
+                                    }else{
+                                        ?>
+                                          <tr>
+                                            <td colspan="2" id="no_data">**ไม่มีข้อมูลการสั่งซื้อ**</td>
+                                          </tr>
+                                        <?php
                                     }
                                   ?>
 

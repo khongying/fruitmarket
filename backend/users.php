@@ -3,13 +3,6 @@
 session_start();
     require 'condatabase/conDB.php';
 
-    $sql="SELECT * FROM `content`";
-
-        $result=getpdo($con,$sql,1);
-        foreach ($result as $row) {
-                $content = $row['text'];
-        }
-
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
                 }else{?>

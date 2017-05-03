@@ -46,11 +46,11 @@
                         <div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="product.php">เพิ่มผลไม้</a>
+                                    <a class="nav-link" href="product.php">เพิ่มสินค้า</a>
                                 </li>
 
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="auction_product.php">เพิ่มผลไม้(สำหรับประมูล)</a>
+                                    <a class="nav-link" href="auction_product.php">เพิ่มสินค้า(สำหรับประมูล)</a>
                                 </li>
                             </ul>
                         </div><br>
@@ -65,7 +65,7 @@
                                     <h4 align="center"> เพิ่มสินค้า </h4>
                                 <hr />
 
-                                <form action="add_product_db.php" name="product" method="POST" class="form-horizontal" enctype="multipart/form-data" onSubmit="return chkfrom();">
+                                <form action="add_auction_product.php" name="product" method="POST" class="form-horizontal" enctype="multipart/form-data" onSubmit="return chkfrom();">
                                     <div class="form-group">
                                         <div class="col-sm-6">
                                             <p> รหัสสินค้า</p>
@@ -83,13 +83,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             <p> ราคาเริ่มต้นประมูล </p>
                                             <input type="number"  name="p_price" class="form-control" placeholder="ราคา" />
                                         </div>
-                                        <div class="col-sm-3">
-                                            <p> เวลาในการประมูล </p>
-                                            <input type="time"  name="p_num" class="form-control" placeholder="ราคา" />
+                                        <div class="col-sm-6">
+                                            <p> เวลาสินสุดการประมูล </p>
+                                            <input type="datetime-local"  name="p_time" class="form-control" placeholder="เวลาสินสุดการประมูล" />
                                         </div>
                                         <div class="col-sm-6 info">
                                             <p> ภาพสินค้า </p>

@@ -1,4 +1,8 @@
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 <style>
+body{
+    font-family: 'Kanit', sans-serif;
+  }
 a.name{
   font-size:16pt;
 }

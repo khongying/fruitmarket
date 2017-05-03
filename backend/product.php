@@ -1,4 +1,4 @@
-<?php
+<?php 
     session_start();
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
@@ -42,14 +42,15 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                        <h2><img src="logo/vitamins.png" />  เพิ่มสินค้าผลไม้และผลไม้แปรรูป</h2><hr/>
                         <div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="product.php">เพิ่มผลไม้</a>
+                                    <a class="nav-link" href="product.php">เพิ่มสินค้า</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="auction_product.php">เพิ่มผลไม้(สำหรับประมูล)</a>
+                                    <a class="nav-link" href="auction_product.php">เพิ่มสินค้า(สำหรับประมูล)</a>
                                 </li>
                             </ul>
                         </div><br>

@@ -6,7 +6,6 @@
         <meta name="author" content="">
         <title>Home | Fruit Market</title>
         <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
-        <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">

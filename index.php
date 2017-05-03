@@ -12,7 +12,6 @@
     <meta name="author" content="">
     <title>Home | Fruit Market</title>
     <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
-    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
@@ -21,9 +20,6 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
-	body{
-      font-family: 'Itim', cursive;
-    }
     #page{
 		    padding-top:55px;
 	 }
@@ -41,20 +37,6 @@
     <?php
         include'carousel.php';
     ?>
-        <div class="container">
-        	 <div class="row">
-                    <!-- <div class="col-md-8">
-
-
-                    </div>
-                    <div class="col-md-4">
-                        <?php
-                          //  include'content.php';
-                        ?>
-                    </div> -->
-
-                </div>
-        </div>
 
         <div class="container" id="show">
                <div class="row">

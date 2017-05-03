@@ -10,7 +10,6 @@
     <meta name="author" content="">
     <title>กระทู้ถาม-ตอบ | Fruit Market</title>
 		<link rel="shortcut icon" type="image/png" href="logo/groceries.png">
-    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
@@ -19,9 +18,6 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
-    body{
-          font-family: 'Itim', cursive;
-    }
     #page{
           padding-top:100px;
     }
@@ -116,18 +112,22 @@ td.reply {
 
 </style>
 <?php
+
 require'condatabase/conDB.php';
 $ask = $_GET['ask_id'];
 $sql="SELECT * FROM `ask` WHERE id_ask = '{$ask}'";
+
 $result=getpdo($con,$sql,1);
     foreach ($result as $row) {
      $sqlask = "SELECT ask.q_ask,ask.detail,ask.create_date,users.fullname FROM ask LEFT JOIN users ON ask.user_id = users.id WHERE ask.user_id = ( SELECT id FROM users WHERE users.id = '{$row['user_id']}'AND ask.id_ask ='{$ask}')";
-		 echo $row['user_id'];
+		 // echo $row['user_id'];
 		}
 
 $data = getpdo($con,$sqlask,1);
+var_dump($data);
 $thaimonth=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
     foreach ($data as $rows) {
+
 		$naw_date  =  substr($rows['create_date'],8,2)." ";
 		$naw_date .=  $thaimonth[(substr($rows['create_date'],5,2)-1)]." ";
 		$naw_date .=  (substr($rows['create_date'],0,4)+543)." ";
@@ -136,13 +136,13 @@ $thaimonth=array("มกราคม","กุมภาพันธ์","มี�
 <body>
   <div id="page">
 
-      <?php include'navbar.php'; ?>
+      <?php require'navbar.php'; ?>
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <table class="table-fill">
                   <tr>
-                    <th>Author</th>
+                    <th>ผู้ตั้งกระทู้</th>
                     <th>Topic : <?= $rows['q_ask']?></th>
                   </tr>
                   <tr>
@@ -174,7 +174,7 @@ $thaimonth=array("มกราคม","กุมภาพันธ์","มี�
 				$create_naw_date .=  "เวลา ".substr($reply['create_date'],-8);
 
 ?>
-			<div class="container">
+		<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table-fill">

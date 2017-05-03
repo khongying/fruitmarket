@@ -14,11 +14,6 @@
 	$data = getpdo($con,$sql,2);
 	if($data != 0){
 		$user	= getpdo($con,$sql,1);
-		echo "<pre>";
-
-		var_dump($user);
-		echo "</pre>";
-		// exit;
 		foreach ($user as $row) {
 			$fullname = $row['fullname'];
 			$mail = $row['email'];
