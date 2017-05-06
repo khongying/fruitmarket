@@ -20,16 +20,6 @@
               $dateArrayEnd['h'] = date('H',$time_stramp)*1;
               $dateArrayEnd['i'] = date('i',$time_stramp)*1;
               $dateArrayEnd['s'] = date('s',$time_stramp)*1;
-              // echo "<pre>";
-              // var_dump($dateArrayEnd);
-            // $end_time =  (substr($row['end_time'],0,4)).",";
-            // $end_time .=  (substr($row['end_time'],5,2)-1).",";
-            // $end_time .=  substr($row['end_time'],8,2).",";
-            // $end_time .=  substr($row['end_time'],10,3).",";
-            // $end_time .=  substr($row['end_time'],14,2).",";
-            // $end_time .=  substr($row['end_time'],17,2).",";
-
-            // $end_time = $row['end_time'];
       ?>
       <!-- s -->
       <script type="text/javascript">

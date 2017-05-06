@@ -1,0 +1,16 @@
+{
+  "name": "sevice_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test_node.js",
+  "dependencies": {
+    "firebase-admin": "^4.2.1",
+    "node-mysql": "^0.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

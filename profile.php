@@ -81,57 +81,57 @@
             		</div>
             		<div class="col-md-9">
                     <div class="profile-content">
-													<div class="row">
-														<div>
-															<h1 id="profile_name"><i class="fa fa-user-circle-o fa-lg"></i>  โปรไฟล์</h1><hr/>
-														</div>
-															<div class="col-md-offset-2 col-md-7">
-																	<div class="form-register">
-																			<form class="form-horizontal" name="register" action="update_profile.php" method="POST" onSubmit="return chkfrom();">
-																					<div class="form-group">
-																							<label class="control-label col-sm-4">อีเมลล์</label>
-																							<div class="col-sm-8">
-																									<input type="email" class="form-control" name="email" value="<?=$row['email']?>">
-																							</div>
-																					</div>
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">วันเกิด</label>
-																					<div class="col-sm-8">
-																							<input type="date" class="form-control" name="date" value="<?=$row['birthday']?>">
-																					</div>
-																			</div>
+					<div class="row">
+						<div>
+							<h1 id="profile_name"><i class="fa fa-user-circle-o fa-lg"></i>  โปรไฟล์</h1><hr/>
+						</div>
+							<div class="col-md-offset-2 col-md-7">
+								<div class="form-register">
+									<form class="form-horizontal" name="register" action="update_profile.php" method="POST" onSubmit="return chkfrom();">
+									<div class="form-group">
+										<label class="control-label col-sm-4">อีเมลล์</label>
+										<div class="col-sm-8">
+												<input type="email" class="form-control" name="email" value="<?=$row['email']?>">
+										</div>
+									</div>
+									<div class="form-group">
+											<label class="control-label col-sm-4">วันเกิด</label>
+											<div class="col-sm-8">
+													<input type="date" class="form-control" name="date" value="<?=$row['birthday']?>">
+											</div>
+									</div>
 
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">ชื่อ และ นามสกุล</label>
-																					<div class="col-sm-8">
-																							<input type="text" class="form-control" name="fullname" value="<?=$row['fullname']?>">
-																					</div>
-																			</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">ชื่อ และ นามสกุล</label>
+										<div class="col-sm-8">
+										<input type="text" class="form-control" name="fullname" value="<?=$row['fullname']?>">
+										</div>
+									</div>
 
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">ที่อยู่</label>
-																					<div class="col-sm-8">
-																							<textarea class="form-control" name="address"><?=$row['address']?></textarea>
-																					</div>
-																			</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">ที่อยู่</label>
+										<div class="col-sm-8">
+										<textarea class="form-control" name="address"><?=$row['address']?></textarea>
+										</div>
+									</div>
 
-																			<div class="form-group">
-																					<label class="control-label col-sm-4">เบอร์โทรศัพท์</label>
-																					<div class="col-sm-8">
-																							<input type="text" name="phone" class="form-control" value="<?=$row['phone']?>">
-																					</div>
-																			</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4">เบอร์โทรศัพท์</label>
+										<div class="col-sm-8">
+										<input type="text" name="phone" class="form-control" value="<?=$row['phone']?>">
+										</div>
+									</div>
 
-																			<div class="form-group">
-																					<div class="col-sm-offset-4 col-sm-8">
-																							<button type="submit" class="btn btn-warning"><img src="logo/writing.png" /> แก้ไข</button>
-																					</div>
-																			</div>
+									<div class="form-group">
+											<div class="col-sm-offset-4 col-sm-8">
+												<button type="submit" class="btn btn-warning"><img src="logo/writing.png" /> แก้ไข</button>
+											</div>
+									</div>
 
-																			</form>
+									</form>
 
-																	</div>
-															 </div>
+								</div>
+							 </div>
 
                         </div>
             		</div>

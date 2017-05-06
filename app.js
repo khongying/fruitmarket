@@ -33,13 +33,19 @@ dbRefObject.on('value', snap =>{
      console.log(val)
      $("#list").prepend('<tr class="list"><td>'+ val.name +'</td><td>'+ val.price +'</td><td>'+ val.time +'</td></tr>')
      g_price = val.price;
+     g_user = val.id;
+     global_price = g_price;
+     global_user = g_user;
      user = val.name;
+     global_name = user;
 
   });
-
+$(function(){
   $( ".list" ).first().css("background-color", "#C0D9E5" );
   $("#now_price").html('<p>'+ g_price +' THB</p>')
   $("#now_user").html('<p><i class="fa fa-trophy"></i> '+ user +'</p>')
+  
+});
 
 
 

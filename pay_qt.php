@@ -1,6 +1,7 @@
 <?php
 		session_start();
 		require 'condatabase/conDB.php';
+    if ($_SESSION['id'] === $_GET['user']) {
 ?>
 <html>
 <head>
@@ -257,3 +258,7 @@
   </script>
 
 </html>
+<?php }else {
+      Header("Location: 404_error.php");
+    } 
+?>

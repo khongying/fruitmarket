@@ -1,5 +1,11 @@
-<?php
+<?php 
 session_start();
+// var_dump($_SESSION);
+if(isset($_SESSION['id'])){
+
+}else{
+	$_SESSION['id'] = '';
+}
 require'condatabase/conDB.php';
 ?>
 <html>
@@ -48,7 +54,7 @@ require'condatabase/conDB.php';
 
 		<?php 
 			$dateArrayEnd = array();
-			$sql="SELECT * FROM `auction_product` WHERE `code`= '{$_GET['p_id']}'";
+			$sql="SELECT * FROM `auction_product` WHERE `code`= '{$_GET['p_id']}' AND `status` ='A' ";
 
 			$result=getpdo($con,$sql,1);
             foreach ($result as $row) {
@@ -62,19 +68,45 @@ require'condatabase/conDB.php';
 	            $dateArrayEnd['s'] = date('s',$time_stramp)*1;
 		?>
 		<script type="text/javascript">
-        function cooldown(y,m,d,h,i,s,target){
+	           	
+			var global_price = 0;
+			var global_user  = 0;
+			var global_name  = 0;
+	        function cooldown(y,m,d,h,i,s,target){
 
-          var clock = document.getElementById(target)
-            , targetDate = new Date(y, m, d,h,i,s); // Jan 1, 2050;
+	          let clock = document.getElementById(target)
+	            , targetDate = new Date(y, m, d,h,i,s); // Jan 1, 2050;
 
-          clock.innerHTML = countdown(targetDate).toString();
+	          clock.innerHTML = countdown(targetDate).toString();
 
-            setInterval(function(){
-              console.log(clock);
-            clock.innerHTML = countdown(targetDate).toString();
-            }, 1000);
+	           let myVar = setInterval(function(){
+	             //console.log($("#"+target).text());
+	             if($("#"+target).text() == ""){
+	                  clearInterval(myVar);
+	                  $("#input_price").remove();
+						var now_price = global_price;
+						var userid = global_user;
+						var name = global_name;
+						swal({
+							title: "ผู้ชนะการประมูล : "+name,
+							text: "ราคาในการชนะประมูล : "+now_price+" บาท",
+							imageUrl: 'logo/winner-with-trophy.png'
+						});
+						
+	                  	$.post('service/add_qt_action.php', {code:target, price:now_price, user_id:userid}, function() {
+	                    
+	                  }).done(function(data){
+	                  	console.log(data);
+	                    // if(data == "true"){
+	                    //   location.reload();
+	                    // }
+	                  });
+	              }
+	             
+	            clock.innerHTML = countdown(targetDate).toString();
+	            }, 1000);
 
-        }
+	        }
 
         $(function(){
 
@@ -134,8 +166,8 @@ require'condatabase/conDB.php';
             <input type="hidden" value="<?=$_SESSION['id']?>" id="userid" />
             <input type="hidden" value="<?=$_SESSION['name']?>" id="name" />
             <input type="hidden" value="<?=$naw_date?>" id="time" />
-			<div class="col-md-5 input-group">
-    		<input type="text" class="price form-control" id="price" />
+			<div class="col-md-5 input-group" id="input_price">
+    		<input type="number" class="price form-control" id="price" />
 						<div class="input-group-btn">
 							<button type="button" class="btn btn-search btn-info" id="btn">
 							    <span class="fa fa-gavel"></span>
@@ -160,23 +192,30 @@ require'condatabase/conDB.php';
 							</table>
 					</div>
 
-						<script type="text/javascript" src="app.js"></script>
-						<script>
-				      $("#btn").click(function() {
-				        var price = $(".price").val();
-				          if(price > g_price){
-				            addOnClick();
-				          }else{
-										swal({
-											title: "คุณเสนอราคาต่ำไป",
-											text: " ",
-											type: "warning",
-											showCancelButton: false,
-											confirmButtonColor: "#DD6B55",
-											confirmButtonText: "OK",
-											});
-				          }
-				      });
+			<script type="text/javascript" src="app.js"></script>			
+			<script>
+		      $("#btn").click(function() {
+		      	var login = "<?= $_SESSION['login'] ?>";
+		      	if(login === 'user'){
+			      	var price = $(".price").val();
+			          if(price*1 > g_price*1){
+			            addOnClick();
+			          }else{
+									swal({
+										title: "คุณเสนอราคาต่ำไป",
+										text: " ",
+										type: "warning",
+										showCancelButton: false,
+										confirmButtonColor: "#DD6B55",
+										confirmButtonText: "OK",
+										});
+			          }
+
+		      	}else{
+		      		  window.location = "formlogin.php";
+		      	}
+		        
+		      });
 		    </script>
       </div>
   </div>
