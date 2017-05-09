@@ -2,13 +2,8 @@
 
 session_start();
     require 'condatabase/conDB.php';
+    require '../service/datetime.php';
 
-    $sql="SELECT * FROM `content`";
-
-        $result=getpdo($con,$sql,1);
-        foreach ($result as $row) {
-                $content = $row['text'];
-        }
 
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
@@ -34,6 +29,9 @@ session_start();
         }
         tr#top{
             background-color: #DAFAF8;
+        }
+        label.qt{
+            font-size: 20px;
         }
     </style>
 </head>
@@ -62,14 +60,14 @@ session_start();
         include 'meun_qt.php';
         ?>
     </div><br>
-
-    <div id="page" class="container">
         <div class="row">
-                    <div class="col-md-offset-2 col-md-8">
+                    <div class="col-md-6">
+                    <label class="qt">ใบสั่งซื้อสินค้า</label>
                         <table class="table table-bordered">
                           <tr id="top">
                             <th>ใบสั่งซื้อ</th>
                             <th>สถานะ</th>
+                            <th>วันที่สร้างใบสั่งซื้อ</th>
                           </tr>
                               <?php
                                 $sql_qt = "SELECT qt_order.id_qt,qt_order.create_date,qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id";
@@ -80,6 +78,40 @@ session_start();
                                     <tr>
                                     <td><a href="show_list_qt.php?qt=<?= $qt['id_qt']?>"><?= $qt['id_qt'] ?></a></td>
                                     <td id="name"><?= $qt['name'] ?></td>
+                                    <td id="name"><?= DateThai($qt['create_date']) ?></td>
+                                  </tr>
+                                  <?php
+                                  }
+                                }else{
+                                    ?>
+                                      <tr>
+                                        <td colspan="2" id="no_data">**ไม่มีข้อมูลการสั่งซื้อ**</td>
+                                      </tr>
+                                    <?php
+                                }
+                              ?>
+
+                            </table>
+                        </div>
+
+                        <div class="col-md-6">
+                        <label class="qt">ใบสั่งซื้อสินค้า(จากการประมูล)</label>
+                        <table class="table table-bordered">
+                          <tr id="top">
+                            <th>ใบสั่งซื้อ</th>
+                            <th>สถานะ</th>
+                            <th>วันที่สร้างใบสั่งซื้อ</th>
+                          </tr>
+                              <?php
+                                $sql_auction = "SELECT qt_auction.id_qt,qt_auction.create_date,qt_status.name FROM qt_auction LEFT JOIN qt_status ON qt_auction.status_qt_id = qt_status.id";
+                                $auction = getpdo($con,$sql_auction,1);
+                                if($auction != NULL){
+                                    foreach ($auction as $qt_auction) {
+                                  ?>
+                                    <tr>
+                                    <td><a href="show_list_qt_qt_auction.php?qt=<?= $qt_auction['id_qt']?>"><?= $qt_auction['id_qt'] ?></a></td>
+                                    <td id="name"><?= $qt_auction['name'] ?></td>
+                                    <td id="name"><?= DateThai($qt_auction['create_date']) ?></td>
                                   </tr>
                                   <?php
                                   }
@@ -101,7 +133,6 @@ session_start();
                 </footer>
                 </div>
         </div>
-    </div>
 </div>
                 </div>
             </div>

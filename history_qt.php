@@ -29,6 +29,7 @@
   th{
     text-align: center;
     font-size: 20pt;
+    background-color:#76E2F4;
   }
   td#name{
     color: #FF0000;
@@ -95,7 +96,7 @@
 														<div>
 															<h1 id="profile_name"><img src="logo/board.png" />  ประวัติการสั่งซื้อ</h1><hr/>
 														</div>
-															<div class="col-md-offset-3 col-md-6">
+															<div class="col-md-offset-2 col-md-7">
                                 <table class="table table-hover">
                                   <tr>
                                     <th>ใบสั่งซื้อ</th>
@@ -120,6 +121,29 @@
                                           </tr>
                                         <?php
                                     }
+                                  ?>
+                                  <tr>
+                                    <th colspan="2">ใบสั่งซื้อ(จากการประมูล)</th>
+                                  </tr>
+                                  <?php
+                                    $sql_action = "SELECT qt_auction.id_qt,qt_status.name FROM qt_auction LEFT JOIN qt_status ON qt_auction.status_qt_id = qt_status.id WHERE qt_auction.user_id = '{$_SESSION['id']}'";
+                                    $action = getpdo($con,$sql_action,1);
+                                    if($qt_order != NULL){
+                                        foreach ($action as $list) {
+                                  ?>
+                                      <tr>
+                                        <td><a href="pay_action.php?qt=<?= $list['id_qt'] ?>&user=<?=$_SESSION['id']?>"><?= $list['id_qt'] ?></a></td>
+                                        <td id="name"><?= $list['name'] ?></td>
+                                      </tr>
+                                  <?php
+                                        }
+                                       }else{
+                                        ?>
+                                          <tr>
+                                            <td colspan="2" id="no_data">**ไม่มีข้อมูลการสั่งซื้อ**</td>
+                                          </tr>
+                                        <?php
+                                    }   
                                   ?>
 
                                 </table>

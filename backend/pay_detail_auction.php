@@ -4,6 +4,8 @@ session_start();
     require 'condatabase/conDB.php';
     require '../service/datetime.php';
 
+ 
+
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
                 }else{?>
@@ -80,7 +82,7 @@ session_start();
         <div class="row">
                 <?php
                 $qt = $_GET['qt'];
-                $sql_pay = "SELECT * FROM `pay_qt` WHERE `qt_id` = '{$qt}' ";
+                $sql_pay = "SELECT * FROM `pay_auction_qt` WHERE `qt_id` = '{$qt}' ";
                 $qt_pay = getpdo($con,$sql_pay,1);
                   foreach ($qt_pay as $row) {
                     $strDate = $row['date_time'];
@@ -145,73 +147,66 @@ session_start();
                 <label class="qt">ใบสั่งซื้อ : <?=$qt_id?></label>
                 </div>
                 <div class="col-md-offset-2 col-md-8">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr id="top">
-                          <th>รายการ</th>
-                          <th>ราคาต่อชิ้น</th>
-                          <th>จำนวนชิ้น</th>
-                          <th>ราคารวม</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                       <?php
-                       $total = 0 ;
-                       $sql_list_product = "SELECT list_order.product_id,list_order.sum,product.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$qt_id}'";
-                       $data = getpdo($con,$sql_list_product,1);
-                       foreach ($data as $row) {
-                          $sum = $row['sum'];
-                          $price = $row['price'];
-                          $id_pd = $row['product_id'];
-                          $total = $total + $sum*$price;
-                          $sql = "SELECT * FROM `product` WHERE code = '{$id_pd}'";
-                          $product = getpdo($con,$sql,1);
-                          foreach ($product as $rows) {
-                            $name = $rows['name'];
-                            $img = $rows['img'];
-                            ?>
-                            <tr>
-                              <td><?=$name?></td>
-                              <td><?=number_format($price,2)?></td>
-                              <td><?=$sum?></td>
-                              <td><?=number_format($sum*$price,2)?></td>
-                            </tr>
-
-                      <?php
-                          }
-                       }
-                       ?>
-                        <tr>
-                          <td colspan="3">ยอดชำระสินค้า </td>
-                          <td id="total" ><?=number_format($total,2)?> บาท</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <?php
-                        $sql_qt = "SELECT qt_status.id,qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id WHERE id_qt = '{$qt}'";
-                        $qt_order = getpdo($con,$sql_qt,1);
-                        foreach ($qt_order as $qt) {
-                          if($qt['id'] == 5){
-                    ?>
-                      <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label col-md-3" id="status">สถานะ :</label>
-                                <div class="col-md-5">
-                                    <label id="name_status"><?= $qt['name'] ?></label>
-                                </div>
-                            </div>
-                      </div>
-                    <?php
-                          }else{
-                    ?>
-                        <div class="col-md-12">
+                     <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>รายการ</th>
+                                      <th>จำนวนชิ้น</th>
+                                      <th>ราคา</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                   <?php
+                                   $qt = $_GET['qt'];
+                                   $total = 0 ;
+                                   $sql_list_product = "SELECT qt_auction.id_qt,qt_auction.auction_product_id,qt_auction.now_price,auction_product.name FROM qt_auction LEFT JOIN auction_product ON qt_auction.auction_product_id = auction_product.code WHERE `id_qt`='{$qt}'";
+                                   $data = getpdo($con,$sql_list_product,1);
+                                   foreach ($data as $row) {
+                                      $sum = 1 ;
+                                      $price = $row['now_price'];
+                                      $id_pd = $row['id_qt'];
+                                      $name =  $row['name'];
+                                      $total = $sum*$price;
+                                    ?>
+                                    <tr>
+                                      <td><?=$name?></td>
+                                      <td><?=$sum?></td>
+                                      <td><?=$price?></td>
+                                    </tr>
+                                  <?php  
+                                   }
+                                   ?>
+                                    <tr>
+                                      <td id="total" colspan="2">ยอดชำระสินค้า </td>
+                                      <td id="total" ><?=number_format($total,2)?> บาท</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <?php
+                                    $sql_qt = "SELECT qt_status.id,qt_status.name FROM qt_auction LEFT JOIN qt_status ON qt_auction.status_qt_id = qt_status.id WHERE id_qt = '{$qt}'";
+                                    $qt_auction = getpdo($con,$sql_qt,1);
+                                    foreach ($qt_auction as $qt) {
+                                      if($qt['id'] == 5){
+                                ?>
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3" id="status">สถานะ :</label>
+                                          <div class="col-md-5">
+                                            <label id="name_status"><?= $qt['name'] ?></label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                <?php
+                                      }else{
+                                ?>
+                          <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label col-md-3" id="status">สถานะ :</label>
                                 <div class="col-md-4">
                                     <label id="name_status"><?= $qt['name'] ?></label>
                                 </div>
-                                <form method="POST" action="update_cut_stock.php">
-                                  <div class="col-md-3">
+                                <form method="POST" action="update_status_auction.php">
+                                  <div class="col-sm-3">
                                       <?php 
                                         $sql_qt_status =  "SELECT * FROM `qt_status`";
                                         $data = getpdo($con,$sql_qt_status,1);
@@ -228,7 +223,7 @@ session_start();
                                       ?>
                                       </select>
                                   </div>
-                                  <div class="col-md-2">
+                                  <div class="col-sm-2">
                                       <input type="hidden" name="qt" value="<?=$qt_id?>">
                                       <button type="submit" class="btn btn-danger">อัพเดทสถานะ</button>
                                   </div>
@@ -237,7 +232,7 @@ session_start();
                         </div>
                         </div>
                     <?php
-                          }
+                                }
                             }
                     ?>
 

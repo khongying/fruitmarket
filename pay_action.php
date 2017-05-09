@@ -40,11 +40,9 @@
 	label#name_status{
 		font-size: 20pt;
 		color: red;
-    text-align: left;
 	}
 	label#status{
 		font-size: 20pt;
-    text-align: right;
 	}
 </style>
 <body>
@@ -102,48 +100,40 @@
                     <div class="profile-content">
 													<div class="row">
 														<div>
-															<h1 id="profile_name"><img src="logo/board.png" />  ประวัติการสั่งซื้อ</h1><hr/>
+															<h1 id="profile_name"><img src="logo/board.png" /> ใบสั่งซื้อ(จากการประมูล)</h1><hr/>
 														</div>
 															<div class="col-md-offset-1 col-md-10">
                                 <table class="table table-bordered">
                                   <thead>
                                     <tr>
                                       <th>รายการ</th>
-                                      <th>ราคาต่อชิ้น</th>
                                       <th>จำนวนชิ้น</th>
-                                      <th>ราคารวม</th>
+                                      <th>ราคา</th>
                                     </tr>
                                  </thead>
                                  <tbody>
                                    <?php
                                    $qt = $_GET['qt'];
                                    $total = 0 ;
-                                   $sql_list_product = "SELECT list_order.product_id,list_order.sum,product.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$qt}'";
+                                   $sql_list_product = "SELECT qt_auction.id_qt,qt_auction.auction_product_id,qt_auction.now_price,auction_product.name FROM qt_auction LEFT JOIN auction_product ON qt_auction.auction_product_id = auction_product.code WHERE `id_qt`='{$qt}'";
                                    $data = getpdo($con,$sql_list_product,1);
                                    foreach ($data as $row) {
-                                      $sum = $row['sum'];
-                                      $price = $row['price'];
-                                      $id_pd = $row['product_id'];
-                                      $total = $total + $sum*$price;
-                                      $sql = "SELECT * FROM `product` WHERE code = '{$id_pd}'";
-                                      $product = getpdo($con,$sql,1);
-                                      foreach ($product as $rows) {
-                                        $name = $rows['name'];
-                                        $img = $rows['img'];
-                                        ?>
-                                        <tr>
-                                          <td><?=$name?></td>
-                                          <td><?=number_format($price,2)?></td>
-                                          <td><?=$sum?></td>
-                                          <td><?=number_format($sum*$price,2)?></td>
-                                        </tr>
-
-                                  <?php
-                                      }
+                                      $sum = 1 ;
+                                      $price = $row['now_price'];
+                                      $id_pd = $row['id_qt'];
+                                      $name =  $row['name'];
+                                      $total = $sum*$price;
+                                    ?>
+                                    <tr>
+                                      <td><?=$name?></td>
+                                      <td><?=$sum?></td>
+                                      <td><?=$price?></td>
+                                    </tr>
+                                  <?php  
                                    }
                                    ?>
                                     <tr>
-                                      <td id="total" colspan="3">ยอดชำระสินค้า </td>
+                                      <td id="total" colspan="2">ยอดชำระสินค้า </td>
                                       <td id="total" ><?=number_format($total,2)?> บาท</td>
                                     </tr>
                                   </tbody>
@@ -151,18 +141,18 @@
 
 															</div>
 															<?php
-																$sql_status = "SELECT `status_qt_id` FROM `qt_order` WHERE id_qt = '{$qt}'";
+																$sql_status = "SELECT `status_qt_id` FROM `qt_auction` WHERE id_qt = '{$qt}'";
 																$status = getpdo($con,$sql_status,'status_qt_id');
 															if ($status != 1) {
 
-																$sql_qt = "SELECT qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id WHERE id_qt = '{$qt}'";
-																$qt_order = getpdo($con,$sql_qt,1);
-																foreach ($qt_order as $qt) {
+																$sql_qt = "SELECT qt_status.name FROM qt_auction LEFT JOIN qt_status ON qt_auction.status_qt_id = qt_status.id WHERE id_qt = '{$qt}'";
+																$qt_auction = getpdo($con,$sql_qt,1);
+																foreach ($qt_auction as $qt) {
 															?>
-																<div class="col-md-12">
+																<div class="col-md-6">
 																	<div class="form-group">
-																		<label class="control-label col-md-3" id="status">สถานะ :</label>
-																		<div class="col-md-8">
+																		<label class="control-label col-sm-4" id="status">สถานะ :</label>
+																		<div class="col-sm-8">
 																				<label id="name_status"><?= $qt['name'] ?></label>
 																		</div>
 																	</div>
@@ -173,7 +163,7 @@
 															}else {
 															?>
 															<div class="col-md-offset-3 col-md-6">
-																<form class="form-horizontal" name="pay" action="payment.php" method="POST" enctype="multipart/form-data" onSubmit="return chkfrom();">
+																<form class="form-horizontal" name="pay" action="payment_action.php" method="POST" enctype="multipart/form-data" onSubmit="return chkfrom();">
 																	<input type="hidden" name="qt" class="form-control" value="<?=$qt?>">
 																		<div class="form-group">
 																			<label class="control-label col-sm-3">ใบสลิป</label>
@@ -209,17 +199,7 @@
 																			</div>
 																		</div>
 																</form>
-                                <div class="form-group">
-                                  <div class="col-sm-offset-4 col-sm-8">
-                                      <form method="POST" action="update_status.php">
-                                        <input type="hidden" name="qt" value="<?=$_GET['qt']?>">
-                                        <input type="hidden" name="qt_status" value="4">
-                                        <button type="submit" class="btn btn-danger">ยกเลิกใบสั่งซื้อ</button>
-                                      </form>
-                                  </div>
-                                </div>
-
-                              </div>
+															</div>
 															<?php } ?>
 
 

@@ -1,7 +1,7 @@
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 <?php
-	require 'condatabase/conDB.php';
+		require 'condatabase/conDB.php';
     session_start();
 
 		$qt = addslashes($_POST['qt']);
@@ -39,12 +39,12 @@
 
 
 
-		$sql="INSERT INTO `pay_qt`(`user_id`, `qt_id`, `name`, `total`, `img`, `date_time`)";
+		$sql="INSERT INTO `pay_auction_qt`(`user_id`, `qt_id`, `name`, `total`, `img`, `date_time`)";
 		$sql .="VALUES ('{$_SESSION['id']}','{$qt}','{$name}','{$price}','{$image}','{$date}')";
 		try{
 		$data = getpdo($con,$sql);
 			if($data != 0){
-        $sql_update_qt =" UPDATE `qt_order` SET `status_qt_id`='2' WHERE `id_qt`='{$qt}'";
+        $sql_update_qt =" UPDATE `qt_auction` SET `status_qt_id`='2' WHERE `id_qt`='{$qt}'";
         if((getpdo($con,$sql_update_qt))){
 
           echo '<script>window.onload = function () {';

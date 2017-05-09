@@ -3,13 +3,6 @@
 session_start();
     require 'condatabase/conDB.php';
 
-    $sql="SELECT * FROM `content`";
-
-        $result=getpdo($con,$sql,1);
-        foreach ($result as $row) {
-                $content = $row['text'];
-        }
-
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
                 }else{?>
@@ -34,6 +27,9 @@ session_start();
         }
         tr#top{
             background-color: #DAFAF8;
+        }
+        label.qt{
+            font-size: 20px;
         }
     </style>
 </head>
@@ -62,10 +58,9 @@ session_start();
         include 'meun_qt.php';
         ?>
     </div><br>
-
-    <div id="page" class="container">
         <div class="row">
-                    <div class="col-md-offset-2 col-md-8">
+                    <div class="col-md-6">
+                        <label class="qt">ใบแจ้งชำระสินค้า</label>
                         <table class="table table-bordered">
                           <tr id="top">
                             <th>ใบสั่งซื้อ</th>
@@ -94,6 +89,36 @@ session_start();
 
                             </table>
                         </div>
+                        <div class="col-md-6">
+                        <label class="qt">ใบแจ้งชำระสินค้า(จากการประมูล)</label>
+                        <table class="table table-bordered">
+                          <tr id="top">
+                            <th>ใบสั่งซื้อ</th>
+                            <th>ผู้แจ้งชำระ</th>
+                          </tr>
+                              <?php
+                                $sql_auction_qt = "SELECT * FROM `pay_auction_qt`";
+                                $auction_qt = getpdo($con,$sql_auction_qt,1);
+                                if($auction_qt != NULL){
+                                    foreach ($auction_qt as $auction) {
+                                  ?>
+                                    <tr>
+                                    <td><a href="pay_detail_auction.php?qt=<?= $auction['qt_id']?>"><?= $auction['qt_id'] ?></a></td>
+                                    <td id="name"><?= $auction['name'] ?></td>
+                                  </tr>
+                                  <?php
+                                  }
+                                }else{
+                                    ?>
+                                      <tr>
+                                        <td colspan="2" id="no_data">**ไม่มีข้อมูลการสั่งซื้อ**</td>
+                                      </tr>
+                                    <?php
+                                }
+                              ?>
+
+                            </table>
+                        </div>
                 <div class="col-lg-12">
                 <hr/>
                 <footer class="footer">
@@ -101,7 +126,6 @@ session_start();
                 </footer>
                 </div>
         </div>
-    </div>
 </div>
                 </div>
             </div>

@@ -57,30 +57,6 @@ $( document ).ready(function() {
              <div class="col-md-3 col-sm-6 hero-feature">
                <div class="product" id="product-<?=$row['id']?>">
                   <div class="thumbnail">
-                    <?php
-                    if (($row['id_tag'] == 1)) {
-                    ?>
-                      <span class="calidad2" style=" background-image: -webkit-linear-gradient(#FF0000,#CC0000); background-image: linear-gradient(#FF0000,#CC0000);">
-                        มาใหม่
-                      </span>
-                    <?php
-                    }elseif (($row['id_tag'] == 2)) {
-                    ?>
-                      <span class="calidad2" style=" background-image: -webkit-linear-gradient(#00FF00,#CC0000); background-image: linear-gradient(#00FF00,#32CD32);">
-                          ขายดี
-                      </span>
-                    <?php
-                    }elseif (($row['id_tag'] == 3)) {
-                    ?>
-                      <span class="calidad2" style=" background-image: -webkit-linear-gradient(#00FF00,#CC0000); background-image: linear-gradient(#0066FF,#1E90FF);">
-                          แนะนำ
-                      </span>
-                    <?php
-                    }
-                    ?>
-                    <!-- <span class="calidad2" style=" background-image: -webkit-linear-gradient(#FF0000,#CC0000); background-image: linear-gradient(#FF0000,#CC0000);">
-                      ใหม่
-                    </span> -->
                     <a href="showdetail.php?p_id=<?=$row['id']?>">
                       <img src="backend/product/<?=$row["img"]?>" style="height:150px;">
                     </a>

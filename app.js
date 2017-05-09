@@ -31,7 +31,7 @@ dbRefObject.on('value', snap =>{
   $("#list").empty();
   $.each(json_data, function(index, val) {
      console.log(val)
-     $("#list").prepend('<tr class="list"><td>'+ val.name +'</td><td>'+ val.price +'</td><td>'+ val.time +'</td></tr>')
+     $("#list").prepend('<tr class="list"><td>'+ val.name +'</td><td>'+ val.price +'</td></tr>')
      g_price = val.price;
      g_user = val.id;
      global_price = g_price;
@@ -63,7 +63,7 @@ function addOnClick(){
   var price = $('#price').val();
   var userid = $('#userid').val();
   var username = $('#name').val();
-  var time = $('#time').val();
+  var time = Math.floor(Date.now() /1000);
   insertData(price,userid,username,time);
 }
 function insertData(price,userid,username,time) {

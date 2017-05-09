@@ -19,9 +19,8 @@
             <div class="caption">
                 <label><?=$row["name"]?></label>
                 <p>
-                 <a href="show_travel_detail.php?t_id=<?=$row["id"]?>" class="btn btn-success btn-block">
-                   <i class="fa fa-eye"></i> ดูรายละเอียด
-                 </a>
+                 <a href="show_travel_detail.php?t_id=<?=$row["id"]?>" class="btn btn-info btn-block">
+                   <img src="logo/eye.png"> ดูรายละเอียด</a>
                 </p>
             </div>
           </div>

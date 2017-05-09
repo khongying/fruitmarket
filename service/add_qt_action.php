@@ -2,7 +2,7 @@
 require'../condatabase/conDB.php';
 
 $code = $_POST['code'];
-$user_id = $_POST['user_id'];
+$user_id = $_POST['user_id']; 
 $now_price = $_POST['price'];
 $sql = "UPDATE `auction_product` SET`status`= 'D' WHERE `code` = '{$code}'";
 

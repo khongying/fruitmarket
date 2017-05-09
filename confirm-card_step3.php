@@ -54,13 +54,13 @@ require'condatabase/conDB.php';
                                 </a>
                             </li>
                             <li>
-                                <a href="#step-2">
+                                <a href="confirm-card_step2.php">
                                   <h4 class="list-group-item-heading">Step 2</h4>
                                   <p class="list-group-item-text">ข้อมูลการจัดส่ง</p>
                                 </a>
                             </li>
                             <li class="active">
-                                <a href="#step-3">
+                                <a href="confirm-card_step3.php">
                                   <h4 class="list-group-item-heading">Step 3</h4>
                                   <p class="list-group-item-text">แจ้งชำระสินค้า</p>
                                 </a>
@@ -123,6 +123,7 @@ require'condatabase/conDB.php';
 
                     <div class="col-md-offset-3 col-md-6">
                         <form class="form-horizontal" name="pay" action="payment.php" method="POST" enctype="multipart/form-data" onSubmit="return chkfrom();">
+                        <input type="hidden" name="qt" class="form-control" value="<?=$qt?>">
                             <div class="form-group">
                               <label class="control-label col-sm-3">ใบสลิป</label>
                               <div class="col-sm-8">

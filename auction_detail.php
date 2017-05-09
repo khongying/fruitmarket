@@ -32,7 +32,7 @@ require'condatabase/conDB.php';
       		line-height : 1.5;
       	}
         div.scroll {
-            width: 650px;
+            width: 500px;
             height: 300px;
             overflow: scroll;
         }
@@ -46,6 +46,11 @@ require'condatabase/conDB.php';
 		.control-label{
 			font-size: 16pt;
 		}
+		.img-thumbnail{
+			width: 400px;
+            height: 300px;
+		}
+
 	</style>
 </head>
 <body>
@@ -91,11 +96,7 @@ require'condatabase/conDB.php';
 							title: "ผู้ชนะการประมูล : "+name,
 							text: "ราคาในการชนะประมูล : "+now_price+" บาท",
 							imageUrl: 'logo/winner-with-trophy.png'
-						});
-						
-	                  	$.post('service/add_qt_action.php', {code:target, price:now_price, user_id:userid}, function() {
-	                    
-	                  }).done(function(data){
+						}).done(function(data){
 	                  	console.log(data);
 	                    // if(data == "true"){
 	                    //   location.reload();
@@ -116,17 +117,16 @@ require'condatabase/conDB.php';
 			<!-- start show product detail -->
 			<div class="container">
 			<div class="row" align="left">
-			<div class="col-md-5">
+			<div class="col-md-6">
 				<h2><b><?= $row['code'] ?></b></h2>
 				<h4><?= $row['name'] ?><br/></h4>
 				<h5 id="line"><?= $row['detail'] ?></h5>
-				<!-- <a href="#" class="btn btn-primary">
-					<i class="fa fa-gavel"></i> ซื้อเลย
-				</a> -->
-				<img src="backend/product/<?= $row['image'] ?>" width="100%" class="img-thumbnail">
+				<center>	
+				<img src="backend/product/<?= $row['image'] ?>" class="img-thumbnail">
+				</center>
 			</div>
 
-      <div class="col-md-6">
+      <div class="col-md-5">
 					<div class="form-group">
 							<label class="control-label col-md-6">สิ้นสุดการประมูลใน : </label>
 							<div class="col-md-6" id="<?= $row['code'] ?>" style="font-size: 16pt; color: #0000FF;"></div>
@@ -148,24 +148,13 @@ require'condatabase/conDB.php';
           		</diV>
 				</div>
 			<?php } 
-				date_default_timezone_set("Asia/Bangkok");
-				$t = time();
-				$date = date("Y-m-d",$t);
-				$time = date("H:i:s",$t);
-				$time_now = $date.$time;
-				$thaimonth=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
-
-				$naw_date  =  substr($time_now,8,2)." ";
-				$naw_date .=  $thaimonth[(substr($time_now,5,2)-1)]." ";
-				$naw_date .=  (substr($time_now,0,4)+543)." ";
-				$naw_date .=  "เวลา ".substr($time_now,-8);
-				// echo $naw_date;
+				
 			?>
 
             <input type="hidden" value="<?= $_GET['p_id'] ?>" id="code" />
             <input type="hidden" value="<?=$_SESSION['id']?>" id="userid" />
             <input type="hidden" value="<?=$_SESSION['name']?>" id="name" />
-            <input type="hidden" value="<?=$naw_date?>" id="time" />
+            <!-- <input type="hidden" value="<?=$naw_date?>" id="time" /> -->
 			<div class="col-md-5 input-group" id="input_price">
     		<input type="number" class="price form-control" id="price" />
 						<div class="input-group-btn">
@@ -183,7 +172,6 @@ require'condatabase/conDB.php';
 									<tr>
 										<th>ชื่อผู้ใช้</th>
 										<th>ราคาประมูล,THB</th>
-										<th>เวลา การประมูล</th>
 									</tr>
 								</thead>
 								<tbody id="list">

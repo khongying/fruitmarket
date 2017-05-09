@@ -49,7 +49,7 @@ require'condatabase/conDB.php';
                                 </a>
                             </li>
                             <li class="active">
-                                <a href="#step-2">
+                                <a href="confirm-card_step2.php">
                                   <h4 class="list-group-item-heading">Step 2</h4>
                                   <p class="list-group-item-text">ข้อมูลการจัดส่ง</p>
                                 </a>

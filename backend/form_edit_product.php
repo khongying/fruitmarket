@@ -44,7 +44,6 @@ session_start();
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -53,7 +52,6 @@ session_start();
                           $result=getpdo($con,$sql,1);
                           foreach ($result as $row) {
                       ?>
-                      <div class="container">
                           <div class="row">
                           <div class="col-md-3"></div>
                               <div class="col-md-6"> <br />
@@ -81,25 +79,6 @@ session_start();
                                           <p> ราคา (บาท) </p>
                                           <input type="number"  name="p_price" class="form-control" value="<?=$row['price']?>" placeholder="ราคา" />
                                       </div>
-                                      <div class="col-sm-3">
-                                          <p> รายการแนะนำ </p>
-                                          <?php
-                                              $sql_tag = "SELECT * FROM `tag`";
-                                              $tag=getpdo($con,$sql_tag,1);
-                                          ?>
-
-                                              <select name="p_tag" class="selectpicker form-control" data-live-search="true">
-                                        <?php foreach ($tag as $rows) {
-                                        ?>
-                                              <option value="<?= $rows['id'] ?>">
-                                                <?php echo $rows['tag']; ?>
-                                              </option>
-                                        <?php
-                                              }
-
-                                          ?>
-                                              </select>
-                                      </div>
                                       <div class="col-sm-6 info">
                                           <p> ภาพสินค้า </p>
                                           <input type="file" name="p_img" accept="image/*" class="form-control" />
@@ -114,7 +93,7 @@ session_start();
                               </form>
                               </div>
                           </div>
-                      </div>
+                      
                     <?php }
 
                     ?>
@@ -123,7 +102,6 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
         <!-- /#page-content-wrapper -->
 
     </div>
