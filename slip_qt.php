@@ -1,11 +1,6 @@
 <?php
   require_once("mpdf/mpdf.php");
-  $host="localhost";
-  $username="root";
-  $password="";
-  $DBname="fruitmarket";
-  $con=mysqli_connect($host,$username,$password,$DBname);
-  mysqli_set_charset($con,"utf8");
+  require 'condatabase/conDB.php';
   session_start();
 
   ob_start();
@@ -20,22 +15,52 @@ div.post{
 div.silp{
   padding-top: 10px;
   padding-left: 300px;
-  /*padding-right: 20px;*/
+  padding-bottom: 50px;
   font-size: 20pt;
   font-weight: bold;
 
 }
+div.post_user{
+  /*padding-left: 300px;*/
+  font-size: 15pt;
+  width: 250px;
+  /*padding-top: 5px;*/
+  padding-left: 50px;
+}
 div.top_post{
-  padding-left: 45px;
+  padding-left: 20px;
 }
 td.border{
   padding-top: 5px;
   border-style: solid;
   border-width: 1px;
 }
+
+
+table.table_list{
+   width: 900px;
+   padding-left: 20px;
+   padding-right: 20px;
+   padding-top: 50px;
+}
+th.list_top{
+      background-color: rgb(112, 196, 105);
+      color: white;
+      font-weight: normal;
+      padding: 20px 30px;
+      text-align: center;
+      font-size: 20pt;
+      font-weight: bold;
+    }
+td.list_detail{
+   font-size: 16pt;
+   background-color: rgb(238, 238, 238);
+   color:#000000;
+   padding: 20px 30px;
+  }
 </style>
 <body>
-    <div style="font-size: 30pt; font-weight: bold; padding-left: 20px; padding-top: 20px;">
+    <div style="font-size: 30pt; font-weight: bold; padding-left: 200px; padding-top: 20px;">
        ระบบบริหารการจัดการสวนผลไม้
     </div>
     <div class="silp">
@@ -53,18 +78,16 @@ td.border{
 
               </div>
           </td>
-          <td style="width:100px; "></td>
+          <td style="width:150px; "></td>
           <td class="border" style="width:300px; ">
-              <div class="post">
+              <div class="post_user">
                   <?php
                     $sql_post = "SELECT post_qt.address,post_qt.phone,users.fullname FROM post_qt LEFT JOIN users ON post_qt.user_id = users.id WHERE `qt_id` = '{$_GET['qt']}'";
-                    $data_post = mysqli_query($con,$sql_post);
-                    if (mysqli_num_rows($data_post) > 0) {
-                        while($row = mysqli_fetch_assoc($data_post)) {
+                    $data_post = getpdo($con,$sql_post,1);
+                    foreach ($data_post as $row) {
                           $name = $row['fullname'];
                           $address = $row['address'];
-                          $phone = $row['phone'];
-                        }
+                          $phone = $row['phone']; 
                     ?>
                         <label>ผู้ซื้อสินค้า : </label><?= $name ?><br>
                         <label>ที่อยู่จัดส่ง : </label><?= $address ?><br>
@@ -77,29 +100,52 @@ td.border{
         </tr>
       </table>
     </div>
+
+    <div class="list">
+        <table class="table_list">
+          <thead>
+            <tr id="top">
+              <th class="list_top">รายการ</th>
+              <th class="list_top">ราคาต่อชิ้น</th>
+              <th class="list_top">จำนวนชิ้น</th>
+              <th class="list_top">ราคารวม</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+            $total = 0 ;
+            $sql_list_product = "SELECT list_order.product_id,list_order.sum,list_order.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$_GET['qt']}'";
+            $data = getpdo($con,$sql_list_product,1);
+                foreach ($data as $row) {
+                  $sum = $row['sum'];
+                  $price = $row['price'];
+                  $id_pd = $row['product_id'];
+                  $total = $total + $sum*$price;
+                  $sql = "SELECT * FROM `product` WHERE code = '{$id_pd}'";
+                  $product = getpdo($con,$sql,1);
+                foreach ($product as $rows) {
+                    $name = $rows['name'];
+                    $img = $rows['img'];
+            ?>
+            <tr>
+              <td class="list_detail"><?=$name?></td>
+              <td class="list_detail"><?=number_format($price,2)?></td>
+              <td class="list_detail"><?=$sum?></td>
+              <td class="list_detail"><?=number_format($sum*$price,2)?></td>
+            </tr>
+
+            <?php
+            }
+            }
+            ?>
+            <tr>
+              <td colspan="3" class="list_detail">ยอดชำระสินค้า </td>
+              <td id="total" class="list_detail"><?=number_format($total,2)?> บาท</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
       
-
-
-
-
-
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th colspan="2"><h4>รายได้</h4></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ค่าจ้าง</td>
-        <td align="right"><?= number_format($row['labor_cost'],2) ?></td>
-      </tr>
-      <tr>
-        <td align="right" class="sum" colspan="2">ยอดสุทธิ&nbsp;&nbsp;&nbsp;<?= number_format($row['labor_cost'],2) ?></td>
-      </tr>
-    </tbody>
-  </table>
 </body>
 
 <?php
