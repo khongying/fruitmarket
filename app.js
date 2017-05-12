@@ -1,5 +1,5 @@
 
-(function () {
+(function () { 
 
   const config = {
     apiKey: "AIzaSyBDKJQYw9Nd4LPwV_lOnAu0XyIoXOHXBU8",

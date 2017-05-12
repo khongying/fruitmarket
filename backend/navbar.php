@@ -22,7 +22,7 @@ nav#navbar{
 
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a class="name" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?> <img src="logo/chevron-sign-down.png" /></a>
+            <a class="name" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name_admin']; ?> <img src="logo/chevron-sign-down.png" /></a>
               <ul class="dropdown-menu">
                 <li><a href="profile.php?user=<?=$_SESSION['name']?>"><img src="logo/avatar.png" /> Profile</a></li>
                 <li>

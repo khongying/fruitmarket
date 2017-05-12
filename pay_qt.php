@@ -101,9 +101,14 @@
             		<div class="col-md-9">
                     <div class="profile-content">
 													<div class="row">
-														<div>
+                          <div class="form-group">
+														<div class="col-md-9">
 															<h1 id="profile_name"><img src="logo/board.png" />  ประวัติการสั่งซื้อ</h1><hr/>
 														</div>
+                            <div class="col-md-2" style="text-align: left;">
+                            <a href="slip_qt.php?qt=<?=$_GET['qt']?>" class="btn btn-info"><img src="logo/printer.png"> พิมพ์ใบสั่งซื้อ</a>
+                            </div>
+                          </div>
 															<div class="col-md-offset-1 col-md-10">
                                 <table class="table table-bordered">
                                   <thead>
@@ -118,7 +123,7 @@
                                    <?php
                                    $qt = $_GET['qt'];
                                    $total = 0 ;
-                                   $sql_list_product = "SELECT list_order.product_id,list_order.sum,product.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$qt}'";
+                                   $sql_list_product = "SELECT list_order.product_id,list_order.sum,list_order.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$qt}'";
                                    $data = getpdo($con,$sql_list_product,1);
                                    foreach ($data as $row) {
                                       $sum = $row['sum'];

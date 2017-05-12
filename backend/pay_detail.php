@@ -157,7 +157,7 @@ session_start();
                      <tbody>
                        <?php
                        $total = 0 ;
-                       $sql_list_product = "SELECT list_order.product_id,list_order.sum,product.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$qt_id}'";
+                       $sql_list_product = "SELECT list_order.product_id,list_order.sum,list_order.price FROM list_order LEFT JOIN product ON list_order.product_id = product.code WHERE qt_order_id = '{$qt_id}'";
                        $data = getpdo($con,$sql_list_product,1);
                        foreach ($data as $row) {
                           $sum = $row['sum'];

@@ -18,7 +18,7 @@
 		$admin				= getpdo($con,$sql);
 		$_SESSION['admin'] 	= "admin";
 		$_SESSION['role'] 	= $role;
-		$_SESSION['name'] 	= $name;
+		$_SESSION['name_admin'] 	= $name;
 		header('location:home.php');
 	}
 	else{
