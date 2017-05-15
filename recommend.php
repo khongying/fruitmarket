@@ -1,7 +1,6 @@
 <?php
         require'condatabase/conDB.php';
         session_start();
-
 ?>
 <html>
 <head>
@@ -25,10 +24,11 @@ body{
     font-family: 'Itim', cursive;
   }
 #page{
-  padding-top:100px;
+  padding-top:50px;
 }
-#show{
-    padding-top:50px;
+#name{
+  color: #006C9A;
+  font-weight:bold;
 }
 </style>
 <body>
@@ -39,6 +39,7 @@ body{
 
 
           <div class="container" id="show">
+            <h2><label id="name"><img src="logo/sprout2.png"> แนะนำการปลูก (สำหรับผู้เริ่มปลูก)</label></h2>
             <div class="row">
               <?php
                    include 'sidebar.php';

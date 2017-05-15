@@ -20,7 +20,7 @@
 </head>
 <style type="text/css">
 	#page{
-		padding-top:100px;
+		padding-top:60px;
 	}
     #show{
         padding-top:50px;

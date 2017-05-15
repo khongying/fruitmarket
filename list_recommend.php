@@ -22,19 +22,15 @@
   width: 150px;
   height: 150px;
 }
-#name{
-  color: #006C9A;
-  font-size: 24px;
-  font-weight:bold;
-}
+
 </style>
-<label id="name"> แนะนำการปลูก (สำหรับผู้เริ่มปลูก)</label>
+
 <hr/>
 <div class="form-group">
    <div class="row">
 
      <div class="col-md-3">
-        <a href="#">
+        <a href="durian.php">
            <div id="item">
              <img id="img" src="icon-fruit/durian.png" />
              <p>ทุเรียน</p>
@@ -43,7 +39,7 @@
       </div>
 
       <div class="col-md-3">
-        <a href="#">
+        <a href="mangosteen.php">
           <div id="item">
             <img id="img" src="icon-fruit/mangosteen.png" />
             <p>มังคุด</p>
@@ -52,7 +48,7 @@
       </div>
 
       <div class="col-md-3">
-        <a href="#">
+        <a href="rambutan.php">
           <div id="item">
             <img id="img" src="icon-fruit/rambutan.png" />
             <p>เงาะ</p>
@@ -61,7 +57,7 @@
       </div>
 
       <div class="col-md-3">
-        <a href="#">
+        <a href="longkong.php">
            <div id="item">
              <img id="img" src="icon-fruit/longkong.png" />
              <p>ลองกอง</p>

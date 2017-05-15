@@ -36,7 +36,6 @@ td.border{
   border-width: 1px;
 }
 
-
 table.table_list{
    width: 900px;
    padding-left: 20px;
