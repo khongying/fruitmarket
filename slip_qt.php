@@ -29,11 +29,16 @@ div.post_user{
 }
 div.top_post{
   padding-left: 20px;
+  padding-bottom: 50px;
 }
 td.border{
   padding-top: 5px;
   border-style: solid;
   border-width: 1px;
+}
+div.list{
+   padding-left: 20px;
+   padding-right: 20px;
 }
 
 table.table_list{
@@ -41,22 +46,22 @@ table.table_list{
    padding-left: 20px;
    padding-right: 20px;
    padding-top: 50px;
+   text-align: center;
 }
 th.list_top{
-      background-color: rgb(112, 196, 105);
-      color: white;
       font-weight: normal;
       padding: 20px 30px;
-      text-align: center;
       font-size: 20pt;
       font-weight: bold;
     }
 td.list_detail{
    font-size: 16pt;
-   background-color: rgb(238, 238, 238);
-   color:#000000;
    padding: 20px 30px;
   }
+table.table_list, th.list_top, td.list_detail {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 </style>
 <body>
     <div style="font-size: 30pt; font-weight: bold; padding-left: 200px; padding-top: 20px;">
@@ -161,5 +166,5 @@ td.list_detail{
 	$mpdf->WriteHTML($html);
 
 
-	$mpdf->Output();
+	$mpdf->Output('qt-'.$_GET['qt'],'I');
 ?>

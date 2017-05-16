@@ -79,6 +79,10 @@ session_start();
                                           <p> ราคา (บาท) </p>
                                           <input type="number"  name="p_price" class="form-control" value="<?=$row['price']?>" placeholder="ราคา" />
                                       </div>
+                                      <div class="col-sm-3">
+                                            <p> จำนวน (ชิ้น) </p>
+                                            <input type="number"  name="p_num" class="form-control" value="<?=$row['num']?>" />
+                                        </div>
                                       <div class="col-sm-6 info">
                                           <p> ภาพสินค้า </p>
                                           <input type="file" name="p_img" accept="image/*" class="form-control" />

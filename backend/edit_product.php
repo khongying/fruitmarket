@@ -6,7 +6,7 @@ $code   = addslashes($_POST['p_code']);
 $name   = addslashes($_POST['p_name']);
 $detail = addslashes($_POST['p_detail']);
 $price  = addslashes($_POST['p_price']);
-$tag    = addslashes($_POST['p_tag']);
+$num    = addslashes($_POST['p_num']);
 
 date_default_timezone_set("Asia/Bangkok");
 $t = time();
@@ -38,7 +38,7 @@ if ($_FILES['p_img']["size"] != 0) {
   	$sql = "UPDATE `product` SET `code`='{$code}', `name`='{$name}', `detail`='{$detail}', `price`='{$price}'";
     if ($IMAGE_UPLOADED === true) {
   		$sql .= ",img='{$image}'";
-      $sql .= ",id_tag='{$tag}'";
+      $sql .= ",num='{$num}'";
       $sql .= ",date_save='{$date} {$time}'";
       $sql .= " WHERE id = '{$_POST['p_id']}'";
 
@@ -85,7 +85,7 @@ if ($_FILES['p_img']["size"] != 0) {
 
 }else {
   $sql = "UPDATE `product` SET `code`='{$code}', `name`='{$name}', `detail`='{$detail}', `price`='{$price}'";
-  $sql .= ",id_tag='{$tag}'";
+  $sql .= ",num='{$num}'";
   $sql .= ",date_save='{$date} {$time}'";
   $sql .= " WHERE id = '{$_POST['p_id']}'";
   try{
@@ -101,7 +101,7 @@ if ($_FILES['p_img']["size"] != 0) {
             },
             function(isConfirm){
             if (isConfirm) {
-            window.location.href = "home.php";
+            window.location.href = "list_product.php";
             }
             });}';
       echo '</script>';

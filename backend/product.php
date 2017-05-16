@@ -28,7 +28,7 @@
         <?php
                 include 'navbar.php';
         ?>
-    </diV>
+    </diV> 
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -37,7 +37,7 @@
         ?>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
+        <!-- Page Content --> 
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -58,7 +58,6 @@
                         <div>
                         <!-- form-->
 
-                        <div class="container">
                             <div class="row">
                             <div class="col-md-3"></div>
                                 <div class="col-md-6"> <br />
@@ -104,9 +103,12 @@
                                 </form>
                                 </div>
                             </div>
-                        </div>
+            
 
-
+                        <hr/>
+                        <footer class="footer">
+                        <p>&copy; BSRU 2017</p>
+                        </footer>   
                         <!-- form-->
                         </div>
                     </div>

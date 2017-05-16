@@ -5,8 +5,6 @@
   font-weight:bold;
 }
 </style>
-<label id="name"> แนะนำสวนผลไม้ ณ เมืองจันทร์ </label>
-<hr/>
 <?php
 
     $sql="SELECT * FROM `travel`";

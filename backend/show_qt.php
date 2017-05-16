@@ -143,9 +143,14 @@ session_start();
     <!-- /#wrapper -->
      <!-- Menu Toggle Script -->
     <script>
-    $("#qt_order").attr({
+    
+    $("#cash_qt").attr({ 
         "class" : "active"
     });
+
+    $("#qt_order").attr({ 
+            "class" : "active"
+        });
 
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

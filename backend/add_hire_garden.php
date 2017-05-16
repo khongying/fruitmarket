@@ -8,13 +8,11 @@
         $detail		=	 addslashes($_POST['detail']);
         $img_1		=	 addslashes($_POST['t_img_1']);
         $img_2		=	 addslashes($_POST['t_img_2']);
-        $img_3		=	 addslashes($_POST['t_img_3']);
-        $img_4		=	 addslashes($_POST['t_img_4']);
-        $lat		=	 addslashes($_POST['lat']);
-        $lng		=	 addslashes($_POST['lng']);
+        $price		=	 addslashes($_POST['price']);
+        $phone		=	 addslashes($_POST['phone']);
+        $line		=	 addslashes($_POST['line']);
 
-
-        $sql = "INSERT INTO `travel`(`name`, `img_pro`, `detail`, `img_1`, `img_2`, `img_3`, `img_4`, `lat`, `lng`) VALUES ('{$name}','{$img_pro}','{$detail}','{$img_1}','{$img_2}','{$img_3}','{$img_4}','{$lat}' ,'{$lng}' )";
+		$sql = "INSERT INTO `hire_garden`(`name`, `img_pro`, `detail`, `img_1`, `img_2`, `price`, `phone`, `line`) VALUES ('{$name}','{$img_pro}','{$detail}','{$img_1}','{$img_2}','{$price}','{$phone}','{$line}')";
 
 				try{
 					$data = getpdo($con,$sql);
@@ -57,6 +55,4 @@
 					echo 'ERORR: ',  $e->getMessage(), "\n";
 				}
 
-
-
-         ?>
+?>

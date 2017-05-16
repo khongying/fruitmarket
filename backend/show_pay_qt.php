@@ -136,6 +136,10 @@ session_start();
     <!-- /#wrapper -->
      <!-- Menu Toggle Script -->
     <script>
+    $("#cash_qt").attr({ 
+        "class" : "active"
+    });
+    
     $("#qt_pay").attr({
         "class" : "active"
     });

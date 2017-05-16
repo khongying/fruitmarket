@@ -19,7 +19,7 @@ li#sidebar{
             <a href="list_product.php" id="list_product"><img src="logo/wheelbarrow.png" />  คลังสินค้า</a>
         </li>
         <li>
-            <a href="show_pay_qt.php" id="cash"><img src="logo/cashbox.png" />  ตรวจสอบการแจ้งชำระ</a>
+            <a href="show_pay_qt.php" id="cash_qt"><img src="logo/cashbox.png" />  ตรวจสอบการแจ้งชำระ</a>
         </li>
         <li>
             <a href="worker.php" id="worker"><img src="logo/mechanic.png" /> ระบบจัดการคนงาน</a>

@@ -43,6 +43,7 @@ session_start();
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                    <h2><img src="logo/store.png" />  คลังสินค้า</h2><hr/>
                     <table class="table table-inverse">
                       <thead>
                         <tr>
@@ -51,7 +52,7 @@ session_start();
                           <th width="45%">ชื่อสินค้า</th>
                           <th width="20%">ราคา</th>
                           <th width="10%">จำนวน (ชิ้น)</th>
-                          <th width="20s%"><center>แก้ไข / ลบ</center></th>
+                          <th width="20s%"><center>แก้ไข</center></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -70,9 +71,7 @@ session_start();
                           <th><center><?=$row['num'];?></center></th>
                           <th>
                             <center>
-                              <a href="form_edit_product.php?product_id=<?php echo $row['id']; ?>">แก้ไข</a>
-                              /
-                              <a href="delete_product.php?product_id=<?php echo $row['id']; ?>">ลบ</a>
+                              <a href="form_edit_product.php?product_id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a>
                             </center>
                           </th>
                         </tr>
@@ -83,7 +82,11 @@ session_start();
                 </table>
                     </div>
                 </div>
-            </div>
+            </div> 
+      <hr/>
+      <footer class="footer">
+      <p>&copy; BSRU 2017</p>
+      </footer>   
         </div>
         <!-- /#page-content-wrapper -->
 

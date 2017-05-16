@@ -1,4 +1,4 @@
-<?php
+ <?php
         session_start();
         require 'condatabase/conDB.php';
 ?>
@@ -37,7 +37,7 @@
     <?php include'navbar.php'; ?>
 
         <div class="container" id="show">
-            <h2><label id="name"><img src="logo/field.png"> แนะนำสวนผลไม้ ณ เมืองจันทร์ </label></h2>
+        	 <h2><label id="name"><img src="logo/tractor.png"> เช่าสวนผลไม้ ณ เมืองจันทร์ </label></h2>
                <div class="row">
                  <?php
                       include 'sidebar.php';
@@ -45,7 +45,7 @@
 
                     <div class="col-md-10">
                        <?php
-                            include'showtravel.php';
+                            include'list_hire_garden.php';
                        ?>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
 include 'footer.php';
 ?>
 <script>
-$("#travel").attr({
+$("#hire").attr({
         "class" : "active"
     });
 </script>

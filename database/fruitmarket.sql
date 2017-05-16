@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2017 at 04:29 PM
+-- Generation Time: May 16, 2017 at 11:35 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -62,6 +62,25 @@ CREATE TABLE `backend` (
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `full_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hire_garden`
+--
+
+CREATE TABLE `hire_garden` (
+  `id` int(11) NOT NULL,
+  `name` text COLLATE utf8_unicode_ci NOT NULL,
+  `img_pro` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `detail` text COLLATE utf8_unicode_ci NOT NULL,
+  `img_1` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `img_2` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `line` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'A'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -297,6 +316,12 @@ ALTER TABLE `backend`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hire_garden`
+--
+ALTER TABLE `hire_garden`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `list_order`
 --
 ALTER TABLE `list_order`
@@ -400,6 +425,11 @@ ALTER TABLE `auction_product`
 ALTER TABLE `backend`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `hire_garden`
+--
+ALTER TABLE `hire_garden`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `list_order`
 --
 ALTER TABLE `list_order`
@@ -458,7 +488,7 @@ ALTER TABLE `reply`
 -- AUTO_INCREMENT for table `travel`
 --
 ALTER TABLE `travel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
