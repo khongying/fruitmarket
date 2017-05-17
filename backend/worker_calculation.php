@@ -106,12 +106,6 @@ session_start();
                                           </div>
 
                                             <div class="form-group">
-                                                <label class="control-label col-sm-4">จำนวนที่เก็บได้</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="kg" class="form-control" placeholder="กิโลกรัม">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
                                                 <div class="col-sm-offset-4 col-sm-8">
                                                     <button type="submit" class="btn btn-warning"><img src="logo/user.png" />  เพิ่ม</button>
                                                 </div>

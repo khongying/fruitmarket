@@ -24,16 +24,5 @@ li#sidebar{
         <li>
             <a href="worker.php" id="worker"><img src="logo/mechanic.png" /> ระบบจัดการคนงาน</a>
         </li>
-        <?php
-        if($_SESSION['role'] == "power_admin"){
-        ?>
-        <li>
-            <a href="users.php" id="users"><img src="logo/hierarchical-structure.png" /> ระบบจัดการผู้ใช้งาน</a>
-        </li>
-        <?php
-        }else{
-            echo "ไม่เจอ";
-        }
-        ?>
     </ul>
 </div>

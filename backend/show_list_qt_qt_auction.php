@@ -72,17 +72,24 @@ session_start();
         <div class="row">
              
                 <div class="col-md-offset-1 col-md-9">
-                <?php 
-                $qt = $_GET['qt'];
-                $sql_user = "SELECT qt_auction.id_qt,users.fullname FROM qt_auction LEFT JOIN users ON qt_auction.user_id = users.id WHERE id_qt = '{$qt}'";
-                $data_user = getpdo($con,$sql_user,1);
-                foreach ($data_user as $user) {
-                  $name_qt =  $user['fullname'];
-                ?>
-                <label id="user_qt">ใบสั่งซื้อของ : คุณ <?= $name_qt ?></label>
-                <?php
-                }
-                ?>
+                <div class=row>
+                  <div class="col-md-9">
+                  <?php 
+                  $qt = $_GET['qt'];
+                  $sql_user = "SELECT qt_auction.id_qt,users.fullname FROM qt_auction LEFT JOIN users ON qt_auction.user_id = users.id WHERE id_qt = '{$qt}'";
+                  $data_user = getpdo($con,$sql_user,1);
+                  foreach ($data_user as $user) {
+                    $name_qt =  $user['fullname'];
+                  ?>
+                  <label id="user_qt">ใบสั่งซื้อของ : คุณ <?= $name_qt ?></label>
+                  <?php
+                  }
+                  ?>
+                  </div>
+                  <div class="col-md-3">
+                     <a href="../slip_qt_action.php?qt=<?=$qt?>" target="_blank" class="btn btn-info"><img src="logo/printer.png"> พิมพ์ใบสั่งซื้อ</a>
+                  </div>
+                </div><br>
                   <table class="table table-bordered">
                       <thead>
                         <tr>

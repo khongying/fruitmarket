@@ -72,7 +72,7 @@
                                             <tr>
                                               <th>#</th>
                                               <th>ชื่อผลไม้</th>
-                                              <th>แก้ไข</th>
+                                              <th>แก้ไข / ลบ</th>
                                             </tr>
                                           </thead>
                                           <tbody>
@@ -85,7 +85,11 @@
                                             <tr>
                                               <th scope="row"><?php echo ++$i; ?></th>
                                               <td><?= $travel['name'] ?></td>
-                                              <td><a href="edit_travel.php?travel_id=<?= $travel['id']; ?>" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a></td>
+                                              <td>
+                                                <a href="edit_travel.php?travel_id=<?= $travel['id']; ?>" class="btn btn-warning" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
+
+                                                <a class="del_travel btn btn-danger" travel_id="<?=$travel['id']?>"><i class="fa fa-trash"></i></a>
+                                              </td>
                                             </tr>          
                                 <?php
                                     }
@@ -101,7 +105,7 @@
                                             <tr>
                                               <th>#</th>
                                               <th>ชื่อผลไม้</th>
-                                              <th>แก้ไข</th>
+                                              <th>แก้ไข / ลบ</th>
                                             </tr>
                                           </thead>
                                           <tbody>
@@ -114,7 +118,11 @@
                                             <tr>
                                               <th scope="row"><?php echo ++$i; ?></th>
                                               <td><?= $garden['name'] ?></td>
-                                              <td><a href="edit_garden..php?garden_id=<?= $garden['id']; ?>" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a></td>
+                                              <td>
+                                              <a href="edit_garden.php?garden_id=<?= $garden['id']; ?>" class="btn btn-warning" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
+
+                                              <a class="del_garden btn btn-danger" garden_id="<?=$garden['id']?>"><i class="fa fa-trash"></i></a>
+                                              </td>
                                             </tr>          
                                 <?php
                                     }
@@ -144,6 +152,32 @@
     $("#travel").attr({
         "class" : "active"
     });
+
+
+    $('.del_travel').click(function(event) {
+        var id = $(this).attr('travel_id');
+        $.post('del_travel.php', {travel_id: id}, 
+            function() {
+                
+        }).done(function(data){
+             location.reload();
+        });
+
+        
+    });    
+
+    $('.del_garden').click(function(event) {
+        var id = $(this).attr('garden_id');
+        $.post('del_garden.php', {garden_id: id}, 
+            function() {
+                
+        }).done(function(data){
+             location.reload();
+        });
+
+        
+    });
+
 
 
     </script>

@@ -1,14 +1,16 @@
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 <?php
-		require 'condatabase/conDB.php';
+	require 'condatabase/conDB.php';
     session_start();
 
-		$qt = addslashes($_POST['qt']);
-		$name = addslashes($_POST['name']);
-		$date	= addslashes($_POST['date']);
-		$price		= addslashes($_POST['price']);
-		$image 		= "";
+		$qt 	 = addslashes($_POST['qt']);
+		$name 	 = addslashes($_POST['name']);
+		$date	 = addslashes($_POST['date']);
+		$price	 = addslashes($_POST['price']);
+		$address = addslashes($_POST['address']);
+		$phone	 = addslashes($_POST['phone']);
+		$image 	 = "";
 
 
 		if (isset($_FILES['slip'])) {
@@ -39,8 +41,8 @@
 
 
 
-		$sql="INSERT INTO `pay_auction_qt`(`user_id`, `qt_id`, `name`, `total`, `img`, `date_time`)";
-		$sql .="VALUES ('{$_SESSION['id']}','{$qt}','{$name}','{$price}','{$image}','{$date}')";
+		$sql="INSERT INTO `pay_auction_qt`(`user_id`, `qt_id`, `name`, `total`, `img`, `date_time`, `address`, `phone`)";
+		$sql .="VALUES ('{$_SESSION['id']}','{$qt}','{$name}','{$price}','{$image}','{$date}','{$address}','{$phone}')";
 		try{
 		$data = getpdo($con,$sql);
 			if($data != 0){

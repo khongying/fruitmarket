@@ -82,7 +82,7 @@ session_start();
 
 
                                 <?php
-                                $sql = "SELECT person_worker.id,person_worker.date,person.full_name,worker.product FROM person_worker LEFT JOIN person ON person_worker.id_worker = person.id LEFT JOIN worker ON person_worker.id_worker = worker.id";
+                                $sql = "SELECT person_worker.id,person_worker.date,person.full_name,worker.product FROM `person_worker` INNER JOIN person ON person_worker.person_id = person.id INNER JOIN  worker ON person_worker.id_worker = worker.id";
                                 $result=getpdo($con,$sql,1);
                                 $thaimonth=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
 

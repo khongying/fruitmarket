@@ -4,14 +4,20 @@
   ob_start();
 ?>
 <style>
+div.edge_list{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 table{
    width: 900px;
    padding-left: 20px;
    padding-right: 20px;
 }
 th {
-      background-color: rgb(112, 196, 105);
-      color: white;
       font-weight: normal;
       padding: 20px 30px;
       text-align: center;
@@ -20,19 +26,22 @@ th {
     }
 td {
    font-size: 16pt;
-   background-color: rgb(238, 238, 238);
-   color:#000000;
    padding: 20px 30px;
   }
 
 td.sum{
   font-weight: bold;
   }
+div.edge{
+  width: 400px;
+  padding-left: 20px;
+}
 div.test{
   font-size: 16pt;
-  padding-top: 100px;
   padding-left: 20px;
   padding-right: 20px;
+  border-style: solid;
+  border-width: 1px;
 
 }
 div.silp{
@@ -72,31 +81,36 @@ div.silp{
     <div class="silp">
       <label>ใบจ่ายเงินรายวัน / PLAY SLIP</label>
     </div>
-    <div class="test">
-      <label>ชื่อ-นามสกุล : <?= $rows['full_name'] ?></label><br/>
-      <label>ประจำวันที่ : <?= $naw_date ?></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <label>เก็บผลผลิต : <?= $data['product'] ?></label><br/>
-    </div>
+    <div class="edge">
+      <div class="test">
+        <label>ชื่อ-นามสกุล : <?= $rows['full_name'] ?></label><br/>
+        <label>ที่อยู่ : <?= $rows['address'] ?></label><br/>
+        <label>เบอร์โทรศัพท์ : <?= $rows['phone'] ?></label><br/>
+        <label>ประจำวันที่ : <?= $naw_date ?></label><br/>
+        <label>เก็บผลผลิต : <?= $data['product'] ?></label><br/>
+      </div>
+    </div><br>
 
 
 
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th colspan="2"><h4>รายได้</h4></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ค่าจ้าง</td>
-        <td align="right"><?= number_format($row['labor_cost'],2) ?></td>
-      </tr>
-      <tr>
-        <td align="right" class="sum" colspan="2">ยอดสุทธิ&nbsp;&nbsp;&nbsp;<?= number_format($row['labor_cost'],2) ?></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="edge_list">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2"><h4>รายได้</h4></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ค่าจ้าง</td>
+          <td align="right"><?= number_format($row['labor_cost'],2) ?></td>
+        </tr>
+        <tr>
+          <td align="right" class="sum" colspan="2">ยอดสุทธิ&nbsp;&nbsp;&nbsp;<?= number_format($row['labor_cost'],2) ?></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
 <?php
@@ -113,5 +127,5 @@ div.silp{
 	$mpdf->WriteHTML($html);
 
 
-	$mpdf->Output();
+	$mpdf->Output('SLIP-'.$_GET['id'],'I');
 ?>

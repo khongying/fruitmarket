@@ -71,7 +71,7 @@ session_start();
                           <th><center><?=$row['num'];?></center></th>
                           <th>
                             <center>
-                              <a href="form_edit_product.php?product_id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a>
+                              <a href="form_edit_product.php?product_id=<?php echo $row['id']; ?>" class="btn btn-warning" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
                             </center>
                           </th>
                         </tr>

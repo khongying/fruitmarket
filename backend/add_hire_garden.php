@@ -28,7 +28,7 @@
 								},
 								function(isConfirm){
 								if (isConfirm) {
-								window.location.href = "home.php";
+								window.location.href = "travel_garden.php";
 								}
 								});}';
 					echo '</script>';
@@ -45,7 +45,7 @@
 								},
 								function(isConfirm){
 								if (isConfirm) {
-								window.location.href = "product.php";
+								window.location.href = "travel_garden.php";
 								}
 								});}';
 					echo '</script>';

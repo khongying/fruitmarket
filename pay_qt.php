@@ -94,7 +94,7 @@
             							ประวัติการสั่งซื้อ </a>
             						</li>
             					</ul>
-            				</div>
+            				</div> 
             				<!-- END MENU -->
             			</div>
             		</div>
@@ -106,7 +106,7 @@
 															<h1 id="profile_name"><img src="logo/board.png" />  ประวัติการสั่งซื้อ</h1><hr/>
 														</div>
                             <div class="col-md-2" style="text-align: left;">
-                            <a href="slip_qt.php?qt=<?=$_GET['qt']?>" class="btn btn-info"><img src="logo/printer.png"> พิมพ์ใบสั่งซื้อ</a>
+                            <a href="slip_qt.php?qt=<?=$_GET['qt']?>" target="_blank" class="btn btn-info"><img src="logo/printer.png"> พิมพ์ใบสั่งซื้อ</a>
                             </div>
                           </div>
 															<div class="col-md-offset-1 col-md-10">

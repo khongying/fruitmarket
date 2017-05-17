@@ -99,9 +99,15 @@
             		<div class="col-md-9">
                     <div class="profile-content">
 													<div class="row">
-														<div>
-															<h1 id="profile_name"><img src="logo/board.png" /> ใบสั่งซื้อ(จากการประมูล)</h1><hr/>
-														</div>
+														<!--  -->
+                            <div class="form-group">
+                              <div class="col-md-9">
+                              <h1 id="profile_name"><img src="logo/board.png" /> ใบสั่งซื้อ(จากการประมูล)</h1><hr/>
+                              </div>
+                              <div class="col-md-2" style="text-align: left;">
+                              <a href="slip_qt_action.php?qt=<?=$_GET['qt']?>" target="_blank" class="btn btn-info"><img src="logo/printer.png"> พิมพ์ใบสั่งซื้อ</a>
+                              </div>
+                            </div>
 															<div class="col-md-offset-1 col-md-10">
                                 <table class="table table-bordered">
                                   <thead>
@@ -187,12 +193,32 @@
 																		</div>
 
 																		<div class="form-group">
-																			<label class="control-label col-sm-3">ยอดการโอน</label>
+                                      <label class="control-label col-sm-3">ยอดการโอน</label>
+                                      <div class="col-sm-8">
+                                        <input type="number" name="price" class="form-control">
+                                      </div>
+                                    </div>
+                                  <?php
+                                  $sql_post = "SELECT `address`,`phone` FROM `users` WHERE `id`='1'";
+                                  $post_user = getpdo($con,$sql_post,1);
+                                    foreach ($post_user as $post) {
+                                  ?>
+                                    <div class="form-group">
+                                      <label class="control-label col-sm-3">ที่อยู่จัดส่งสินค้า</label>
+                                      <div class="col-sm-8">
+                                        <textarea class="form-control" name="address"><?=$post['address']?></textarea>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+																			<label class="control-label col-sm-3">เบอร์โทรศัพท์</label>
 																			<div class="col-sm-8">
-																				<input type="number" name="price" class="form-control">
+																				<input type="text" name="phone" class="form-control" value="<?=$post['phone']?>">
 																			</div>
 																		</div>
-
+                                <?php
+                                  } 
+                                ?>
 																		<div class="form-group">
 																			<div class="col-sm-offset-4 col-sm-8">
 																			<button type="submit" class="btn btn-success">ยืนยัน</button>

@@ -4,7 +4,7 @@
 
 require 'condatabase/conDB.php';
 
-$sql = "UPDATE `worker` SET `id`={$_POST['worker']},`kg`={$_POST['kg']} WHERE `id`={$_POST['worker']} ";
+$sql = "UPDATE `worker` SET `id`={$_POST['worker']},`day`={$_POST['day']} WHERE `id`={$_POST['worker']} ";
 
     if((getpdo($con,$sql))){
       echo '<script>window.onload = function () {';

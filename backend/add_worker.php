@@ -1,12 +1,12 @@
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
 <?php
-require 'condatabase/conDB.php';
+require 'condatabase/conDB.php'; 
 
-$sql_worker ="SELECT kg FROM `worker` WHERE id = '{$_POST['worker']}' Limit 1 ";
-$kg = getpdo($con,$sql_worker,'kg');
+$sql_worker ="SELECT day FROM `worker` WHERE id = '{$_POST['worker']}' Limit 1 ";
+$sum = getpdo($con,$sql_worker,'day');
 
-$sum = $_POST['kg']*$kg;
+
 
 date_default_timezone_set("Asia/Bangkok");
 $t = time();

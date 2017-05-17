@@ -50,6 +50,9 @@ require'condatabase/conDB.php';
 			width: 400px;
             height: 300px;
 		}
+		.table>thead>tr>th{
+			text-align: center;
+		}
 
 	</style>
 </head>
@@ -170,8 +173,8 @@ require'condatabase/conDB.php';
 							<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th>ชื่อผู้ใช้</th>
-										<th>ราคาประมูล,THB</th>
+										<th class="head">ชื่อผู้ใช้</th>
+										<th class="head">ราคาประมูล,THB</th>
 									</tr>
 								</thead>
 								<tbody id="list">

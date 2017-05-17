@@ -142,7 +142,8 @@ session_start();
                           </div>
 
                           <div class="col-md-offset-2 col-md-7">
-                            <a class="btn btn-success" href="slip_worker.php?id=<?=$_GET['id']?>"><img src="logo/invoice.png" />  พิมพ์สลิป</a>
+                            <a target="_blank" class="btn btn-success" href="slip_worker.php?id=<?=$_GET['id']?>"><img src="logo/invoice.png" />  พิมพ์สลิป</a>
+                            <a class="btn btn-warning" href="worker_search.php"><img src="logo/left-arrow.png" /> กลับ</a>
                           </div>
 
 

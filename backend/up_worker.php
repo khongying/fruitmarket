@@ -27,6 +27,9 @@ session_start();
         #wrapper{
             padding-top:50px;
         }
+        .table>tbody>tr>td,.table>thead>tr>th{
+          text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -57,31 +60,29 @@ session_start();
 
                             <div class="col-md-offset-4 col-md-5">
                               <table class="table table-hover">
-                              <thead class="thead-default">
-                              <tr>
-                                <th>#</th>
-                                <th>รายการ</th>
-                                <th>กิโลกรัม</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-
-
-                              <?php
-                              $sql = "SELECT * FROM worker";
-                              $result=getpdo($con,$sql,1);
-                              $i = 0;
-                              foreach ($result as $row) {
-                                ?>
+                                <thead class="thead-default">
                                 <tr>
-                                <th scope="row"><?php echo ++$i; ?></th>
-                                <td><?=$row['product']?></td>
-                                <td><?=$row['kg']?></td>
+                                  <th>#</th>
+                                  <th>รายการ</th>
+                                  <th>ค่าแรง/วัน</th>
                                 </tr>
-                              <?php
-                              }
-                              ?>
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $sql = "SELECT * FROM worker";
+                                $result=getpdo($con,$sql,1);
+                                $i = 0;
+                                foreach ($result as $row) {
+                                  ?>
+                                  <tr>
+                                  <td scope="row"><?php echo ++$i; ?></td>
+                                  <td><?=$row['product']?></td>
+                                  <td class="list"><?=$row['day']?></td>
+                                  </tr>
+                                <?php
+                                }
+                                ?>
+                              </tbody>
                             </table>
 
                           </div>
@@ -109,8 +110,8 @@ session_start();
                                       </select>
                                   </div>
                                   <div class="col-md-6">
-                                      <p> กิโลกรัม</p>
-                                      <input type="text"  name="kg" class="form-control" placeholder="กิโลกรัม" />
+                                      <p> ค่าแรง/วัน</p>
+                                      <input type="text"  name="day" class="form-control" placeholder="ค่าแรงต่อวัน" />
                                   </div>
                               </div>
 

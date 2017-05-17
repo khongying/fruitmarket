@@ -19,9 +19,12 @@
     		padding-top:200px;
     		padding-left:50px;
     	}
+    	body.background{
+    		background-image: url("img/back.jpg");
+    	}
     </style>
 </head>
-<body class="background" style="background-color:#BCE0DA;">
+<body class="background">
 
 	<div class="form">
 		<form action="login.php" method="post">
