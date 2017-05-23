@@ -96,13 +96,6 @@
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-4">จดหมายข่าว</label>
-                            <div class="col-sm-8">
-                            <label class="checkbox-inline"><input type="checkbox" name="news" value="T"> ฉันต้องการรับข้อเสนอทางอีเมล</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
                                 <button type="submit" class="btn btn-info"><img src="logo/user.png" />  สมัครสมาชิก</button>
                             </div>

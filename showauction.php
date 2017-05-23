@@ -12,6 +12,8 @@
       $sql="SELECT * FROM `auction_product` WHERE status = 'A'";
 
             $result=getpdo($con,$sql,1);
+            if ($result != NULL) {
+            
             foreach ($result as $row) {
               $time_stramp = strtotime($row['end_time']);
               $dateArrayEnd['y'] = date('Y',$time_stramp)*1;
@@ -74,4 +76,11 @@
       </div>
       <?php
     }
-      ?>
+  }else{
+ ?> 
+    <center>
+    <h1><label>**ยังเปิดประมูลสินค้าค่ะ**</label></h1> 
+    </center>
+ <?php
+  }
+    ?>

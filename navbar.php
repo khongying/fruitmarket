@@ -125,6 +125,10 @@ $( document ).ready(function() {
 						<ul class="nav navbar-nav">
 							<li><a href="webboard.php"><img src="logo/chat.png" /> กระทู้ถาม-ตอบ</a></li>
 						</ul>
+
+						<ul class="nav navbar-nav">
+							<li><a href="promotion.php"><img src="logo/megaphone.png" /> ประชาสัมพันธ์-โปรโมชั่น</a></li>
+						</ul>
 						<?php
 							if(isset($_SESSION['login']) && $_SESSION['login'] != 'false'){?>
 							<ul class="nav navbar-nav navbar-right">

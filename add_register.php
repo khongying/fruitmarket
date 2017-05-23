@@ -11,7 +11,7 @@
 	$name 		= 		addslashes($_POST['fullname']);
 	$phone 		= 		addslashes($_POST['phone']);
 	$sex    	=			addslashes($_POST['sex']);
-	$news 		= 		(isset($_POST['news']) ? $_POST['news'] : 'F');
+	
 
 
 	$chkmail = "SELECT * FROM `users` WHERE `email`='$mail'";
@@ -38,7 +38,7 @@
 
 	}else{
 
-		$sql ="INSERT INTO `users`(`email`, `password`, `fullname`, `birthday`, `address`, `phone`, `sex`, `news`) VALUES ('$mail','$pass','$name','$date','$address','$phone','$sex','$news')";
+		$sql ="INSERT INTO `users`(`email`, `password`, `fullname`, `birthday`, `address`, `phone`, `sex`) VALUES ('$mail','$pass','$name','$date','$address','$phone','$sex')";
 
 		$data = getpdo($con,$sql,2);
 		if($data != 0){
