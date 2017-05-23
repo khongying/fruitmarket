@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2017 at 11:35 PM
+-- Generation Time: May 23, 2017 at 10:38 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -61,7 +61,19 @@ CREATE TABLE `backend` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `full_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'admin',
+  `status` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'A'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(2) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -101,6 +113,20 @@ CREATE TABLE `list_order` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `news_promotion`
+--
+
+CREATE TABLE `news_promotion` (
+  `id` int(10) NOT NULL,
+  `name_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `detail` text COLLATE utf8_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status_category` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pay_auction_qt`
 --
 
@@ -111,7 +137,9 @@ CREATE TABLE `pay_auction_qt` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `total` int(11) NOT NULL,
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `date_time` datetime NOT NULL
+  `date_time` datetime NOT NULL,
+  `address` text COLLATE utf8_unicode_ci NOT NULL,
+  `phone` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -278,7 +306,7 @@ CREATE TABLE `users` (
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `sex` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
-  `news` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'F'
+  `status` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'A'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -290,7 +318,7 @@ CREATE TABLE `users` (
 CREATE TABLE `worker` (
   `id` int(11) NOT NULL,
   `product` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `kg` int(11) NOT NULL
+  `day` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -316,6 +344,12 @@ ALTER TABLE `backend`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hire_garden`
 --
 ALTER TABLE `hire_garden`
@@ -325,6 +359,12 @@ ALTER TABLE `hire_garden`
 -- Indexes for table `list_order`
 --
 ALTER TABLE `list_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news_promotion`
+--
+ALTER TABLE `news_promotion`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -425,20 +465,30 @@ ALTER TABLE `auction_product`
 ALTER TABLE `backend`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `hire_garden`
 --
 ALTER TABLE `hire_garden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `list_order`
 --
 ALTER TABLE `list_order`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
+-- AUTO_INCREMENT for table `news_promotion`
+--
+ALTER TABLE `news_promotion`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `pay_auction_qt`
 --
 ALTER TABLE `pay_auction_qt`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pay_qt`
 --
@@ -488,7 +538,7 @@ ALTER TABLE `reply`
 -- AUTO_INCREMENT for table `travel`
 --
 ALTER TABLE `travel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --

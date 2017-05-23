@@ -67,7 +67,7 @@
                     <div class="col-lg-12">
                         <h2><img src="logo/text-lines.png" />  ประชาสัมพันธ์-โปรโมชั่น</h2><hr/>
                             <div class="col-md-offset-3 col-md-6">
-                            <a class="btn btn-info" href="new_promotion.php">เพิ่มข่าวประชาสัมพันธ์-โปรโมชั่น</a>
+                            <a class="btn btn-info" href="new_promotion.php"><img src="logo/newspaper.png" /> เพิ่มข่าวประชาสัมพันธ์-โปรโมชั่น</a>
                                             <table class="table table-hover">
                                               <thead>
                                                 <tr>

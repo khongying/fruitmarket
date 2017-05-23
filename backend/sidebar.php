@@ -27,5 +27,8 @@ li#sidebar{
         <li>
             <a href="list_new_promotion.php" id="new_promotion"><img src="logo/megaphone.png" /> ประชาสัมพันธ์-โปรโมชั่น</a>
         </li>
+        <li>
+            <a href="users.php" id="user"><img src="logo/hierarchical-structure.png" /> ระบบจัดการผู้ใฃ้งาน</a>
+        </li>
     </ul>
 </div>

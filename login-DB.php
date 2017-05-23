@@ -30,7 +30,7 @@
 		}else{
 			echo '<script>window.onload = function () {';
 			echo 'swal({
-						title: "อีเมลล์หรือรหัสผ่านไม่ถูกต้อง",
+						title: "บัญชีผู้ใช้ถูกระงับการใช้งาน",
 						text: " ",
 						type: "warning",
 						showCancelButton: false,

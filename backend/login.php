@@ -14,12 +14,32 @@
 		foreach ($user as $row) {
 			$role = $row['role'];
 			$name = $row['full_name'];
+			$status = $row['status'];
 		}
-		$admin				= getpdo($con,$sql);
-		$_SESSION['admin'] 	= "admin";
-		$_SESSION['role'] 	= $role;
-		$_SESSION['name_admin'] 	= $name;
-		header('location:home.php');
+		if ($status == 'A') {
+			$_SESSION['admin'] 	 		= "admin";
+			$_SESSION['role'] 	 		= $role;
+			$_SESSION['name_admin'] 	= $name;
+			header('location:home.php');
+		}else{
+			
+			echo '<script>window.onload = function () {';
+			echo 'swal({
+					title: "บัญชีผู้ใช้ถูกระงับการใช้งาน",
+					text: " ",
+					type: "warning",
+					showCancelButton: false,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "OK",
+					},
+					function(isConfirm){
+					if (isConfirm) {
+					window.location.href = "index.php";
+					}
+					});}';
+			echo '</script>';
+		}
+		
 	}
 	else{
 		echo '<script>window.onload = function () {';
