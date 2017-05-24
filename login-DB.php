@@ -18,7 +18,7 @@
 			$fullname = $row['fullname'];
 			$mail = $row['email'];
 			$id = $row['id'];
-			$status = $row['status'];
+			$status = $row['status']; 
 		}
 		if ($status == 'A') {
 			$_SESSION['name'] = $fullname;

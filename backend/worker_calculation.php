@@ -1,8 +1,6 @@
 <?php
 
-    require 'condatabase/conDB.php';
-
-
+require 'condatabase/conDB.php';
 session_start();
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login

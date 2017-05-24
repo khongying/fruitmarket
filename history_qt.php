@@ -128,7 +128,7 @@
                                   <?php
                                     $sql_action = "SELECT qt_auction.id_qt,qt_status.name FROM qt_auction LEFT JOIN qt_status ON qt_auction.status_qt_id = qt_status.id WHERE qt_auction.user_id = '{$_SESSION['id']}'";
                                     $action = getpdo($con,$sql_action,1);
-                                    if($qt_order != NULL){
+                                    if($action != NULL){
                                         foreach ($action as $list) {
                                   ?>
                                       <tr>

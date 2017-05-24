@@ -1,9 +1,9 @@
 <div class="col-md-2">
      <ul class="nav nav-pills nav-stacked">
-     <li id="index"><a href="index.php"><img src="logo/carts.png" /> สินค้า</a></li>
-     <li id="auction"><a href="auction.php"><img src="logo/auction.png" /> ประมูลผลไม้</a></li>
-     <li id="travel"><a href="travel.php"><img src="logo/windmill.png" /> เยี่มชมสวนผลไม้</a></li>
-     <li id="hire"><a href="show_hire_garden.php"><img src="logo/farmer.png" /> เช่าสวนปลไม้</a></li>
-     <li id="recommend"><a href="recommend.php"><img src="logo/sprout.png" />  แนะการปลูก</a></li>
+     <li id="index"><a href="index.php"><img src="logo/carts.png" />สินค้า</a></li>
+     <li id="auction"><a href="auction.php"><img src="logo/auction.png" />ประมูลผลไม้</a></li>
+     <li id="travel"><a href="travel.php"><img src="logo/windmill.png" />เยี่ยมชมสวนผลไม้</a></li>
+     <li id="hire"><a href="show_hire_garden.php"><img src="logo/farmer.png" />เช่าสวนผลไม้</a></li>
+     <li id="recommend"><a href="recommend.php"><img src="logo/sprout.png" />แนะนำการปลูก</a></li>
      </ul>
  </div>

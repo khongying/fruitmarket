@@ -4,7 +4,7 @@ require'condatabase/conDB.php';
 
 $p_id = $_GET['p_id'];
 
-$sql="SELECT * FROM `product` WHERE `id`='$p_id '";
+$sql="SELECT product.code,product.name,product.detail,product.price,product.img,product.num,category_product.name_category FROM `product` INNER JOIN category_product ON product.category_product = category_product.id WHERE product.id ='{$p_id}'";
 $result=getpdo($con,$sql,1);
     foreach ($result as $row) {
     	$code   = $row['code'];
@@ -12,7 +12,8 @@ $result=getpdo($con,$sql,1);
 		  $img  	= $row['img'];
 		  $num 	= $row['num'];
 		  $price 	= $row['price'];
-    	$detail = $row['detail'];
+      $detail = $row['detail'];
+    	$category = $row['name_category'];
     }
 ?>
 <html>
@@ -63,7 +64,7 @@ $result=getpdo($con,$sql,1);
         <?php if ($num != 0 ){ ?>
           <font color="#00FF00">มีสินค้า</font>
           <hr/>
-            จำนวน <input type="number" id="num" value="0" min="1" max="10" /> ชิ้น
+            จำนวน <input type="number" id="num" value="0" min="1" max="10" /> <?= $category ?>
           <hr/>
     			<a class="btn btn-primary" id="submit"><img src="logo/shopping-cart.png" />  ใส่ตะกร้าสินค้า</a>
     			<a href="index.php" class="btn btn-success"><img src="logo/left-arrow.png" /> กลับไปหน้าหลัก</a>

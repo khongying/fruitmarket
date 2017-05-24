@@ -1,4 +1,6 @@
 <?php 
+    require 'condatabase/conDB.php';
+
     session_start();
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
@@ -87,10 +89,27 @@
                                             <input type="number"  name="p_price" class="form-control" placeholder="ราคา" />
                                         </div>
                                         <div class="col-sm-3">
-                                            <p> จำนวน (ชิ้น) </p>
-                                            <input type="number"  name="p_num" class="form-control" placeholder="ราคา" />
+                                            <p> จำนวน </p>
+                                            <input type="number"  name="p_num" class="form-control" placeholder="จำนวน" />
                                         </div>
-                                        <div class="col-sm-6 info">
+                                        <div class="col-sm-3">
+                                            <p> หน่วย </p>
+                                            <select name="p_category" class=" form-control" >
+                                                    <?php 
+                                                    $sql_person = "SELECT * FROM category_product";
+                                                    $result=getpdo($con,$sql_person,1);
+                                                    foreach ($result as $row) {
+                                                    ?>
+                                                    <option value="<?= $row['id'] ?>">
+                                                      <?php echo $row['name']; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+
+                                                    ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 info">
                                             <p> ภาพสินค้า </p>
                                             <input type="file" name="p_img" accept="image/*" class="form-control" />
                                         </div>

@@ -8,6 +8,7 @@
 		$p_detail = addslashes($_POST['p_detail']);
 		$p_price 	= addslashes($_POST['p_price']);
 		$p_num 		= addslashes($_POST['p_num']);
+		$p_category = addslashes($_POST['p_category']);
 		$image 		= "";
 
 
@@ -36,11 +37,14 @@
     }
   }
 
-		$sql="INSERT INTO `product`(`code`, `name`, `detail`, `price`, `img`, `num`)";
-		$sql .="VALUES ('$p_code','$p_name','$p_detail','$p_price','$image','$p_num')";
+		$sql="INSERT INTO `product`(`code`, `name`, `detail`, `price`, `img`, `num`, `category_product`)";
+		$sql .="VALUES ('$p_code','$p_name','$p_detail','$p_price','$image','$p_num','$p_category')";
 		try{
 		$data = getpdo($con,$sql);
 			if($data != 0){
+				$sql_product_pay = "INSERT INTO `product_pay`(`code`, `name`, `num`, `price`) VALUES ('$p_code','$p_name', '$p_num', '$p_price')";
+				$res = getpdo($con,$sql_product_pay);
+				if($res != 0){
 				echo '<script>window.onload = function () {';
 				echo 'swal({
 							title: "เพิ่มสินค้าเรียบร้อย",
@@ -56,6 +60,7 @@
 							}
 							});}';
 				echo '</script>';
+				}
 			}
 			else{
 				echo '<script>window.onload = function () {';
