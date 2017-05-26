@@ -6,11 +6,12 @@
 <html>
 <head>
 	<title>Login to Backend</title>
+	<link rel="shortcut icon" type="image/png" href="logo/backend.png">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/index.css" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
+	<link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
     <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>

@@ -7,6 +7,7 @@ require 'condatabase/conDB.php';
 <html>
 <head>
     <title>Backend | ระบบจัดการผู้ใช้งาน</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
@@ -72,7 +73,8 @@ require 'condatabase/conDB.php';
                                     <table class="table table-inverse">
                                       <thead>
                                         <tr>
-                                          <th>ชื่อผู้ใช้</th>
+                                          <th>ผู้ดูแล</th>
+                                          <th>ตำแหน่ง</th>
                                           <th>ลบ</th>
                                         </tr>
                                       </thead>
@@ -82,6 +84,7 @@ require 'condatabase/conDB.php';
                                           ?>
                                             <tr>
                                                 <td><?= $row['full_name'] ?></td>
+                                                <td><?= $row['role'] ?></td>
                                                 <td><a class="del_admin btn btn-danger" admin_id="<?=$row['id']?>"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                     <?php

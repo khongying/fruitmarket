@@ -134,7 +134,7 @@ require'condatabase/conDB.php';
                             <div class="form-group">
                               <label class="control-label col-sm-3">ชื่อผู้โอน</label>
                               <div class="col-sm-8">
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" value="<?=$_SESSION['name']?>">
                               </div>
                             </div>
 

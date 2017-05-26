@@ -4,12 +4,15 @@ session_start();
     require 'condatabase/conDB.php';
     require '../service/datetime.php';
 
+
+
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
                 }else{?>
 <html>
 <head>
     <title>Backend</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -75,6 +78,9 @@ session_start();
     <div>
         <?php
         include 'meun_qt.php';
+
+        $sql_view = "UPDATE `pay_qt` SET `view`= '0' WHERE `qt_id` = '{$_GET['qt']}'";
+        (getpdo($con,$sql_view));
         ?>
     </div><br>
         <div class="row">

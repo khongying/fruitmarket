@@ -12,6 +12,7 @@ session_start();
 <html>
 <head>
     <title>Backend</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -61,14 +62,10 @@ session_start();
         ?>
     </diV>
     <div id="wrapper">
-
-        <!-- Sidebar -->
         <?php
             include 'sidebar.php';
         ?>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
+       
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -77,6 +74,9 @@ session_start();
     <div>
         <?php
         include 'meun_qt.php';
+
+        $sql_view = "UPDATE `pay_auction_qt` SET `view`= '0' WHERE `qt_id` = '{$_GET['qt']}'";
+        (getpdo($con,$sql_view));
         ?>
     </div><br>
         <div class="row">

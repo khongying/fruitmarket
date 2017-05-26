@@ -132,9 +132,6 @@ $( document ).ready(function() {
 						<?php
 							if(isset($_SESSION['login']) && $_SESSION['login'] != 'false'){?>
 							<ul class="nav navbar-nav navbar-right">
-									<li></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
 									<li>
 										<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?> <img src="logo/chevron-sign-down.png" /></i>
 										</a>

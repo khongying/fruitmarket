@@ -54,7 +54,7 @@ label.top{
                 <a href="longkong.php"><label id="name" style="font-size: 24pt;">ลองกอง (Longkong)</label></a>
               </div>
               <div class="col-md-2" id="back">
-                <a href="recommend.php" class="btn btn-info" style="right: 10px;">กลับ</a>
+                <a href="recommend.php" class="btn btn-info" style="right: 10px;"><img src="logo/left-arrow.png" /> กลับ</a>
               </div>
             </div>
             <!-- <br> -->

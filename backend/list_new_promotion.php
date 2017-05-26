@@ -6,7 +6,8 @@
                 }else{?>
 <html>
 <head>
-    <title>Backend | เพิ่มสินค้า</title>
+    <title>Backend | ประชาสัมพันธ์-โปรโมชั่น</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">

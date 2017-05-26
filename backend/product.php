@@ -9,6 +9,7 @@
 <head>
     <title>Backend | เพิ่มสินค้า</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -101,7 +102,7 @@
                                                     foreach ($result as $row) {
                                                     ?>
                                                     <option value="<?= $row['id'] ?>">
-                                                      <?php echo $row['name']; ?>
+                                                      <?php echo $row['name_category']; ?>
                                                     </option>
                                                     <?php
                                                     }

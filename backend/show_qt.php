@@ -11,6 +11,7 @@ session_start();
 <html>
 <head>
     <title>Backend</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
@@ -70,11 +71,11 @@ session_start();
                             <th>วันที่สร้างใบสั่งซื้อ</th>
                           </tr>
                               <?php
-                                $sql_qt = "SELECT qt_order.id_qt,qt_order.create_date,qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id";
+                                $sql_qt = "SELECT qt_order.id_qt,qt_order.create_date,qt_status.name FROM qt_order LEFT JOIN qt_status ON qt_order.status_qt_id = qt_status.id ORDER BY `id_qt`DESC";
                                 $qt_order = getpdo($con,$sql_qt,1);
                                 if($qt_order != NULL){
                                     foreach ($qt_order as $qt) {
-                                  ?>
+                                  ?> 
                                     <tr>
                                     <td><a href="show_list_qt.php?qt=<?= $qt['id_qt']?>"><?= $qt['id_qt'] ?></a></td>
                                     <td id="name"><?= $qt['name'] ?></td>
@@ -103,7 +104,7 @@ session_start();
                             <th>วันที่สร้างใบสั่งซื้อ</th>
                           </tr>
                               <?php
-                                $sql_auction = "SELECT qt_auction.id_qt,qt_auction.create_date,qt_status.name FROM qt_auction LEFT JOIN qt_status ON qt_auction.status_qt_id = qt_status.id";
+                                $sql_auction = "SELECT qt_auction.id_qt,qt_auction.create_date,qt_status.name FROM qt_auction LEFT JOIN qt_status ON qt_auction.status_qt_id = qt_status.id ORDER BY `id_qt`DESC";
                                 $auction = getpdo($con,$sql_auction,1);
                                 if($auction != NULL){
                                     foreach ($auction as $qt_auction) {

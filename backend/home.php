@@ -9,6 +9,7 @@ session_start();
 <html>
 <head>
     <title>Backend</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -54,7 +55,7 @@ session_start();
                      <select id="year" class="form-control">
                         <?php 
                             $yearNow = date('Y');
-                            $historyYear =$yearNow - 10;
+                            $historyYear =$yearNow - 5;
 
                         ?>
                          <?php for($historyYear ; $historyYear<=$yearNow ; $historyYear++ ){
@@ -75,7 +76,7 @@ session_start();
                 <div class="row">
                   <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
                   <div class="row">
-                    
+    
                     <div id="table"></div>  
                  
                   </div>
@@ -114,7 +115,7 @@ $(function(){
 
 // start function
 function render_chart(data,title,target){
-            Highcharts.chart(target, {
+    Highcharts.chart(target, {
         chart: {
             type: 'column'
         },

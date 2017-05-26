@@ -16,21 +16,31 @@ require 'condatabase/conDB.php';
 
   foreach ($array_m as $key => $value) {
      $value = $year.$value;
+     // $value = "2017-05-";
      $sql = "SELECT sum( (`list_order`.`sum`*`price`)) as total_moeny FROM `list_order` INNER JOIN qt_order ON (list_order.qt_order_id=qt_order.id_qt) WHERE qt_order.status_qt_id = '5' AND qt_order.create_date REGEXP '{$value}'";
-     // $sql_auction ="SELECT sum(now_price) as total_auction FROM qt_auction WHERE status_qt_id = '5' AND qt_auction.create_date REGEXP '{$value}'";
 
-     // $auction = getpdo($con,$sql_auction,1);
-     //        foreach ($auction as $rows){
-     //          $total_auction[] = (($rows['total_auction'] == null) ? 0 : $rows['total_auction']*1);
-     //        }
+     $sql_auction ="SELECT sum(now_price) as total_auction FROM qt_auction WHERE status_qt_id = '5' AND qt_auction.create_date REGEXP '{$value}'";
+      $auction = getpdo($con,$sql_auction,1);
+            foreach ($auction as $rows){
+              $total_auction[] = (($rows['total_auction'] == null) ? 0 : $rows['total_auction']*1);
+            }
+            
 
     $result=getpdo($con,$sql,1);
           foreach ($result as $row) {
             $total_moeny2[] = (($row['total_moeny'] == null) ? 0 : $row['total_moeny']*1);
           }
   }
+
+
+ for ($i=0; $i < 12 ; $i++) { 
+      $total[] = $total_auction[$i]+$total_moeny2[$i];
+    }
+
+// var_dump($total);
+
 $array_pack_data['total_moeny1'] = $total_moeny1;
-$array_pack_data['total_moeny2'] = $total_moeny2;
+$array_pack_data['total_moeny2'] = $total;
 $array_pack_data['year'] =  $year;
 
 

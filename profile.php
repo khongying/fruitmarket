@@ -65,7 +65,7 @@
             				<div class="profile-usermenu">
             					<ul class="nav">
             						<li class="active">
-            							<a href="profile.php?<?=$_SESSION['id']?>">
+            							<a href="profile.php?user=<?=$_SESSION['id']?>">
             							<img src="logo/id-card.png" />
             							ข้อมูลส่วนตัว </a>
             						</li>
@@ -91,7 +91,7 @@
 									<div class="form-group">
 										<label class="control-label col-sm-4">อีเมลล์</label>
 										<div class="col-sm-8">
-												<input type="email" class="form-control" name="email" value="<?=$row['email']?>">
+												<label class="control-label"><?=$row['email']?></label>
 										</div>
 									</div>
 									<div class="form-group">

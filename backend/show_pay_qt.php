@@ -9,6 +9,7 @@ session_start();
 <html>
 <head>
     <title>Backend</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
@@ -67,13 +68,13 @@ session_start();
                             <th>ผู้แจ้งชำระ</th>
                           </tr>
                               <?php
-                                $sql_qt = "SELECT * FROM `pay_qt`";
+                                $sql_qt = "SELECT * FROM `pay_qt` ORDER BY `id` DESC";
                                 $qt_order = getpdo($con,$sql_qt,1);
                                 if($qt_order != NULL){
                                     foreach ($qt_order as $qt) {
                                   ?>
                                     <tr>
-                                    <td><a href="pay_detail.php?qt=<?= $qt['qt_id']?>"><?= $qt['qt_id'] ?></a></td>
+                                    <td><?php echo ($qt['view'] == 1 ? "<span id='count_cart'>NEW</span>" : ""); ?>  <a href="pay_detail.php?qt=<?= $qt['qt_id']?>"><?= $qt['qt_id'] ?></a></td>
                                     <td id="name"><?= $qt['name'] ?></td>
                                   </tr>
                                   <?php
@@ -97,16 +98,16 @@ session_start();
                             <th>ผู้แจ้งชำระ</th>
                           </tr>
                               <?php
-                                $sql_auction_qt = "SELECT * FROM `pay_auction_qt`";
+                                $sql_auction_qt = "SELECT * FROM `pay_auction_qt` ORDER BY `id` DESC";
                                 $auction_qt = getpdo($con,$sql_auction_qt,1);
                                 if($auction_qt != NULL){
                                     foreach ($auction_qt as $auction) {
                                   ?>
                                     <tr>
-                                    <td><a href="pay_detail_auction.php?qt=<?= $auction['qt_id']?>"><?= $auction['qt_id'] ?></a></td>
+                                    <td> <?php echo ($auction['view'] == 1 ? "<span id='count_cart'>NEW</span>" : ""); ?>  <a href="pay_detail_auction.php?qt=<?= $auction['qt_id']?>"><?= $auction['qt_id'] ?></a></td>
                                     <td id="name"><?= $auction['name'] ?></td>
                                   </tr>
-                                  <?php
+                                  <?php 
                                   }
                                 }else{
                                     ?>

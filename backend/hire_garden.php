@@ -1,4 +1,5 @@
 <?php
+    require 'condatabase/conDB.php';
     session_start();
             if (!isset($_SESSION['admin'])){  //check session
                 Header("Location: index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login
@@ -6,6 +7,7 @@
 <html>
 <head>
     <title>Backend</title>
+    <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
