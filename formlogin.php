@@ -22,31 +22,57 @@
         </style>
     </head>
     <body>
+
       <?php require_once'navbar.php'; ?>
-                <div id="page">
-                    <form action="login-DB.php" method="post">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-offset-4 col-md-4">
-                                  <h2>Welcome to Fruit Market</h2>
-                                    <center>
-                                      <h2><img src="logo/user-avatar.png" /></h2>
-                                    </center><br/>
-                                    <div class="form-login">
-                                        E-mail <input type="text" name="email" class="form-control input-sm chat-input" placeholder="E-mail" />
-                                        </br>
-                                        Passoword <input type="password" name="pass" class="form-control input-sm chat-input" placeholder="Password" />
-                                        </br>
-                                        <div class="wrapper">
-                                        <span class="group-btn">
-                                        <button type="submit" class="btn btn-info btn-block"><img src="logo/login-user.png" />  เข้าสู่ระบบ</button>
-                                        </span>
-                                        </div>
-                                    </div>
+        <div id="page">
+            <form action="login-DB.php" method="post" onSubmit="return chkfrom();">
+                <div class="container">
+                        <?php
+                            if (isset($_GET['err'])) {
+                                if($_GET['err'] == 1){      
+                        ?>  
+
+                            <br>    
+                            <center>
+                                <div class="alert alert-danger alert-dismissable fade in">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>เตือน!</strong> กรุณากรองข้อมูลให้ครบ
+                                </div>
+                                </center>
+                        <?php   
+                                }
+                            }
+                        ?>
+                    <div class="row">
+                        <div class="col-md-offset-4 col-md-4">
+                          <h2>Welcome to Fruit Market</h2>
+                            <center>
+                              <h2><img src="logo/user-avatar.png" /></h2>
+                            </center><br/>
+                            <div class="form-login">
+                                E-mail <input type="text" id="email" name="email" class="form-control input-sm chat-input" placeholder="E-mail" />
+                                </br>
+                                Passoword <input type="password" id="pass" name="pass" class="form-control input-sm chat-input" placeholder="Password" />
+                                </br>
+                                <div class="wrapper">
+                                <span class="group-btn">
+                                <button type="submit" class="btn btn-info btn-block"><img src="logo/login-user.png" />  เข้าสู่ระบบ</button>
+                                </span>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                <div id="page">
+                    </div>
+                </div>
+            </form>
+        </div>
       </body>
+<script type="text/javascript">
+    function chkfrom()
+    {
+        if($('#email').val() =="" || $('#pass').val() ==""){
+            window.location.href = "formlogin.php?err=1";
+            return false;
+        }
+    }
+</script
 </html>

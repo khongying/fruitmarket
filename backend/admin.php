@@ -64,7 +64,7 @@ require 'condatabase/conDB.php';
                         </div><br>
                         <div class="row">
                             <div class="col-md-offset-2 col-md-8">
-                                    <a href="add_admin.php" class="btn btn-info"><img src="logo/employee.png" /> เพิ่มผู้ดูแลระบบ</a>
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addAdmin"><img src="logo/employee.png" /> เพิ่มผู้ดูแลระบบ</button>
                                     <?php
                                           $sql="SELECT * FROM `backend` WHERE `status`= 'A' AND `role` = 'admin'";
                                           $result=getpdo($con,$sql,1);
@@ -111,6 +111,55 @@ require 'condatabase/conDB.php';
             </div>
         </div>
         <!-- /#page-content-wrapper -->
+<!-- Modal -->
+  <div class="modal fade" id="addAdmin" role="dialog">
+    <div class="modal-dialog">
+    
+<!-- Modal content-->
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2><img src="logo/teams.png" />  เพิ่มผู้ดูแลระบบ</h2>
+    </div>
+    <div class="modal-body">
+        <form action="" name="admin" class="form-horizontal">
+             <div class="form-group">
+                <label class="control-label col-md-4">Username</label>
+                    <div class="col-md-6">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" />
+                    </div>
+             </div>  
+             <div class="form-group">
+                <label class="control-label col-md-4">Password</label>
+                    <div class="col-md-6">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                    </div>
+             </div>
+             <div class="form-group">
+                <label class="control-label col-md-4">ชื่อ - นามสกุล</label>
+                    <div class="col-md-6">
+                        <input type="text" id="full_name" name="full_name" class="form-control" placeholder="ชื่อ - นามสกุล" />
+                    </div>
+             </div>  
+             <div class="form-group">
+                <label class="control-label col-md-4">ตำแหน่ง</label>
+                    <div class="col-md-6"">
+                        <select class="form-control" name="role">
+                            <option value="admin">Admin</option>
+                            <option value="power_admin">Power Admin</option>
+                        </select>
+                    </div>
+             </div> 
+                  
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="Admin" ="btn btn-primary"><i class="fa fa-plus fa-lg"></i> Add</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+    </form> 
+</div>
+<!-- Modal content-->
+
 
     </div>
     <!-- /#wrapper -->
@@ -125,6 +174,23 @@ require 'condatabase/conDB.php';
         "class" : "active"
     });
 
+ 
+     $('#Admin').click(function(event) {
+        if ($('#username').val()  !== "" && $('#password').val() !=="" && $('#full_name').val() !== "") {
+            var addmain = $('form').serializeArray();
+                $.post('add_admin.php', {addmain: addmain}, function(data, textStatus, xhr) {
+                    /*optional stuff to do after success */
+                }).done(function(data){
+                    location.reload();
+                });
+        }else{
+            swal("กรุณากรองข้อมูลให้ครบ!!", " ", "warning");
+        }
+     });     
+  
+        
+
+
      $('.del_admin').click(function(event) {
         var id = $(this).attr('admin_id');
         $.post('del_admin.php', {admin_id: id}, 
@@ -134,7 +200,6 @@ require 'condatabase/conDB.php';
              location.reload();
         });
      });   
-
 </script>
 </body>
 </html>
