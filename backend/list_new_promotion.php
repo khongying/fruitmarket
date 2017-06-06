@@ -72,7 +72,7 @@
                                             <table class="table table-hover">
                                               <thead>
                                                 <tr>
-                                                  <th>สถานะ</th>
+                                                  <th>ประเภท</th>
                                                   <th>ชื่อผลไม้</th>
                                                   <th>แก้ไข / ลบ</th>
                                                 </tr>

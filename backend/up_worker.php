@@ -118,7 +118,7 @@ session_start();
 
                               <div class="form-group">
                                   <div class="col-md-12"><br />
-                                      <button type="submit" class="btn btn-warning"><img src="logo/cloud-computing.png" /> อัพเดท </button>
+                                      <button type="submit" class="btn btn-warning"><img src="logo/cloud-computing.png" /> อัปเดต </button>
                                   </div>
                               </div>
 

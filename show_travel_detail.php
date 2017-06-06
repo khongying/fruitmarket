@@ -102,7 +102,7 @@ $result=getpdo($con,$sql,1);
 				<h4><p id="line"><font color="330066"><?php echo $detail;?></font></p></h4>
         <form action="travel_ticket.php" method="post">
           <input type="hidden" name="name" value="<?=$name?>">
-          <button type="submit" class="btn btn-primary"><img src="logo/ticket.png"/>  พิมพ์ตัวเยี่ยมชม</button>
+          <button type="submit" class="btn btn-primary"><img src="logo/ticket.png"/>  พิมพ์ตั๋วเยี่ยมชม</button>
           <a class="btn btn-info" href="travel.php"><img src="logo/left-arrow.png" /> กลับ</a>
         </form>
 				</div>

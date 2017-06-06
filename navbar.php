@@ -1,6 +1,11 @@
 <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 
 <style type="text/css">
+	.nav > li > a:hover, .nav > li > a:focus {
+	  background-image:linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+	  text-decoration: none;
+	  color: #000;
+	}
 	body{
       font-family: 'Kanit', sans-serif;
     }
@@ -106,20 +111,20 @@ $( document ).ready(function() {
           </div>
           <div class="modal-body" id="products-lists">
           </div>
-					<div class="modal-footer">
-							<a class="add-product btn btn-primary" href="confirm-card.php">ยืนยันการสั่งซื้อ</a>
-					</div>
+			<div class="modal-footer">
+					<a class="add-product btn btn-primary" href="confirm-card.php">ยืนยันการสั่งซื้อ</a>
+			</div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
 
-			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<nav class="navbar navbar-fixed-top" style="background-color: #FEBFB3" role="navigation">
 				<div class="container">
 					<div class="container-fluid">
 						<div class="logo">
 							<ul class="nav navbar-nav">
-									<li><a class="name" href="index.php" style="color: #FFFFFF;"><img src="logo/online-shop.png" /> ระบบบริหารการจัดการสวนผลไม้</a></li>
+									<li><a class="name" href="index.php"><img src="logo/online-shop.png" /> ระบบบริหารจัดการสวนผลไม้</a></li>
 							</ul>
 						</div>
 						<ul class="nav navbar-nav">
@@ -133,7 +138,7 @@ $( document ).ready(function() {
 							if(isset($_SESSION['login']) && $_SESSION['login'] != 'false'){?>
 							<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?> <img src="logo/chevron-sign-down.png" /></i>
+										<a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">ยินดีต้อนรับ <?php echo $_SESSION['name']; ?>  <img src="logo/down-chevron.png" /></i>
 										</a>
 											<ul class="dropdown-menu">
 												<li><a href="profile.php?user=<?=$_SESSION['id']?>"><img src="logo/curriculum.png" /> Profile</a></li>
@@ -160,7 +165,8 @@ $( document ).ready(function() {
 							<li><a href="register.php" style="cursor: pointer;"><img src="logo/user.png" /> สมัครสมาชิก</a></li>
 						</ul>
 					</div>
-				</div>				<?php } ?>
+				</div>				
+				<?php } ?>
 			</nav>
 
 </body>

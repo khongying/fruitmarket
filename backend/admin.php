@@ -6,7 +6,7 @@ require 'condatabase/conDB.php';
                 }else{?>
 <html>
 <head>
-    <title>Backend | ระบบจัดการผู้ใช้งาน</title>
+    <title>Backend | ระบบจัดการผู้ดูแลระบบ</title>
     <link rel="shortcut icon" type="image/png" href="logo/backend.png">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/sidebar.css" rel="stylesheet">
@@ -44,7 +44,7 @@ require 'condatabase/conDB.php';
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2><img src="logo/teams.png" />  ระบบจัดการผู้ใช้งาน</h2><hr/>
+                        <h2><img src="logo/teams.png" />  ระบบจัดการผู้ดูแลระบบ</h2><hr/>
                         <div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
@@ -153,8 +153,7 @@ require 'condatabase/conDB.php';
                   
             </div>
             <div class="modal-footer">
-                <button type="button" id="Admin" ="btn btn-primary"><i class="fa fa-plus fa-lg"></i> Add</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="Admin" class="btn btn-primary"><img src="logo/user.png" /> Add</button>
             </div>
     </form> 
 </div>

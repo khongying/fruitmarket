@@ -4,13 +4,13 @@
 session_start();
 require 'condatabase/conDB.php';
 $user_id = $_SESSION['id'];
-$sql = "UPDATE `users` SET `email`='{$_POST['email']}',`birthday`='{$_POST['date']}',`fullname`='{$_POST['fullname']}',`address`='{$_POST['address']}',`phone`='{$_POST['phone']}' WHERE `id`='$user_id' ";
+$sql = "UPDATE `users` SET `birthday`='{$_POST['date']}',`fullname`='{$_POST['fullname']}',`address`='{$_POST['address']}',`phone`='{$_POST['phone']}' WHERE `id`='$user_id' ";
 
 if((getpdo($con,$sql))){
   $_SESSION['name'] = $_POST['fullname'];
   echo '<script>window.onload = function () {';
   echo 'swal({
-        title: "อัพเดทข้อมูลเรียบร้อยแล้ว",
+        title: "อัปเดตข้อมูลเรียบร้อยแล้ว",
         text: " ",
         type: "success",
         showCancelButton: false,
@@ -19,7 +19,7 @@ if((getpdo($con,$sql))){
         },
         function(isConfirm){
         if (isConfirm) {
-        window.location.href = "index.php";
+        window.location.href = "profile.php?user='.$_SESSION['id'].'";
         }
         });}';
   echo '</script>';

@@ -57,8 +57,6 @@ session_start();
                                   include 'meun_worker.php';
                               ?>
                             </div><br>
-
-                            <div id="page" class="container">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
                                         <div class="form-register">
@@ -99,11 +97,7 @@ session_start();
                                             <p>&copy; BSRU 2017</p>
                                         </footer>
                                      </div>
-
-
-
                     </div>
-                </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->

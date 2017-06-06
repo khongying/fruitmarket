@@ -236,7 +236,7 @@ session_start();
                                   </div>
                                   <div class="col-md-2">
                                       <input type="hidden" name="qt" value="<?=$qt_id?>">
-                                      <button type="submit" class="btn btn-danger">อัพเดทสถานะ</button>
+                                      <button type="submit" class="btn btn-danger">อัปเดตสถานะ</button>
                                   </div>
                                 </form>
                             </div>

@@ -22,13 +22,15 @@
 }
 
 .header-text h2 span {
-    background-color: #2980b9;
+    background-color: #5FBDC5;
 	padding: 10px;
+    color: #000;
 }
 
 .header-text h3 span {
-	background-color: #000;
+	background-color: #DFEFF0;
 	padding: 15px;
+    color: #000;
 }
 
 .btn-min-block {

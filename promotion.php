@@ -4,7 +4,7 @@
 
 ?>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
     <link rel="shortcut icon" type="image/png" href="logo/groceries.png">
     <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/step.css" rel="stylesheet">
+    <!-- <link href="bootstrap/css/step.css" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
     <script src="sweetalert-master/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
@@ -55,26 +55,24 @@
 
         <div class="container" id="show">
               <div class="row">
-                 <h1 id="profile_name"><img src="logo/news.png" />  ข่าวประชาสัมพันธ-โปรโมชั่น</h1><hr/>
+                 <h1 id="profile_name"><img src="logo/news.png" />  ข่าวประชาสัมพันธ์-โปรโมชั่น</h1><hr/>
                   <section>
-                      <div class="wizard">
-                          
-                              <ul class="nav nav-wizard">
+                      <div id="navbar" class="navbar-collapse collapse" style="background-image:linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);">
+                        <ul class="nav navbar-nav">
+                          <li class="">
+                              <a href="#step1" data-toggle="tab">ทั้งหมด</a>
+                          </li>
 
-                                  <li class="">
-                                      <a href="#step1" data-toggle="tab">ทั้งหมด</a>
-                                  </li>
+                          <li class="">
+                              <a href="#step2" data-toggle="tab">ข่าวประชาสัมพันธ์</a>
+                          </li>
 
-                                  <li class="">
-                                      <a href="#step2" data-toggle="tab">ข่าวประชาสัมพันธ์</a>
-                                  </li>
+                          <li class="">
+                              <a href="#step3" data-toggle="tab">ข่าวโปรโมชั่น</a>
+                          </li>
 
-                                  <li class="">
-                                      <a href="#step3" data-toggle="tab">ข่าวโปรโมชั่น</a>
-                                  </li>
-
-                              </ul>
-                         
+                          </ul>
+                        </div> 
 
                           <form>
                               <div class="tab-content">

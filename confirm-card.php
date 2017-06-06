@@ -137,7 +137,7 @@ function get_product_by_id($obj_con,$product_id){
                       </table>
 
                       <div id="button" class="col-md-12">
-                        <a class="btn btn-success" href="confirm-card_step2.php">ขั้นตอนไป</a>
+                        <a class="btn btn-success" href="confirm-card_step2.php">ขั้นตอนต่อไป</a>
                       </div>
                   </div>
                   </div>

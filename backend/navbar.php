@@ -16,7 +16,7 @@ nav#navbar{
             <li><a id="menu-toggle"><img src="logo/menu.png"  /></a></li>
         </ul>
         <ul class="nav navbar-nav">
-            <li><a class="name" href="home.php" style="color: #FFFFFF;"><img src="logo/analytics.png" /> ระบบบริหารการจัดการสวนผลไม้</a></li>
+            <li><a class="name" href="home.php" style="color: #FFFFFF;"><img src="logo/analytics.png" /> ระบบบริหารจัดการสวนผลไม้</a></li>
         </ul>
 
 
